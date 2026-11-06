@@ -1,0 +1,19 @@
+$ cargo run --bin gen_site_data   # runs bfs_edge_classification::demo()
+
+directed graph [[1, 2], [3], [1, 3, 0], [0, 4], [2]], distances from 0: [Some(0), Some(1), Some(1), Some(2), Some(3)]
+  edge 0 → 1: Tree
+  edge 0 → 2: Tree
+  edge 1 → 3: Tree
+  edge 2 → 1: Cross
+  edge 2 → 3: Cross
+  edge 2 → 0: Back
+  edge 3 → 0: Back
+  edge 3 → 4: Tree
+  edge 4 → 2: Cross
+forward edges found: 0  (always 0 for BFS)
+
+$ cargo test bfs_edge_classification
+test directed_bfs_properties ... ok
+test undirected_bfs_has_only_tree_and_cross_edges ... ok
+
+test result: 2 passed; 0 failed

@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs bottleneck_spanning_tree::demo()
+
+minimum bottleneck by search: Some(9)
+bottleneck of the MST (Kruskal): Some(9)  — an MST is always a minimum bottleneck spanning tree
+connected using edges ≤ 8? false; ≤ 9? true
+
+$ cargo test bottleneck_spanning_tree
+test disconnected_graph_has_no_spanning_tree ... ok
+test matches_brute_force_and_the_mst_is_a_bottleneck_tree ... ok
+
+test result: 2 passed; 0 failed

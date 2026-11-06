@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs min_cost_flow::demo()
+
+send 3 units from s to t: (flow, cost) = (3, 14)
+send 1 unit  : (1, 3)
+send 5 units (only 3 fit): (3, 14)
+3×3 assignment as a flow problem: (3, 9) (Hungarian: 9)
+
+$ cargo test min_cost_flow
+test assignment_via_flow_equals_hungarian ... ok
+test small_network_and_flow_conservation ... ok
+
+test result: 2 passed; 0 failed

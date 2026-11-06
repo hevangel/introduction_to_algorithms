@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs breaking_a_string::demo()
+
+length-20 string, cuts at 2, 8, 10: optimal cost 38 with order [10, 2, 8]
+cutting left to right instead costs 50
+cutting right to left costs 38
+
+$ cargo test breaking_a_string
+test book_example ... ok
+test matches_all_cut_orders ... ok
+
+test result: 2 passed; 0 failed

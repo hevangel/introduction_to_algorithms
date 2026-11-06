@@ -1,0 +1,15 @@
+$ cargo run --bin gen_site_data   # runs graph_coloring::demo()
+
+C4: 2-colorable true, χ = 2
+C5: 2-colorable false, χ = 3
+C6: 2-colorable true, χ = 2
+C7: 2-colorable false, χ = 3
+K4: χ = 4, greedy uses 4 colors
+Petersen graph: χ = 3 (bipartite? false)
+
+$ cargo test graph_coloring
+test exact_coloring_matches_exhaustive_enumeration ... ok
+test greedy_uses_at_most_max_degree_plus_one ... ok
+test known_chromatic_numbers ... ok
+
+test result: 3 passed; 0 failed

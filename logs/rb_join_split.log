@@ -1,0 +1,15 @@
+$ cargo run --bin gen_site_data   # runs rb_join_split::demo()
+
+tree of 1..=20: height 5, black-height 4
+split at 8 → left [1, 2, 3, 4, 5, 6, 7], found = true, right [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+both halves valid red-black trees: true / true
+join(left, 50, 100..110) = [1, 2, 3, 4, 5, 6, 7, 50, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109]
+persistence: old version still has 20 keys, new version has 21
+
+$ cargo test rb_join_split
+test insert_delete_keep_invariants_and_match_a_set ... ok
+test join_with_wildly_different_heights ... ok
+test old_versions_are_persistent ... ok
+test split_and_join_roundtrip ... ok
+
+test result: 4 passed; 0 failed

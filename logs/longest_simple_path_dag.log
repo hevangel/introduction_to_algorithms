@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs longest_simple_path_dag::demo()
+
+edges [(0, 1, 3), (0, 2, 2), (1, 3, 4), (2, 3, 7), (1, 2, -1), (3, 4, 2), (2, 4, 6)]
+longest path 0 → 4: Some((11, [0, 2, 3, 4]))
+cyclic graph: None
+in a general graph the same question decides Hamiltonian path (NP-hard); the DAG order removes the cycles
+
+$ cargo test longest_simple_path_dag
+test cycle_detected ... ok
+test matches_exhaustive_path_enumeration ... ok
+
+test result: 2 passed; 0 failed

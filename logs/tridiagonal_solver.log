@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs tridiagonal_solver::demo()
+
+tridiag(−1,2,−1) x = 1, n = 8: [4.0, 7.0, 9.0, 10.0, 10.0, 9.0, 7.0, 4.0]
+exact: x_i = i(n+1−i)/2 → [4.0, 7.0, 9.0, 10.0, 10.0, 9.0, 7.0, 4.0]
+n = 200000 solved in O(n); middle value 5000049996.4 (exact 5000050000.0)
+
+$ cargo test tridiagonal_solver
+test matches_dense_lup_solver_on_diagonally_dominant_systems ... ok
+test poisson_matrix_has_the_closed_form_solution ... ok
+test singular_system_detected ... ok
+
+test result: 3 passed; 0 failed

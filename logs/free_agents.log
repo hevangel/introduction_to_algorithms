@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs free_agents::demo()
+
+budget  6: Some((6, [1, 1, 1]))
+budget  9: Some((10, [1, 1, 0]))
+budget 12: Some((14, [1, 0, 0]))
+budget 20: Some((21, [2, 0, 0]))
+
+$ cargo test free_agents
+test infeasible_budget ... ok
+test matches_enumeration ... ok
+
+test result: 2 passed; 0 failed

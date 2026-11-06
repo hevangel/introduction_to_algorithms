@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs min_avg_completion_time::demo()
+
+processing times [8, 3, 10, 2, 5]: SPT order [3, 1, 4, 0, 2], average completion 12.60
+given order 0..5 instead: 18.20
+with release times [0, 2, 4, 5, 6]: SRPT completion times [18, 5, 28, 7, 12], average 14.00
+best non-preemptive schedule: 14.80
+
+$ cargo test min_avg_completion_time
+test spt_is_optimal_without_release_times ... ok
+test srpt_beats_every_nonpreemptive_schedule_with_release_times ... ok
+
+test result: 2 passed; 0 failed

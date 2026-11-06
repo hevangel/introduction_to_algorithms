@@ -1,0 +1,17 @@
+$ cargo run --bin gen_site_data   # runs point_in_polygon::demo()
+
+polygon [(0, 0), (8, 0), (8, 8), (4, 3), (0, 8)], 2×area = 88
+(4, 1): even-odd Inside, winding Inside
+(4, 5): even-odd Outside, winding Outside
+(1, 7): even-odd Outside, winding Outside
+(4, 3): even-odd Boundary, winding Boundary
+(9, 4): even-odd Outside, winding Outside
+(0, 4): even-odd Boundary, winding Boundary
+(6, 6): even-odd Outside, winding Outside
+
+$ cargo test point_in_polygon
+test concave_notch_and_area ... ok
+test rectangles_and_triangles_against_direct_tests ... ok
+test rules_agree_on_random_star_shaped_polygons ... ok
+
+test result: 3 passed; 0 failed

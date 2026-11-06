@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs generic_mst::demo()
+
+GENERIC-MST total weight 37 (Kruskal: 37)
+edges added in order: [(0, 1, 4), (0, 7, 8), (6, 7, 1), (5, 6, 2), (2, 5, 4), (2, 8, 2), (2, 3, 7), (3, 4, 9)]
+size of the vertex set S on the source side of each cut: [1, 2, 3, 4, 5, 6, 7, 8]
+
+$ cargo test generic_mst
+test disconnected_graph_stops_early ... ok
+test equals_kruskal_weight_on_random_connected_graphs ... ok
+
+test result: 2 passed; 0 failed

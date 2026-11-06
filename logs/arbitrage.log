@@ -1,0 +1,10 @@
+$ cargo run --bin gen_site_data   # runs arbitrage::demo()
+
+arbitrage cycle [1, 2, 3] multiplies money by 1.0007
+rates derived from a single price vector: None
+
+$ cargo test arbitrage
+test detects_planted_arbitrage_and_returns_a_profitable_cycle ... ok
+test matches_brute_force_on_random_tables ... ok
+
+test result: 2 passed; 0 failed

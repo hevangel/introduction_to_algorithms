@@ -1,0 +1,15 @@
+$ cargo run --bin gen_site_data   # runs hashing_bounds::demo()
+
+chaining with n = m keys: average longest chain vs lg n / lg lg n
+  n = 2^8 : longest chain  4.75   lg n/lg lg n = 2.67   ratio 1.78
+  n = 2^10: longest chain  5.62   lg n/lg lg n = 3.01   ratio 1.87
+  n = 2^12: longest chain  6.17   lg n/lg lg n = 3.35   ratio 1.84
+  n = 2^14: longest chain  7.00   lg n/lg lg n = 3.68   ratio 1.90
+  n = 2^16: longest chain  7.65   lg n/lg lg n = 4.00   ratio 1.91
+open addressing at α = ½: P(probes > k) = [1.0, 0.492, 0.248, 0.124, 0.063, 0.032, 0.017]  vs α^k = [1.0, 0.5, 0.25, 0.125, 0.0625, 0.03125, 0.015625]
+
+$ cargo test hashing_bounds
+test longest_chain_grows_like_lg_n_over_lg_lg_n ... ok
+test probe_tail_decays_geometrically ... ok
+
+test result: 2 passed; 0 failed

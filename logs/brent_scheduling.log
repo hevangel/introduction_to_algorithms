@@ -1,0 +1,14 @@
+$ cargo run --bin gen_site_data   # runs brent_scheduling::demo()
+
+fork-join DAG with 11 strands
+P = 1: T_P = 11  (lower bound max(T1/P, T∞) = 11.0, upper bound T1/P + T∞ = 16.0)
+P = 2: T_P =  7  (lower bound max(T1/P, T∞) = 5.5, upper bound T1/P + T∞ = 10.5)
+P = 3: T_P =  7  (lower bound max(T1/P, T∞) = 5.0, upper bound T1/P + T∞ = 8.7)
+P = 4: T_P =  5  (lower bound max(T1/P, T∞) = 5.0, upper bound T1/P + T∞ = 7.8)
+P = 8: T_P =  5  (lower bound max(T1/P, T∞) = 5.0, upper bound T1/P + T∞ = 6.4)
+
+$ cargo test brent_scheduling
+test greedy_bound_holds_on_random_dags ... ok
+test infinite_processors_reach_the_span ... ok
+
+test result: 2 passed; 0 failed

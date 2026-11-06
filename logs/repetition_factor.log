@@ -1,0 +1,15 @@
+$ cargo run --bin gen_site_data   # runs repetition_factor::demo()
+
+ρ(abababab) = 4
+ρ(abcabcabc) = 3
+ρ(aaaa) = 4
+ρ(abaab) = 1
+ρ(a) = 1
+ρ*(abab) = 2
+matches of abab in abababababcabab: [0, 2, 4, 6, 11]
+
+$ cargo test repetition_factor
+test matcher_agrees_with_naive_search ... ok
+test repetition_factor_matches_definition ... ok
+
+test result: 2 passed; 0 failed

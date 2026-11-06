@@ -4,7 +4,7 @@
 //! @summary Peel off the convex hull again and again ("onion peeling"): the layers of a point set, computed in O(n²) simply or O(n lg n) with more care.
 //! @order 60
 use super::convex_hull_graham::{graham_scan, hull_area2};
-use super::segment_intersection::{cross, Pt};
+use super::segment_intersection::Pt;
 use crate::outln;
 
 /// The convex layers of a point set: layer 0 is the convex hull, layer 1 the hull of the remaining points, and so on.
@@ -40,6 +40,7 @@ pub fn demo() -> String {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use super::super::segment_intersection::cross;
     use crate::common::Rng;
     fn random_points(r: &mut Rng, n: usize) -> Vec<Pt> {
         let mut v: Vec<Pt> = (0..n).map(|_| (r.range(0, 30) as i64, r.range(0, 30) as i64)).collect();

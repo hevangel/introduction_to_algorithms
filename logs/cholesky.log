@@ -1,0 +1,13 @@
+$ cargo run --bin gen_site_data   # runs cholesky::demo()
+
+A = [[4.0, 12.0, -16.0], [12.0, 37.0, -43.0], [-16.0, -43.0, 98.0]]
+L = [[2.0, 0.0, 0.0], [6.0, 1.0, 0.0], [-8.0, 5.0, 3.0]]
+solution of A x = (1,2,3): [28.583333, -7.666667, 1.333333]
+indefinite matrix [[1,2],[2,1]]: None
+
+$ cargo test cholesky
+test classic_example ... ok
+test reconstructs_and_solves_random_spd_systems ... ok
+test rejects_non_positive_definite_matrices ... ok
+
+test result: 3 passed; 0 failed

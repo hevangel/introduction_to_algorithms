@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs fuzzy_sort::demo()
+
+intervals : [(8, 10), (1, 3), (4, 6), (2, 5), (9, 12), (5, 7), (0, 1)]
+fuzzy sort: [(1, 3), (0, 1), (4, 6), (2, 5), (5, 7), (8, 10), (9, 12)]  (valid: true)
+100000 mutually overlapping intervals: all land in the middle bucket after one pass, valid = true
+
+$ cargo test fuzzy_sort
+test detector_and_degenerate_cases ... ok
+test output_is_a_permutation_and_fuzzy_sorted ... ok
+
+test result: 2 passed; 0 failed

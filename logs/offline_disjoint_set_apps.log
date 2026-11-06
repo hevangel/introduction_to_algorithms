@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs offline_disjoint_set_apps::demo()
+
+OFF-LINE-MINIMUM extracted = [4, 3, 2, 6, 8, 1]
+depths after grafts: [0, 1, 2, 3, 4, 0]
+off-line LCA of (3,6), (5,4), (3,4), (6,6): [1, 0, 1, 6]
+
+$ cargo test offline_disjoint_set_apps
+test depth_forest_matches_naive_parent_arrays ... ok
+test offline_minimum_matches_simulation ... ok
+test tarjan_lca_matches_naive ... ok
+
+test result: 3 passed; 0 failed

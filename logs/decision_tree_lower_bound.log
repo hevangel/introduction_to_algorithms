@@ -1,0 +1,17 @@
+$ cargo run --bin gen_site_data   # runs decision_tree_lower_bound::demo()
+
+  n | ⌈lg n!⌉ | insertion w/avg | merge w/avg | heapsort w/avg | quicksort w/avg
+  2 |       1 |      1    1.00 |     1   1.00 |      1    1.00 |       1    1.00
+  3 |       3 |      3    2.67 |     3   2.67 |      3    3.00 |       3    2.67
+  4 |       5 |      6    4.92 |     5   4.67 |      7    6.50 |       6    4.83
+  5 |       7 |     10    7.72 |     8   7.17 |     12   10.95 |      10    7.40
+  6 |      10 |     15   11.05 |    11   9.83 |     17   15.13 |      15   10.30
+  7 |      13 |     21   14.91 |    14  12.73 |     22   19.79 |      21   13.49
+lg(n!) = n lg n − n lg e + O(lg n)  ⇒  Ω(n lg n); 2^h ≥ n! forces height h ≥ lg n!
+
+$ cargo test decision_tree_lower_bound
+test bound_values ... ok
+test merge_sort_is_tight_for_four_elements ... ok
+test no_comparison_sort_beats_the_decision_tree_bound ... ok
+
+test result: 3 passed; 0 failed

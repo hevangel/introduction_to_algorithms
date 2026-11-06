@@ -1,0 +1,10 @@
+$ cargo run --bin gen_site_data   # runs boruvka::demo()
+
+Borůvka MST weight 37 (Kruskal 37) after 2 rounds (≤ ⌈lg 9⌉ = 4)
+edges: [(0, 1, 4), (2, 8, 2), (2, 3, 7), (3, 4, 9), (5, 6, 2), (6, 7, 1), (0, 7, 8), (2, 5, 4)]
+random graph n = 5000, m = 24995: 5 rounds (lg n = 12.3)
+
+$ cargo test boruvka
+test matches_kruskal_even_with_tied_weights ... ok
+
+test result: 1 passed; 0 failed

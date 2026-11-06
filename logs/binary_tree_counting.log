@@ -1,0 +1,19 @@
+$ cargo run --bin gen_site_data   # runs binary_tree_counting::demo()
+
+n | recurrence | C(2n,n)/(n+1) | distinct BST shapes from the n! permutations
+0 |          1 |             1 |      1 (of 1 permutations)
+1 |          1 |             1 |      1 (of 1 permutations)
+2 |          2 |             2 |      2 (of 2 permutations)
+3 |          5 |             5 |      5 (of 6 permutations)
+4 |         14 |            14 |     14 (of 24 permutations)
+5 |         42 |            42 |     42 (of 120 permutations)
+6 |        132 |           132 |    132 (of 720 permutations)
+7 |        429 |           429 |    429 (of 5040 permutations)
+3-node shapes: ["( ( ( )))", "( (( ) ))", "(( ) ( ))", "(( ( )) )", "((( ) ) )"]
+asymptotically bₙ = 4ⁿ / (√π n^{3/2}) (1 + O(1/n)); b_30 = 3814986502092304
+
+$ cargo test binary_tree_counting
+test enumeration_and_permutation_mapping ... ok
+test recurrence_equals_closed_form_and_known_values ... ok
+
+test result: 2 passed; 0 failed

@@ -1,0 +1,18 @@
+$ cargo run --bin gen_site_data   # runs dynamic_binary_search::demo()
+
+insert 5: array sizes [1]
+insert 9: array sizes [0, 2]
+insert 1: array sizes [1, 2]
+insert 7: array sizes [0, 0, 4]
+insert 3: array sizes [1, 0, 4]
+insert 8: array sizes [0, 2, 4]
+insert 2: array sizes [1, 2, 4]
+search(7) = Some((2, 2)), search(4) = None
+after delete(9): sizes [0, 2, 4], contains 9? false
+n = 6 stored in 2 arrays — the binary representation of n
+
+$ cargo test dynamic_binary_search
+test insert_sizes_follow_n_in_binary ... ok
+test matches_a_btreeset_and_keeps_the_binary_counter_invariant ... ok
+
+test result: 2 passed; 0 failed

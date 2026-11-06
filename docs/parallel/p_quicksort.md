@@ -19,7 +19,7 @@ There is no race: the sub-arrays are disjoint (here enforced by Rust's `split_at
 
 ```mermaid
 flowchart TB
-  A["A[0..n)"] -->|partition (serial)| P["pivot"]
+  A["A[0..n)"] -->|"partition (serial)"| P["pivot"]
   P -->|spawn| L["sort left"]
   P --> R["sort right"]
   L & R -->|sync| D["done"]

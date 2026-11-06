@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs radix_tree::demo()
+
+inserted ["1011", "10", "011", "100", "0", "1011", "101", "1"]
+7 distinct strings in 9 trie nodes
+sorted: ["0", "011", "1", "10", "100", "101", "1011"]
+contains '100'? true   contains '1010'? false   contains '01'? false
+
+$ cargo test radix_tree
+test prefixes_are_not_members_unless_inserted ... ok
+test sorts_like_the_standard_library_and_membership ... ok
+
+test result: 2 passed; 0 failed

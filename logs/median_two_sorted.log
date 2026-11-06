@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs median_two_sorted::demo()
+
+A = [1, 4, 7, 10, 13], B = [2, 3, 8, 9, 20]
+median of the 10 values (5th smallest) = 7
+two sorted arrays of 10⁶ elements: median = 999999 found in about lg n = 20 halving steps
+
+$ cargo test median_two_sorted
+test equal_length_median ... ok
+test matches_merging_for_every_rank ... ok
+
+test result: 2 passed; 0 failed

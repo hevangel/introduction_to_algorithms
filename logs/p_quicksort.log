@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs p_quicksort::demo()
+
+n =    1000: sorted correctly true, parallel recursion depth 0 (≈ 2·lg n = 20)
+n =  100000: sorted correctly true, parallel recursion depth 13 (≈ 2·lg n = 33)
+with a serial partition the span is Θ(n) (the first partition alone costs n); parallelising the partition gives Θ(lg² n)
+
+$ cargo test p_quicksort
+test depth_is_logarithmic_with_high_probability ... ok
+test sorts_random_sorted_reversed_and_duplicate_heavy_inputs ... ok
+
+test result: 2 passed; 0 failed

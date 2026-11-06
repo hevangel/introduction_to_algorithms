@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs random_search::demo()
+
+k =  1 matches: with replacement  101.6 probes (theory n/k = 100.0); permutation  50.0 (theory (n+1)/(k+1) = 50.5)
+k =  4 matches: with replacement   24.7 probes (theory n/k = 25.0); permutation  20.7 (theory (n+1)/(k+1) = 20.2)
+k = 10 matches: with replacement   10.1 probes (theory n/k = 10.0); permutation   9.5 (theory (n+1)/(k+1) = 9.2)
+no match: with replacement 520 probes (≈ n·H_n = 519); permutation 100
+
+$ cargo test random_search
+test absent_element_costs ... ok
+test expected_probe_counts ... ok
+
+test result: 2 passed; 0 failed

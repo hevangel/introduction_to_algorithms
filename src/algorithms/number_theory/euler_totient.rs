@@ -3,7 +3,6 @@
 //! @editions 1,2,3,4
 //! @summary φ(n) counts residues coprime to n: φ(n) = n·∏(1 − 1/p) over primes p | n; sieve all values up to N in O(N lg lg N); Euler's theorem aᵠ⁽ⁿ⁾ ≡ 1.
 //! @order 32
-use super::euclid_gcd::gcd;
 use super::modular_exponentiation::mod_pow;
 use crate::outln;
 
@@ -45,6 +44,7 @@ pub fn demo() -> String {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use super::super::euclid_gcd::gcd;
     #[test]
     fn matches_counting_coprime_residues() {
         let phi = totient_sieve(500);

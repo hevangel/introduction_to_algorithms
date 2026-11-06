@@ -1,0 +1,10 @@
+$ cargo run --bin gen_site_data   # runs scapegoat_tree::demo()
+
+10000 ascending insertions: height 26 (≤ log_{1/α} n + 1 = 26), 3759 partial rebuilds
+after deleting two thirds: n = 3334, height 12, total rebuilds 3762, valid = true
+
+$ cargo test scapegoat_tree
+test behaves_like_a_set_and_stays_shallow ... ok
+test sorted_insertions_trigger_rebuilds_and_logarithmic_height ... ok
+
+test result: 2 passed; 0 failed

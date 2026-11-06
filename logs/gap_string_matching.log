@@ -1,0 +1,14 @@
+$ cargo run --bin gen_site_data   # runs gap_string_matching::demo()
+
+text cabccbacbacab contains ab*ba*c : true
+text cabccbacbacab contains ba*ab   : true
+text cabccbacbacab contains c*c*c*c : true
+text cabccbacbacab contains a*b*c*d : false
+text cabccbacbacab contains cab     : true
+text cabccbacbacab contains *       : true
+
+$ cargo test gap_string_matching
+test agrees_with_exhaustive_glob_matching ... ok
+test edge_cases ... ok
+
+test result: 2 passed; 0 failed

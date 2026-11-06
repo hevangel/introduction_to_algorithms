@@ -1,0 +1,13 @@
+$ cargo run --bin gen_site_data   # runs columnsort::demo()
+
+s = 2, r = 2 (4 numbers): columnsort == sort: true
+s = 3, r = 12 (36 numbers): columnsort == sort: true
+s = 4, r = 20 (80 numbers): columnsort == sort: true
+s = 6, r = 54 (324 numbers): columnsort == sort: true
+reverse 35..0 as 12×3: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35]
+
+$ cargo test columnsort
+test sorts_random_inputs_for_legal_shapes ... ok
+test taller_matrices_also_work_and_bad_shapes_are_rejected ... ok
+
+test result: 2 passed; 0 failed

@@ -1,0 +1,10 @@
+$ cargo run --bin gen_site_data   # runs pointer_jumping::demo()
+
+chain of 16 nodes: roots [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] after 4 rounds (⌈lg 15⌉ = 4)
+forest [0, 0, 1, 2, 4, 4, 5, 6, 8] → ([0, 0, 0, 0, 4, 4, 4, 4, 8], 2)
+
+$ cargo test pointer_jumping
+test chain_needs_exactly_lg_rounds ... ok
+test finds_every_root_in_logarithmic_rounds ... ok
+
+test result: 2 passed; 0 failed

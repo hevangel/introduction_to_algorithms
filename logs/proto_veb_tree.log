@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs proto_veb_tree::demo()
+
+proto-vEB(16) with {2,3,4,5,7,14,15}: min=Some(2) max=Some(15)
+successor(5)=Some(7) successor(7)=Some(14) predecessor(14)=Some(7) member(9)=false
+after deleting 14: predecessor(15) = Some(7)
+the recursion T(u) = 2T(√u) + Θ(1) solves to Θ(lg u) for MEMBER/INSERT but successor needs 3 recursive calls: Θ(lg u · … ) — see the full vEB tree for O(lg lg u)
+
+$ cargo test proto_veb_tree
+test matches_btreeset ... ok
+test rejects_non_double_power_universes ... ok
+
+test result: 2 passed; 0 failed

@@ -1,0 +1,10 @@
+$ cargo run --bin gen_site_data   # runs number_theoretic_transform::demo()
+
+(1 + 2x + 3x²)(4 + 5x) mod 998244353 = [4, 13, 22, 15]
+two degree-4095 polynomials with huge coefficients: coefficient 1000 of the product = 556469941 (direct sum 556469941)
+
+$ cargo test number_theoretic_transform
+test convolution_equals_schoolbook_modulo_p ... ok
+test transform_roundtrip_and_root_of_unity ... ok
+
+test result: 2 passed; 0 failed

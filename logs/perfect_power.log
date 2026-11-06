@@ -1,0 +1,19 @@
+$ cargo run --bin gen_site_data   # runs perfect_power::demo()
+
+                   1 is not a perfect power
+                   2 is not a perfect power
+                   4 = 2^2
+                  36 = 6^2
+                  64 = 2^6
+                 100 = 10^2
+                 243 = 3^5
+                1000 = 10^3
+             1000003 is not a perfect power
+          3486784401 = 3^20
+ 4611686018427387904 = 2^62
+
+$ cargo test perfect_power
+test matches_exhaustive_search ... ok
+test roots_and_extremes ... ok
+
+test result: 2 passed; 0 failed

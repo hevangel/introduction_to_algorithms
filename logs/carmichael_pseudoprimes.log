@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs carmichael_pseudoprimes::demo()
+
+base-2 pseudoprimes below 1000: [341, 561, 645]
+Carmichael numbers below 20000 (Korselt): [561, 1105, 1729, 2465, 2821, 6601, 8911, 10585, 15841]
+561 passes the Fermat test for every coprime base: true
+341 = 11·31 is a base-2 pseudoprime, but base 3 exposes it: 2→true, 3→false
+
+$ cargo test carmichael_pseudoprimes
+test definition_equals_korselt_below_3000 ... ok
+test known_values ... ok
+
+test result: 2 passed; 0 failed

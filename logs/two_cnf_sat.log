@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs two_cnf_sat::demo()
+
+(x1∨x2)(¬x1∨x3)(¬x2∨¬x3)(x2∨x3): Some([true, false, true])
+(x1)(¬x1): None
+all four clauses on x1,x2: None
+
+$ cargo test two_cnf_sat
+test agrees_with_brute_force ... ok
+test large_chain_of_implications ... ok
+
+test result: 2 passed; 0 failed

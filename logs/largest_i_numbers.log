@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs largest_i_numbers::demo()
+
+numbers: [3, 30, 70, 41, 31, 70, 49, 23, 87, 64, 39, 89, 49, 25, 74, 15, 13, 92, 59, 20, 70, 76, 1, 13, 40, 98, 43, 46, 30, 46]
+top 5 by sorting       : [98, 92, 89, 87, 76]
+top 5 by heap          : [98, 92, 89, 87, 76]
+top 5 by order statistic: [98, 92, 89, 87, 76]
+costs for n = 10⁶, i = 20: sort ≈ n lg n = 2·10⁷; heap ≈ n + i lg n = 10⁶; select ≈ n + i lg i = 10⁶
+
+$ cargo test largest_i_numbers
+test all_three_agree_including_duplicates_and_extremes ... ok
+
+test result: 1 passed; 0 failed

@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs stack_secondary_storage::demo()
+
+page size 64, 1 page(s) in memory:  30000 disk accesses for 20000 operations at a page boundary
+page size 64, 2 page(s) in memory:      0 disk accesses for 20000 operations at a page boundary
+page size 64, 3 page(s) in memory:      0 disk accesses for 20000 operations at a page boundary
+100000 pushes with 2 buffered pages: 1561 accesses (n/m = 1562)
+
+$ cargo test stack_secondary_storage
+test one_buffered_page_thrashes_at_a_boundary ... ok
+test two_pages_give_constant_amortised_cost ... ok
+
+test result: 2 passed; 0 failed

@@ -1,0 +1,13 @@
+$ cargo run --bin gen_site_data   # runs p_mat_vec::demo()
+
+A·(1,1,1) with 2 workers = [6.0, 15.0, 25.0]
+n =     8: work       64; span    11 (serial dot products, parallelism 5.8) / 7 (tree reduction, parallelism 9.1)
+n =    64: work     4096; span    70 (serial dot products, parallelism 58.5) / 13 (tree reduction, parallelism 315.1)
+n =  1024: work  1048576; span  1034 (serial dot products, parallelism 1014.1) / 21 (tree reduction, parallelism 49932.2)
+racy version: contributions [1,2,3,4] accumulate to 4 instead of 10
+
+$ cargo test p_mat_vec
+test matches_serial_product_for_any_worker_count ... ok
+test span_formulas_and_race ... ok
+
+test result: 2 passed; 0 failed

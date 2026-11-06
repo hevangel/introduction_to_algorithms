@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs alternative_mst::demo()
+
+triangle with weights 9, 5, 1 in that order; MST weight = 6
+MAYBE-MST-A (reverse delete) → 6
+MAYBE-MST-B (arbitrary order, add if acyclic) → 14  ← not minimum!
+MAYBE-MST-C (add, drop heaviest on cycle) → 6
+
+$ cargo test alternative_mst
+test a_and_c_are_correct_and_b_is_not ... ok
+
+test result: 1 passed; 0 failed

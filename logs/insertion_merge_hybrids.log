@@ -1,0 +1,14 @@
+$ cargo run --bin gen_site_data   # runs insertion_merge_hybrids::demo()
+
+n = 4096 random keys: binary insertion sort used 43485 comparisons (n lg n ≈ 49152); plain insertion sort ≈ 4138191
+hybrid merge sort with cutoff k =   1: 43942 comparisons
+hybrid merge sort with cutoff k =   4: 44195 comparisons
+hybrid merge sort with cutoff k =  16: 50757 comparisons
+hybrid merge sort with cutoff k =  64: 91285 comparisons
+hybrid merge sort with cutoff k = 256: 281327 comparisons
+
+$ cargo test insertion_merge_hybrids
+test comparison_counts ... ok
+test sort_correctly_and_stably ... ok
+
+test result: 2 passed; 0 failed
