@@ -1,0 +1,13 @@
+$ cargo run --bin gen_site_data   # runs crcw_maximum::demo()
+
+A = [7, 3, 9, 1, 9, 4, 2, 8]
+CRCW: (max, processors, steps) = Some((9, 64, 2))
+EREW: (max, rounds)            = Some((9, 3))
+n =    8: CRCW 2 steps with      64 processors; EREW 3 steps with 4 processors
+n =   64: CRCW 2 steps with    4096 processors; EREW 6 steps with 32 processors
+n = 1024: CRCW 2 steps with 1048576 processors; EREW 10 steps with 512 processors
+
+$ cargo test crcw_maximum
+test both_find_the_maximum ... ok
+
+test result: 1 passed; 0 failed

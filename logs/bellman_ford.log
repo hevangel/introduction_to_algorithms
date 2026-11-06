@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs bellman_ford::demo()
+
+distances from s: [0, 2, 4, 7, -2]
+path s → x: Some([0, 3, 2])
+after adding edge x→z of weight −2: Some([0, 2, 4, 7, -2])
+negative cycle: None
+
+$ cargo test bellman_ford
+test book_figure_24_4 ... ok
+test negative_cycles_detected_consistently_with_floyd_warshall ... ok
+
+test result: 2 passed; 0 failed

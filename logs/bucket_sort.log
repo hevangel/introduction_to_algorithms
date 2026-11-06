@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs bucket_sort::demo()
+
+input : [0.78, 0.17, 0.39, 0.26, 0.72, 0.94, 0.21, 0.12, 0.23, 0.68]
+sorted: [0.12, 0.17, 0.21, 0.23, 0.26, 0.39, 0.68, 0.72, 0.78, 0.94]
+10000 uniform keys: largest bucket holds 7 keys (expected small)
+
+$ cargo test bucket_sort
+test buckets_are_small_for_uniform_input ... ok
+test sorts_uniform_floats ... ok
+
+test result: 2 passed; 0 failed

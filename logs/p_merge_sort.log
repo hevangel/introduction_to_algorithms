@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs p_merge_sort::demo()
+
+sorted 200000 random integers in parallel; equals std sort: true
+p_merge of [0, 2, 4, 6, 8, 10, 12, 14, 16, 18] and [0, 3, 6, 9, 12, 15, 18, 21] = [0, 0, 2, 3, 4, 6, 6, 8, 9, 10, 12, 12, 14, 15, 16, 18, 18, 21]
+analysis: work Θ(n lg n), span Θ(lg³ n) with parallel merge (vs Θ(n) with a serial MERGE)
+
+$ cargo test p_merge_sort
+test merge_matches_sorted_concatenation ... ok
+test sort_matches_std ... ok
+
+test result: 2 passed; 0 failed

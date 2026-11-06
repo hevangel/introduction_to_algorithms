@@ -1,0 +1,14 @@
+$ cargo run --bin gen_site_data   # runs randomly_built_bst::demo()
+
+      n | mean height | Reed 4.311 ln n − 1.953 ln ln n | mean avg depth | 2(1+1/n)H_n − 4 | lg n
+    100 |       12.67 |                           16.87 |          6.460 |           6.479 | 6.6
+   1000 |       20.63 |                           26.00 |         10.889 |          10.986 | 10.0
+  10000 |       30.60 |                           35.37 |         15.704 |          15.577 | 13.3
+contrast: inserting 0..200 in sorted order gives height 199
+
+$ cargo test randomly_built_bst
+test average_depth_matches_formula ... ok
+test height_is_logarithmic ... ok
+test small_case_exact ... ok
+
+test result: 3 passed; 0 failed

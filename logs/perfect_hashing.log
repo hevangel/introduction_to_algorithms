@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs perfect_hashing::demo()
+
+built a perfect hash for 1000 keys; top-level retries = 0
+total slots = 3054 (≤ 5n = 5000 guaranteed by the analysis)
+all keys found: true
+absent key found? false
+
+$ cargo test perfect_hashing
+test empty_and_duplicates ... ok
+test exact_membership_and_linear_space ... ok
+
+test result: 2 passed; 0 failed

@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs hamiltonian_cycle::demo()
+
+backtracking finds: Some([0, 1, 2, 3, 4, 5])
+DP agrees (exists): true
+Held-Karp optimal tour of 5 points: Some(("15.000", [0, 4, 3, 2, 1]))
+star graph (no Hamiltonian cycle): None
+
+$ cargo test hamiltonian_cycle
+test backtracking_agrees_with_dp_on_random_graphs ... ok
+test tsp_dp_matches_permutation_search ... ok
+
+test result: 2 passed; 0 failed

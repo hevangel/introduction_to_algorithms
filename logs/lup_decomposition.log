@@ -1,0 +1,16 @@
+$ cargo run --bin gen_site_data   # runs lup_decomposition::demo()
+
+π = [2, 0, 1]
+L = [[1.0, 0.0, 0.0], [0.2, 1.0, 0.0], [0.6, 0.5000000000000006, 1.0]]
+U = [[5.0, 6.0, 3.0], [0.0, 0.7999999999999998, -0.6000000000000001], [0.0, 0.0, 2.5000000000000004]]
+solution x = [-1.4, 2.2, 0.6] (expected [-1.4, 2.2, 0.6])
+det(A) = 10.0000
+plain LU (no pivoting) works here? true
+singular matrix → true
+
+$ cargo test lup_decomposition
+test book_example ... ok
+test determinant_singular_and_lu_without_pivoting ... ok
+test pa_equals_lu_and_residual_small ... ok
+
+test result: 3 passed; 0 failed

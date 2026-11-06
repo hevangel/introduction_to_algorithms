@@ -1,0 +1,15 @@
+$ cargo run --bin gen_site_data   # runs hopcroft_karp::demo()
+
+adjacency (left → right): [[0, 1], [0], [1, 2], [2, 3], [3]]
+maximum matching size = 4
+  left 0 — right 0
+  left 1 unmatched
+  left 2 — right 1
+  left 3 — right 2
+  left 4 — right 3
+
+$ cargo test hopcroft_karp
+test agrees_with_flow_based_matching ... ok
+test perfect_matching_found ... ok
+
+test result: 2 passed; 0 failed

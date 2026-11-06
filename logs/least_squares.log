@@ -1,0 +1,14 @@
+$ cargo run --bin gen_site_data   # runs least_squares::demo()
+
+points: [(-1.0, 2.0), (1.0, 1.0), (2.0, 1.0), (3.0, 0.0), (5.0, 3.0)]
+best quadratic F(x) = 1.200 + -0.757x + 0.214x²
+sum of squared errors = 1.143
+Cholesky factor of an SPD matrix: Some([[2.0, 0.0, 0.0], [6.0, 1.0, 0.0], [-8.0, 5.0, 3.0]])
+indefinite matrix → None
+
+$ cargo test least_squares
+test book_quadratic_fit ... ok
+test cholesky_reconstructs_and_rejects_non_spd ... ok
+test exact_polynomials_are_recovered ... ok
+
+test result: 3 passed; 0 failed

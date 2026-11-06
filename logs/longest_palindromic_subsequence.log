@@ -1,0 +1,13 @@
+$ cargo run --bin gen_site_data   # runs longest_palindromic_subsequence::demo()
+
+character       -> carac      (length 5, insertions needed 4)
+underqualified  -> deified    (length 7, insertions needed 7)
+bananas         -> anana      (length 5, insertions needed 2)
+racecar         -> racecar    (length 7, insertions needed 0)
+abcd            -> d          (length 1, insertions needed 3)
+
+$ cargo test longest_palindromic_subsequence
+test book_examples ... ok
+test random_strings ... ok
+
+test result: 2 passed; 0 failed

@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs jarvis_march::demo()
+
+Jarvis hull   : [(0, 0), (4, 0), (4, 4), (0, 3)]
+Graham hull   : [(0, 0), (4, 0), (4, 4), (0, 3)]
+points on a circle (h ≈ n): hull size 36 of 36
+
+$ cargo test jarvis_march
+test agrees_with_graham_scan ... ok
+test collinear_boundary_points_dropped ... ok
+
+test result: 2 passed; 0 failed

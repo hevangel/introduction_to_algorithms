@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs quicksort_variants::demo()
+
+three-way on many duplicates: [1, 1, 2, 2, 3, 3, 3, 3, 3]
+tail-recursive quicksort on 100000 sorted keys: max stack depth = 2 (lg n ≈ 17)
+median-of-3 on reverse input sorted: true
+
+$ cargo test quicksort_variants
+test all_variants_sort ... ok
+test stack_depth_is_logarithmic_on_worst_case_input ... ok
+test three_way_handles_all_equal ... ok
+
+test result: 3 passed; 0 failed

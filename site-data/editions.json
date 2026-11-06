@@ -1,0 +1,64 @@
+{
+  "editions": [
+    {
+      "n": 1, "year": 1990, "label": "1st edition", "nickname": "Original CLR",
+      "tagline": "The foundation: sorting, graphs, data structures, complexity and numerical algorithms — plus hardware-flavoured chapters later dropped.",
+      "added": [
+        { "text": "Arithmetic circuits (adders, multipliers, clocked circuits)", "ids": ["combinational_circuits", "ripple_carry_adder", "carry_lookahead_adder", "carry_save_adder", "multiplier_circuits", "clocked_circuits"] },
+        { "text": "Algorithms for parallel computers (PRAM model)", "ids": ["list_ranking", "parallel_prefix", "crcw_maximum", "euler_tour_technique"] },
+        { "text": "Sorting networks (comparison, bitonic and odd-even merge)", "ids": ["comparison_network", "bitonic_sorter", "odd_even_merge_sort"] },
+        { "text": "Binomial heaps", "ids": ["binomial_heap"] },
+        { "text": "Boyer–Moore string matching and optimal polygon triangulation", "ids": ["boyer_moore", "polygon_triangulation"] }
+      ],
+      "removed": []
+    },
+    {
+      "n": 2, "year": 2001, "label": "2nd edition", "nickname": "Randomization and optimization",
+      "tagline": "Clifford Stein joins as author; randomized analysis, linear programming and perfect hashing arrive.",
+      "added": [
+        { "text": "Randomized algorithms and probabilistic analysis chapter", "ids": ["hire_assistant", "random_permutation", "probabilistic_analysis"] },
+        { "text": "Linear programming (simplex, duality)", "ids": ["simplex"] },
+        { "text": "Perfect hashing", "ids": ["perfect_hashing"] },
+        { "text": "Assembly-line scheduling and optimal binary search trees", "ids": ["assembly_line_scheduling", "optimal_bst"] }
+      ],
+      "removed": [
+        { "text": "Arithmetic circuits chapter", "ids": ["combinational_circuits"] },
+        { "text": "PRAM / parallel computers chapter", "ids": ["list_ranking"] },
+        { "text": "Boyer–Moore and optimal polygon triangulation sections", "ids": ["boyer_moore", "polygon_triangulation"] },
+        { "text": "Hoare partitioning as the main quicksort partition (kept as a problem)", "ids": ["hoare_quicksort"] }
+      ]
+    },
+    {
+      "n": 3, "year": 2009, "label": "3rd edition", "nickname": "Parallel algorithms",
+      "tagline": "C-like pseudocode, multithreaded algorithms, van Emde Boas trees and a matrix appendix.",
+      "added": [
+        { "text": "Multithreaded algorithms (work/span, spawn/sync)", "ids": ["p_fib", "p_matrix_multiply", "p_merge_sort"] },
+        { "text": "van Emde Boas trees", "ids": ["van_emde_boas_tree"] },
+        { "text": "Maximum-subarray problem", "ids": ["max_subarray"] },
+        { "text": "Rod cutting replaces assembly-line scheduling; seam carving and Viterbi problems", "ids": ["rod_cutting", "seam_carving", "dp_problems"] }
+      ],
+      "removed": [
+        { "text": "Binomial heaps chapter", "ids": ["binomial_heap"] },
+        { "text": "Sorting networks chapter", "ids": ["comparison_network", "bitonic_sorter", "odd_even_merge_sort"] },
+        { "text": "Assembly-line scheduling", "ids": ["assembly_line_scheduling"] }
+      ]
+    },
+    {
+      "n": 4, "year": 2022, "label": "4th edition", "nickname": "Machine learning and online algorithms",
+      "tagline": "New chapters on machine learning, online algorithms and bipartite matching; rarely taught material removed.",
+      "added": [
+        { "text": "Machine learning: k-means, weighted majority, gradient descent", "ids": ["k_means", "weighted_majority", "gradient_descent"] },
+        { "text": "Online algorithms: competitive analysis, caching, move-to-front", "ids": ["elevator", "move_to_front", "online_caching"] },
+        { "text": "Matchings in bipartite graphs: Hopcroft–Karp, Hungarian, stable marriage", "ids": ["hopcroft_karp", "hungarian", "stable_matching"] },
+        { "text": "Suffix arrays and the Akra–Bazzi recurrence method", "ids": ["suffix_array", "akra_bazzi"] }
+      ],
+      "removed": [
+        { "text": "Fibonacci heaps", "ids": ["fibonacci_heap"] },
+        { "text": "van Emde Boas trees", "ids": ["van_emde_boas_tree"] },
+        { "text": "Computational geometry chapter", "ids": ["segment_intersection", "any_segments_intersect", "convex_hull_graham", "jarvis_march", "closest_pair"] },
+        { "text": "Maximum subarray, implementing pointers and objects, perfect hashing, randomly built BSTs", "ids": ["max_subarray", "array_pointers_objects", "perfect_hashing", "randomly_built_bst"] },
+        { "text": "Matroids, push-relabel max-flow, iterative FFT, detailed simplex, integer factorization", "ids": ["matroid_greedy", "push_relabel", "fft_iterative", "pollard_rho"] }
+      ]
+    }
+  ]
+}

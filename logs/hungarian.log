@@ -1,0 +1,15 @@
+$ cargo run --bin gen_site_data   # runs hungarian::demo()
+
+cost matrix:
+  [9, 2, 7, 8]
+  [6, 4, 3, 7]
+  [5, 8, 1, 8]
+  [7, 6, 9, 4]
+minimum total cost = 13; worker → job = [1, 0, 2, 3]
+maximum-weight assignment = 33; worker → job = [0, 3, 1, 2]
+
+$ cargo test hungarian
+test book_style_example ... ok
+test matches_brute_force_including_negative_costs ... ok
+
+test result: 2 passed; 0 failed

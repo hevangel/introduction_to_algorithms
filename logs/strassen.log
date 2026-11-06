@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs strassen::demo()
+
+A·B (Strassen) = [[18, 14], [62, 66]]
+A·B (naive)    = [[18, 14], [62, 66]]
+6×6 padded to 8×8 matches naive: true
+multiplications: 8^k (definition) vs 7^k (Strassen); lg 7 ≈ 2.8074
+
+$ cargo test strassen
+test matches_naive_for_many_sizes ... ok
+test pure_strassen_no_cutoff ... ok
+
+test result: 2 passed; 0 failed

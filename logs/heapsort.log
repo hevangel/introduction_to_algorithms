@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs heapsort::demo()
+
+input          : [4, 1, 3, 2, 16, 9, 10, 14, 8, 7]
+BUILD-MAX-HEAP : [16, 14, 10, 8, 7, 9, 3, 2, 4, 1]  (heap? true)
+HEAPSORT       : [1, 2, 3, 4, 7, 8, 9, 10, 14, 16]
+
+$ cargo test heapsort
+test book_figure_6_2 ... ok
+test sorts_and_builds_heaps ... ok
+
+test result: 2 passed; 0 failed

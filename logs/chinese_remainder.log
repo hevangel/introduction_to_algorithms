@@ -1,0 +1,13 @@
+$ cargo run --bin gen_site_data   # runs chinese_remainder::demo()
+
+x ≡ 2 (mod 3), x ≡ 3 (mod 5), x ≡ 2 (mod 7) → Some((23, 105))
+x ≡ 1 (mod 5), x ≡ 2 (mod 7) → Some((16, 35))
+non-coprime moduli: x ≡ 3 (mod 4), x ≡ 5 (mod 6) → Some((11, 12))
+inconsistent: x ≡ 1 (mod 4), x ≡ 2 (mod 6) → None
+
+$ cargo test chinese_remainder
+test non_coprime_moduli ... ok
+test one_to_one_correspondence ... ok
+test sun_tzu ... ok
+
+test result: 3 passed; 0 failed

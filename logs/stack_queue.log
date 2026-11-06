@@ -1,0 +1,18 @@
+$ cargo run --bin gen_site_data   # runs stack_queue::demo()
+
+push 1 -> Ok(())
+push 2 -> Ok(())
+push 3 -> Ok(())
+push 4 -> Err("overflow")
+pop -> Ok(3), pop -> Ok(2)
+queue full, enqueue 'd' -> Err("overflow")
+dequeue -> Ok('a'); enqueue 'd' -> Ok(()) (wraps around)
+deque pop_front=Ok(1) pop_back=Ok(3)
+two-stack queue: Some(1) Some(2)
+
+$ cargo test stack_queue
+test queue_and_deque_match_std ... ok
+test stack_lifo_and_errors ... ok
+test two_stack_queue_is_fifo ... ok
+
+test result: 3 passed; 0 failed

@@ -1,0 +1,15 @@
+$ cargo run --bin gen_site_data   # runs approx_subset_sum::demo()
+
+S = [104, 102, 201, 101], t = 308
+exact optimum        = 307
+FPTAS with ε = 0.4   = (302, 4)
+22 numbers, t = 5441255: exact 5441255
+  ε = 0.5 : z = 5378029  (≥ (1−ε)·OPT), max list length 183
+  ε = 0.1 : z = 5433430  (≥ (1−ε)·OPT), max list length 799
+  ε = 0.01: z = 5440999  (≥ (1−ε)·OPT), max list length 5986
+
+$ cargo test approx_subset_sum
+test approximation_guarantee_and_polynomial_list_size ... ok
+test book_example ... ok
+
+test result: 2 passed; 0 failed

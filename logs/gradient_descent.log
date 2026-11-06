@@ -1,0 +1,15 @@
+$ cargo run --bin gen_site_data   # runs gradient_descent::demo()
+
+η = 0.01: after 100 steps x = (    2.6021,    -0.9831)
+η = 0.1 : after 100 steps x = (    3.0000,    -1.0000)
+η = 0.4 : after 100 steps x = (    3.0000,    -1.0000)
+η = 0.55: after 100 steps x = (    3.0000, 82817973.5220)
+with a tolerance: converged to (3.000000, -1.000000) in 31 iterations
+linear regression on y = 2 + 3x: θ = [2.0, 3.0]
+
+$ cargo test gradient_descent
+test converges_on_a_convex_quadratic ... ok
+test regression_matches_normal_equations ... ok
+test step_size_matters ... ok
+
+test result: 3 passed; 0 failed

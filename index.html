@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CLRS in Rust — Algorithm Explorer</title>
+<meta name="description" content="Browse every algorithm from editions 1–4 of Introduction to Algorithms, implemented in Rust, with explanations, source code and run logs.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232563eb'/%3E%3Cpath d='M7 22l5-12 4 8 3-5 6 9' stroke='white' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<style>
+:root {
+  --bg: #f7f8fa; --panel: #ffffff; --panel-2: #f1f3f7; --text: #1b2330; --muted: #5d6b82; --border: #dfe3ea;
+  --accent: #2563eb; --accent-soft: #e6eefe; --good: #15803d; --bad: #b91c1c; --code-bg: #f4f6fa;
+  --tk-kw: #a626a4; --tk-str: #3a7d2a; --tk-com: #7a8699; --tk-num: #b45309; --tk-fn: #1d4ed8; --tk-ty: #0f766e; --tk-meta: #8a5a00;
+  --e1: #b45309; --e2: #0f766e; --e3: #6d28d9; --e4: #be185d; --shadow: 0 1px 2px rgba(16,24,40,.06), 0 2px 8px rgba(16,24,40,.05);
+  --sidebar-w: 330px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1218; --panel: #161c25; --panel-2: #1c2430; --text: #e5eaf2; --muted: #98a6bd; --border: #283243;
+    --accent: #6ea0ff; --accent-soft: #1d2a45; --good: #4ade80; --bad: #f87171; --code-bg: #121821;
+    --tk-kw: #d6a0ff; --tk-str: #9ad27f; --tk-com: #7f8da3; --tk-num: #f0a35e; --tk-fn: #7cb3ff; --tk-ty: #5fd6c4; --tk-meta: #e5c07b;
+    --e1: #f59e0b; --e2: #2dd4bf; --e3: #a78bfa; --e4: #f472b6; --shadow: none;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e1218; --panel: #161c25; --panel-2: #1c2430; --text: #e5eaf2; --muted: #98a6bd; --border: #283243;
+  --accent: #6ea0ff; --accent-soft: #1d2a45; --good: #4ade80; --bad: #f87171; --code-bg: #121821;
+  --tk-kw: #d6a0ff; --tk-str: #9ad27f; --tk-com: #7f8da3; --tk-num: #f0a35e; --tk-fn: #7cb3ff; --tk-ty: #5fd6c4; --tk-meta: #e5c07b;
+  --e1: #f59e0b; --e2: #2dd4bf; --e3: #a78bfa; --e4: #f472b6; --shadow: none;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body { background: var(--bg); color: var(--text); font: 15px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+button { font: inherit; color: inherit; }
+header.top { position: fixed; inset: 0 0 auto 0; height: 56px; z-index: 20; display: flex; align-items: center; gap: 12px; padding: 0 16px;
+  background: var(--panel); border-bottom: 1px solid var(--border); }
+header.top h1 { font-size: 16px; margin: 0; white-space: nowrap; }
+header.top h1 a { color: inherit; }
+header.top h1 span { color: var(--muted); font-weight: 400; }
+#menuBtn { display: none; border: 1px solid var(--border); background: var(--panel-2); border-radius: 8px; padding: 6px 10px; cursor: pointer; }
+.spacer { flex: 1; }
+.icon-btn { border: 1px solid var(--border); background: var(--panel-2); border-radius: 8px; padding: 6px 10px; cursor: pointer; }
+.icon-btn:hover { border-color: var(--accent); }
+aside { position: fixed; top: 56px; bottom: 0; left: 0; width: var(--sidebar-w); background: var(--panel); border-right: 1px solid var(--border);
+  display: flex; flex-direction: column; z-index: 15; }
+.filters { padding: 12px; border-bottom: 1px solid var(--border); display: grid; gap: 8px; }
+#search { width: 100%; padding: 8px 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); color: var(--text); font: inherit; }
+#search:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { border: 1px solid var(--border); background: var(--panel-2); border-radius: 999px; padding: 2px 10px; font-size: 12.5px; cursor: pointer; user-select: none; }
+.chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+#count { font-size: 12.5px; color: var(--muted); }
+nav#tree { overflow: auto; flex: 1; padding: 6px 6px 40px; }
+details.cat { margin: 2px 0; }
+details.cat > summary { cursor: pointer; padding: 6px 8px; font-weight: 600; font-size: 13.5px; border-radius: 6px; list-style: none; display: flex; align-items: center; gap: 6px; }
+details.cat > summary::-webkit-details-marker { display: none; }
+details.cat > summary::before { content: "▸"; color: var(--muted); font-size: 11px; transition: transform .15s; }
+details.cat[open] > summary::before { transform: rotate(90deg); }
+details.cat > summary:hover { background: var(--panel-2); }
+details.cat .n { margin-left: auto; font-weight: 400; color: var(--muted); font-size: 12px; }
+.item { display: flex; align-items: center; gap: 6px; padding: 4px 8px 4px 22px; border-radius: 6px; color: var(--text); font-size: 13.5px; }
+.item:hover { background: var(--panel-2); text-decoration: none; }
+.item.active { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+.item .t { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.dots { display: flex; gap: 2px; }
+.dot { width: 7px; height: 7px; border-radius: 50%; background: var(--border); }
+.dot.on.e1 { background: var(--e1); } .dot.on.e2 { background: var(--e2); } .dot.on.e3 { background: var(--e3); } .dot.on.e4 { background: var(--e4); }
+main { margin-left: var(--sidebar-w); padding: 80px 28px 60px; max-width: calc(var(--sidebar-w) + 1080px); }
+.card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; box-shadow: var(--shadow); }
+.hero { padding: 26px 28px; margin-bottom: 20px; }
+.hero h2 { margin: 0 0 6px; font-size: 26px; }
+.hero p { margin: 6px 0; color: var(--muted); max-width: 80ch; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 18px 0 4px; }
+.stat { padding: 12px 14px; border-radius: 10px; background: var(--panel-2); }
+.stat b { display: block; font-size: 24px; line-height: 1.1; }
+.stat span { color: var(--muted); font-size: 13px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+.cat-card { padding: 14px 16px; cursor: pointer; }
+.cat-card:hover { border-color: var(--accent); }
+.cat-card h3 { margin: 0 0 4px; font-size: 15px; }
+.cat-card p { margin: 0 0 8px; color: var(--muted); font-size: 13px; }
+.cat-card .n { font-size: 12.5px; color: var(--muted); }
+h2.section { margin: 28px 0 12px; font-size: 19px; }
+.ed-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
+.ed { padding: 16px 18px; border-top: 4px solid var(--c); }
+.ed h3 { margin: 0; font-size: 17px; } .ed .nick { color: var(--muted); font-size: 13px; margin-bottom: 6px; }
+.ed h4 { margin: 12px 0 4px; font-size: 12px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+.ed ul { margin: 0; padding-left: 18px; font-size: 13.5px; }
+.ed li { margin: 2px 0; }
+.ed .btn { margin-top: 10px; }
+.btn { border: 1px solid var(--border); background: var(--panel-2); border-radius: 8px; padding: 4px 12px; cursor: pointer; font-size: 13px; }
+.btn:hover { border-color: var(--accent); }
+.e1 { --c: var(--e1); } .e2 { --c: var(--e2); } .e3 { --c: var(--e3); } .e4 { --c: var(--e4); }
+.badge { display: inline-block; border-radius: 999px; padding: 0 9px; font-size: 12px; font-weight: 600; color: #fff; background: var(--c); line-height: 20px; }
+.crumbs { font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+.head { padding: 20px 24px 0; }
+.head h2 { margin: 0 0 4px; font-size: 25px; }
+.head .summary { color: var(--muted); margin: 4px 0 10px; }
+.meta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 8px; font-size: 13px; }
+.tabs { display: flex; gap: 2px; padding: 0 16px; border-bottom: 1px solid var(--border); }
+.tab { border: 0; background: none; padding: 10px 14px; cursor: pointer; border-bottom: 2px solid transparent; color: var(--muted); font-weight: 600; }
+.tab[aria-selected="true"] { color: var(--accent); border-color: var(--accent); }
+.pane { padding: 20px 26px 26px; min-height: 240px; }
+.pager { display: flex; justify-content: space-between; gap: 12px; margin-top: 16px; }
+.pager a { padding: 8px 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--panel); font-size: 13.5px; max-width: 48%; }
+.pager a:hover { border-color: var(--accent); text-decoration: none; }
+.md h1 { display: none; }
+.md h2 { font-size: 20px; margin: 26px 0 8px; padding-bottom: 4px; border-bottom: 1px solid var(--border); }
+.md h2:first-of-type { margin-top: 0; }
+.md h3 { font-size: 16.5px; margin: 20px 0 6px; }
+.md p, .md li { max-width: 88ch; }
+.md code { background: var(--code-bg); padding: 1px 5px; border-radius: 5px; font: 13px/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+.md pre { background: var(--code-bg); border: 1px solid var(--border); padding: 12px 14px; border-radius: 10px; overflow: auto; }
+.md pre code { background: none; padding: 0; }
+.md table { border-collapse: collapse; margin: 12px 0; font-size: 14px; display: block; overflow-x: auto; }
+.md th, .md td { border: 1px solid var(--border); padding: 5px 12px; }
+.md th { background: var(--panel-2); }
+.md blockquote { margin: 10px 0; padding: 2px 14px; border-left: 3px solid var(--accent); color: var(--muted); }
+.diagram { margin: 16px 0; padding: 12px; background: var(--panel-2); border: 1px solid var(--border); border-radius: 10px; overflow: auto; text-align: center; }
+.diagram svg { max-width: 100%; height: auto; }
+.diagram.failed { text-align: left; }
+.diagram .err { color: var(--muted); font-size: 12.5px; }
+.srcbar, .logbar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; font-size: 13px; color: var(--muted); }
+pre.code { margin: 0; padding: 14px 16px; background: var(--code-bg); border: 1px solid var(--border); border-radius: 10px; overflow: auto; font: 12.8px/1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+pre.code code { background: none !important; padding: 0 !important; font: inherit; }
+details.tests { margin-top: 12px; }
+details.tests > summary { cursor: pointer; color: var(--accent); font-weight: 600; margin-bottom: 8px; }
+.hljs-keyword, .hljs-literal, .hljs-meta .hljs-keyword { color: var(--tk-kw); font-weight: 600; }
+.hljs-string, .hljs-char, .hljs-regexp { color: var(--tk-str); }
+.hljs-comment, .hljs-doctag { color: var(--tk-com); font-style: italic; }
+.hljs-number, .hljs-symbol { color: var(--tk-num); }
+.hljs-title, .hljs-title.function_, .hljs-function .hljs-title { color: var(--tk-fn); }
+.hljs-type, .hljs-title.class_, .hljs-built_in { color: var(--tk-ty); }
+.hljs-meta, .hljs-attr, .hljs-variable.language_ { color: var(--tk-meta); }
+.hljs-params, .hljs-punctuation, .hljs-operator { color: inherit; }
+.log .ok { color: var(--good); } .log .fail { color: var(--bad); font-weight: 700; } .log .cmd { color: var(--accent); }
+.pill { border-radius: 999px; padding: 1px 10px; font-size: 12.5px; font-weight: 600; }
+.pill.good { background: color-mix(in srgb, var(--good) 18%, transparent); color: var(--good); }
+.pill.bad { background: color-mix(in srgb, var(--bad) 18%, transparent); color: var(--bad); }
+.notice { padding: 16px 20px; border-left: 4px solid var(--bad); }
+.notice code { background: var(--code-bg); padding: 2px 6px; border-radius: 5px; }
+#scrim { display: none; }
+@media (max-width: 900px) {
+  :root { --sidebar-w: 300px; }
+  aside { transform: translateX(-102%); transition: transform .2s; box-shadow: 0 0 30px rgba(0,0,0,.3); }
+  body.nav-open aside { transform: none; }
+  body.nav-open #scrim { display: block; position: fixed; inset: 56px 0 0 0; background: rgba(0,0,0,.4); z-index: 12; }
+  main { margin-left: 0; padding: 76px 16px 50px; }
+  #menuBtn { display: inline-block; }
+  header.top h1 span { display: none; }
+  .head { padding: 16px 16px 0; } .pane { padding: 16px; }
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <button id="menuBtn" aria-label="Toggle navigation">☰</button>
+  <h1><a href="#/">CLRS in Rust <span>· algorithm explorer</span></a></h1>
+  <div class="spacer"></div>
+  <button class="icon-btn" id="themeBtn" title="Toggle light / dark theme" aria-label="Toggle theme">◐</button>
+</header>
+<aside id="side">
+  <div class="filters">
+    <input id="search" type="search" placeholder="Search algorithms…  ( press / )" autocomplete="off" aria-label="Search algorithms">
+    <div class="chips" id="edChips" role="group" aria-label="Filter by edition"></div>
+    <div id="count"></div>
+  </div>
+  <nav id="tree" aria-label="Algorithms"></nav>
+</aside>
+<div id="scrim"></div>
+<main id="main"><div class="card hero"><h2>Loading…</h2></div></main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/rust.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js"></script>
+<script>
+/* Everything shown here is loaded at runtime: site-data/manifest.json, site-data/editions.json,
+   docs/<category>/<id>.md, src/algorithms/<category>/<id>.rs and logs/<id>.log. Nothing is hard-coded. */
+(() => {
+  'use strict';
+  const $ = (s, r = document) => r.querySelector(s);
+  const el = (tag, props = {}, ...kids) => {
+    const e = Object.assign(document.createElement(tag), props);
+    kids.flat().forEach(k => e.append(k));
+    return e;
+  };
+  const esc = s => s.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const store = { get(k, d) { try { return localStorage.getItem(k) ?? d; } catch { return d; } }, set(k, v) { try { localStorage.setItem(k, v); } catch {} } };
+
+  const S = { manifest: null, editions: null, byId: new Map(), flat: [], q: '', eds: new Set(), cache: new Map(), mermaidFailures: 0 };
+  window.__app = S; // handy for debugging / tests
+
+  /* ---------- theme ---------- */
+  const isDark = () => { const t = document.documentElement.dataset.theme; return t ? t === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches; };
+  function applyTheme(t) { if (t) document.documentElement.dataset.theme = t; initMermaid(); }
+  function initMermaid() {
+    if (window.mermaid) mermaid.initialize({ startOnLoad: false, theme: isDark() ? 'dark' : 'default', securityLevel: 'loose', flowchart: { htmlLabels: true, useMaxWidth: true } });
+  }
+
+  /* ---------- data loading ---------- */
+  async function getText(path) {
+    if (S.cache.has(path)) return S.cache.get(path);
+    const r = await fetch(path);
+    if (!r.ok) throw new Error(`${path}: HTTP ${r.status}`);
+    const t = await r.text();
+    S.cache.set(path, t);
+    return t;
+  }
+
+  /* ---------- sidebar ---------- */
+  const EDN = ['1st', '2nd', '3rd', '4th'];
+  function dots(eds) { return el('span', { className: 'dots', title: 'Editions: ' + eds.map(e => EDN[e - 1]).join(', ') }, [1, 2, 3, 4].map(n => el('i', { className: `dot e${n}` + (eds.includes(n) ? ' on' : '') }))); }
+  function matches(a) {
+    if (S.eds.size && !a.editions.some(e => S.eds.has(e))) return false;
+    if (!S.q) return true;
+    const hay = (a.title + ' ' + a.id + ' ' + a.summary + ' ' + a.chapter + ' ' + a.cat.title).toLowerCase();
+    return S.q.toLowerCase().split(/\s+/).every(w => hay.includes(w));
+  }
+  function buildTree() {
+    const tree = $('#tree');
+    tree.textContent = '';
+    let shown = 0;
+    const current = currentId();
+    for (const c of S.manifest.categories) {
+      const items = c.algorithms.filter(matches);
+      shown += items.length;
+      if (!items.length) continue;
+      const d = el('details', { className: 'cat' }, el('summary', {}, c.title, el('span', { className: 'n' }, String(items.length))));
+      d.open = !!(S.q || S.eds.size) || items.some(a => a.id === current) || store.get('open:' + c.id, '0') === '1';
+      d.addEventListener('toggle', () => store.set('open:' + c.id, d.open ? '1' : '0'));
+      for (const a of items) {
+        const link = el('a', { className: 'item' + (a.id === current ? ' active' : ''), href: '#/' + a.id, title: a.summary }, el('span', { className: 't' }, a.title), dots(a.editions));
+        link.dataset.id = a.id;
+        d.append(link);
+      }
+      tree.append(d);
+    }
+    $('#count').textContent = `${shown} of ${S.flat.length} algorithms`;
+    if (!shown) tree.append(el('p', { style: 'padding:12px;color:var(--muted)' }, 'No algorithm matches the filters.'));
+  }
+  function markActive() {
+    const cur = currentId();
+    document.querySelectorAll('#tree .item').forEach(a => a.classList.toggle('active', a.dataset.id === cur));
+    const act = $('#tree .item.active');
+    if (act) { const d = act.closest('details'); if (d && !d.open) d.open = true; act.scrollIntoView({ block: 'nearest' }); }
+  }
+  function buildChips() {
+    const box = $('#edChips');
+    for (let n = 1; n <= 4; n++) {
+      const ed = S.editions?.editions?.find(e => e.n === n);
+      const b = el('button', { className: 'chip', title: ed ? `${ed.label} (${ed.year}) — ${ed.nickname}` : '' , textContent: EDN[n - 1] + ' ed.' });
+      b.setAttribute('aria-pressed', 'false');
+      b.addEventListener('click', () => { toggleEdition(n); });
+      b.dataset.n = n;
+      box.append(b);
+    }
+  }
+  function toggleEdition(n, only) {
+    if (only) S.eds = new Set([n]); else if (S.eds.has(n)) S.eds.delete(n); else S.eds.add(n);
+    document.querySelectorAll('#edChips .chip').forEach(b => b.setAttribute('aria-pressed', S.eds.has(+b.dataset.n) ? 'true' : 'false'));
+    buildTree();
+  }
+
+  /* ---------- routing ---------- */
+  function parseHash() {
+    const h = decodeURIComponent(location.hash.replace(/^#/, '') || '/');
+    const [path, query = ''] = h.split('?');
+    return { path, tab: new URLSearchParams(query).get('tab') || 'doc' };
+  }
+  function currentId() { const { path } = parseHash(); const id = path.replace(/^\//, ''); return S.byId.has(id) ? id : null; }
+  async function route() {
+    const { path, tab } = parseHash();
+    const id = path.replace(/^\//, '');
+    document.body.classList.remove('nav-open');
+    if (id && S.byId.has(id)) await showAlgorithm(S.byId.get(id), tab);
+    else if (id.startsWith('category/')) showHome(id.slice(9));
+    else showHome();
+    markActive();
+    window.scrollTo(0, 0);
+  }
+
+  /* ---------- home ---------- */
+  function showHome(focusCat) {
+    document.title = 'CLRS in Rust — Algorithm Explorer';
+    const m = $('#main');
+    m.textContent = '';
+    const total = S.flat.length;
+    const perEd = [1, 2, 3, 4].map(n => S.flat.filter(a => a.editions.includes(n)).length);
+    const hero = el('div', { className: 'card hero' });
+    hero.innerHTML = `<h2>Introduction to Algorithms — in Rust</h2>
+      <p>Every algorithm from the <b>1st (1990), 2nd (2001), 3rd (2009) and 4th (2022)</b> editions of CLRS, implemented in safe Rust with unit tests.
+      Pick an algorithm in the sidebar to read what it is and why it matters, study the source, and see the recorded run log.</p>
+      <div class="stats">
+        <div class="stat"><b>${total}</b><span>algorithm families</span></div>
+        <div class="stat"><b>${S.manifest.categories.length}</b><span>topic areas</span></div>
+        ${perEd.map((c, i) => `<div class="stat"><b style="color:var(--e${i + 1})">${c}</b><span>in the ${EDN[i]} edition</span></div>`).join('')}
+      </div>`;
+    m.append(hero);
+    m.append(el('h2', { className: 'section', textContent: 'Topics' }));
+    const grid = el('div', { className: 'grid' });
+    for (const c of S.manifest.categories) {
+      const card = el('div', { className: 'card cat-card' });
+      card.innerHTML = `<h3>${esc(c.title)}</h3><p>${esc(c.description)}</p><span class="n">${c.algorithms.length} algorithm${c.algorithms.length === 1 ? '' : 's'}</span>`;
+      card.addEventListener('click', () => { const d = [...document.querySelectorAll('#tree details.cat')].find(x => x.querySelector('summary').firstChild.textContent === c.title); if (d) { d.open = true; d.scrollIntoView({ block: 'start' }); } document.body.classList.add('nav-open'); });
+      grid.append(card);
+    }
+    m.append(grid);
+    if (S.editions) {
+      m.append(el('h2', { className: 'section', textContent: 'How the editions differ' }));
+      const eg = el('div', { className: 'ed-grid' });
+      for (const ed of S.editions.editions) {
+        const link = x => x.ids.map(i => S.byId.has(i) ? `<a href="#/${i}">${esc(S.byId.get(i).title)}</a>` : '').filter(Boolean).slice(0, 3).join(', ');
+        const list = (arr, label) => arr.length ? `<h4>${label}</h4><ul>${arr.map(x => `<li>${esc(x.text)}${link(x) ? ` — <small>${link(x)}</small>` : ''}</li>`).join('')}</ul>` : '';
+        const card = el('div', { className: `card ed e${ed.n}` });
+        card.innerHTML = `<span class="badge">${ed.year}</span><h3>${esc(ed.label)}</h3><div class="nick">${esc(ed.nickname)}</div><div>${esc(ed.tagline)}</div>
+          ${list(ed.added, ed.n === 1 ? 'Distinctive content' : 'Added')}${list(ed.removed, 'Removed')}`;
+        const b = el('button', { className: 'btn', textContent: `Show only ${EDN[ed.n - 1]} edition algorithms` });
+        b.addEventListener('click', () => { toggleEdition(ed.n, true); document.body.classList.add('nav-open'); });
+        card.append(b);
+        eg.append(card);
+      }
+      m.append(eg);
+    }
+    m.append(el('p', { style: 'color:var(--muted);margin-top:24px;font-size:13px', innerHTML: 'Run <code>scripts/build_site_data.sh</code> to regenerate logs and the manifest after changing any algorithm. Keyboard: <kbd>/</kbd> search · <kbd>←</kbd>/<kbd>→</kbd> previous / next algorithm.' }));
+    if (focusCat) { const d = [...document.querySelectorAll('#tree details.cat')][0]; if (d) d.open = true; }
+  }
+
+  /* ---------- markdown ---------- */
+  function renderMarkdown(md) {
+    if (!window.marked) return `<pre>${esc(md)}</pre>`;
+    const renderer = new marked.Renderer();
+    renderer.code = function (a, b) {
+      const text = typeof a === 'object' ? a.text : a;
+      const lang = ((typeof a === 'object' ? a.lang : b) || '').split(/\s/)[0];
+      if (lang === 'mermaid') return `<div class="diagram" data-src="${esc(text)}"></div>`;
+      let html = esc(text);
+      if (window.hljs && lang && hljs.getLanguage(lang)) { try { html = hljs.highlight(text, { language: lang }).value; } catch {} }
+      return `<pre><code class="hljs language-${esc(lang)}">${html}</code></pre>`;
+    };
+    return marked.parse(md, { renderer, gfm: true });
+  }
+  async function renderDiagrams(root) {
+    const nodes = [...root.querySelectorAll('.diagram[data-src]')];
+    let i = 0;
+    for (const n of nodes) {
+      const src = n.dataset.src;
+      if (!window.mermaid) { n.classList.add('failed'); n.innerHTML = `<pre>${esc(src)}</pre><div class="err">Mermaid failed to load — showing the diagram source.</div>`; continue; }
+      try {
+        const { svg } = await mermaid.render('mm' + Date.now() + '_' + (i++), src);
+        n.innerHTML = svg;
+      } catch (e) {
+        S.mermaidFailures++;
+        n.classList.add('failed');
+        n.innerHTML = `<pre>${esc(src)}</pre><div class="err">Diagram could not be rendered (${esc(String(e.message || e).split('\n')[0])}).</div>`;
+        document.querySelectorAll('[id^="dmm"]').forEach(x => x.remove());
+      }
+    }
+  }
+
+  /* ---------- algorithm page ---------- */
+  let navToken = 0;
+  async function showAlgorithm(a, tab) {
+    const token = ++navToken;
+    document.title = `${a.title} — CLRS in Rust`;
+    const m = $('#main');
+    m.textContent = '';
+    const idx = S.flat.indexOf(a);
+    const card = el('div', { className: 'card' });
+    const head = el('div', { className: 'head' });
+    head.innerHTML = `<div class="crumbs"><a href="#/">Home</a> › ${esc(a.cat.title)}</div>
+      <h2>${esc(a.title)}</h2><div class="summary">${esc(a.summary)}</div>
+      <div class="meta">${a.editions.map(n => `<span class="badge e${n}">${EDN[n - 1]} ed.</span>`).join('')}<span style="color:var(--muted)">CLRS ${esc(a.chapter)}</span></div>`;
+    const tabs = el('div', { className: 'tabs', role: 'tablist' });
+    const defs = [['doc', 'Explanation'], ['source', 'Rust source'], ['log', 'Run log']];
+    const pane = el('div', { className: 'pane' });
+    defs.forEach(([key, label]) => {
+      const t = el('button', { className: 'tab', textContent: label });
+      t.setAttribute('role', 'tab');
+      t.setAttribute('aria-selected', key === tab ? 'true' : 'false');
+      t.addEventListener('click', () => { location.hash = `#/${a.id}` + (key === 'doc' ? '' : `?tab=${key}`); });
+      tabs.append(t);
+    });
+    card.append(head, tabs, pane);
+    const pager = el('div', { className: 'pager' });
+    const prev = S.flat[idx - 1], next = S.flat[idx + 1];
+    pager.append(prev ? el('a', { href: '#/' + prev.id, textContent: '← ' + prev.title }) : el('span'), next ? el('a', { href: '#/' + next.id, textContent: next.title + ' →' }) : el('span'));
+    m.append(card, pager);
+    pane.textContent = 'Loading…';
+    try {
+      if (tab === 'source') await showSource(a, pane, token);
+      else if (tab === 'log') await showLog(a, pane, token);
+      else await showDoc(a, pane, token);
+    } catch (e) {
+      if (token === navToken) pane.innerHTML = `<div class="notice">Could not load this file: <code>${esc(e.message)}</code></div>`;
+    }
+  }
+  async function showDoc(a, pane, token) {
+    const md = await getText(a.doc);
+    if (token !== navToken) return;
+    pane.className = 'pane md';
+    pane.innerHTML = renderMarkdown(md);
+    await renderDiagrams(pane);
+  }
+  async function showSource(a, pane, token) {
+    const src = await getText(a.source);
+    if (token !== navToken) return;
+    const lines = src.split('\n').length;
+    const cut = src.indexOf('#[cfg(test)]');
+    const impl = cut > 0 ? src.slice(0, cut).trimEnd() : src;
+    const tests = cut > 0 ? src.slice(cut) : '';
+    const hl = t => { try { return window.hljs ? hljs.highlight(t, { language: 'rust' }).value : esc(t); } catch { return esc(t); } };
+    pane.className = 'pane';
+    pane.innerHTML = `<div class="srcbar"><code>${esc(a.source)}</code><span>· ${lines} lines</span><button class="btn" id="copySrc">Copy</button><a class="btn" href="${esc(a.source)}" target="_blank" rel="noopener">Open raw</a></div>
+      <pre class="code"><code class="hljs language-rust">${hl(impl)}</code></pre>
+      ${tests ? `<details class="tests" open><summary>Unit tests (${(tests.match(/#\[test\]/g) || []).length})</summary><pre class="code"><code class="hljs language-rust">${hl(tests)}</code></pre></details>` : ''}`;
+    $('#copySrc', pane).addEventListener('click', e => { navigator.clipboard?.writeText(src); e.target.textContent = 'Copied ✓'; setTimeout(() => e.target.textContent = 'Copy', 1500); });
+  }
+  async function showLog(a, pane, token) {
+    const log = await getText(a.log);
+    if (token !== navToken) return;
+    const pass = (log.match(/\.\.\. ok$/gm) || []).length, fail = (log.match(/\.\.\. FAILED$/gm) || []).length;
+    const body = esc(log).split('\n').map(l => l.startsWith('$ ') ? `<span class="cmd">${l}</span>` : / \.\.\. ok$/.test(l) ? `<span class="ok">${l}</span>` : / \.\.\. FAILED$/.test(l) ? `<span class="fail">${l}</span>` : l).join('\n');
+    pane.className = 'pane log';
+    pane.innerHTML = `<div class="logbar"><code>${esc(a.log)}</code>${pass + fail ? `<span class="pill ${fail ? 'bad' : 'good'}">${pass} test${pass === 1 ? '' : 's'} passed${fail ? `, ${fail} failed` : ''}</span>` : ''}<span>Generated by <code>cargo run --bin gen_site_data</code></span></div><pre class="code">${body}</pre>`;
+  }
+
+  /* ---------- boot ---------- */
+  async function boot() {
+    const t = store.get('theme', '');
+    if (t) document.documentElement.dataset.theme = t;
+    initMermaid();
+    $('#themeBtn').addEventListener('click', () => { const next = isDark() ? 'light' : 'dark'; store.set('theme', next); applyTheme(next); route(); });
+    $('#menuBtn').addEventListener('click', () => document.body.classList.toggle('nav-open'));
+    $('#scrim').addEventListener('click', () => document.body.classList.remove('nav-open'));
+    try {
+      S.manifest = JSON.parse(await getText('site-data/manifest.json'));
+      try { S.editions = JSON.parse(await getText('site-data/editions.json')); } catch {}
+    } catch (e) {
+      $('#main').innerHTML = `<div class="card notice"><h2>Could not load the algorithm catalogue</h2>
+        <p>This page reads its data (<code>site-data/manifest.json</code>, markdown, Rust sources and logs) with <code>fetch()</code>, which browsers block for <code>file://</code> URLs.</p>
+        <p>Serve the repository folder over HTTP, e.g.</p><pre><code>python3 -m http.server 8000</code></pre><p>and open <a href="http://localhost:8000/">http://localhost:8000/</a>. If you have not generated the data yet run <code>scripts/build_site_data.sh</code>.</p>
+        <p style="color:var(--muted)">${esc(e.message)}</p></div>`;
+      return;
+    }
+    for (const c of S.manifest.categories) for (const a of c.algorithms) { a.cat = c; S.byId.set(a.id, a); S.flat.push(a); }
+    buildChips();
+    buildTree();
+    $('#search').addEventListener('input', e => { S.q = e.target.value.trim(); buildTree(); });
+    addEventListener('hashchange', route);
+    addEventListener('keydown', e => {
+      const typing = /input|textarea/i.test(document.activeElement.tagName);
+      if (e.key === '/' && !typing) { e.preventDefault(); $('#search').focus(); }
+      else if (!typing && (e.key === 'ArrowRight' || e.key === 'ArrowLeft') && !e.metaKey && !e.ctrlKey && !e.altKey) {
+        const id = currentId(); if (!id) return;
+        const n = S.flat[S.flat.indexOf(S.byId.get(id)) + (e.key === 'ArrowRight' ? 1 : -1)];
+        if (n) location.hash = '#/' + n.id;
+      } else if (e.key === 'Escape') document.body.classList.remove('nav-open');
+    });
+    await route();
+    window.__ready = true;
+  }
+  boot();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+$ cargo run --bin gen_site_data   # runs comparison_network::demo()
+
+n=4: insertion net size= 6 depth= 5 sorts=true   odd-even transposition size= 6 depth= 4 sorts=true
+n=6: insertion net size=15 depth= 9 sorts=true   odd-even transposition size=15 depth= 6 sorts=true
+n=8: insertion net size=28 depth=13 sorts=true   odd-even transposition size=28 depth= 8 sorts=true
+one comparator on 3 wires sorts? false
+apply to [9,4,7,1] -> [1, 4, 7, 9]
+
+$ cargo test comparison_network
+test depth_and_size ... ok
+test known_networks_sort ... ok
+test zero_one_principle_agrees_with_integers ... ok
+
+test result: 3 passed; 0 failed

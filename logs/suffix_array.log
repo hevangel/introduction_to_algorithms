@@ -1,0 +1,18 @@
+$ cargo run --bin gen_site_data   # runs suffix_array::demo()
+
+T = banana
+ i | SA[i] | LCP[i] | suffix
+ 0 |     5 |      0 | a
+ 1 |     3 |      1 | ana
+ 2 |     1 |      3 | anana
+ 3 |     0 |      0 | banana
+ 4 |     4 |      0 | na
+ 5 |     2 |      2 | nana
+occurrences of 'ana': [1, 3]
+longest repeated substring: "abra"
+
+$ cargo test suffix_array
+test banana ... ok
+test matches_sorting_all_suffixes_and_naive_search ... ok
+
+test result: 2 passed; 0 failed

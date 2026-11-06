@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs array_pointers_objects::demo()
+
+list = [1, 4, 16, 9], cells in use (list order) = [3, 2, 1, 0]
+after deleting 16: list = [1, 4, 9], cells = [3, 2, 0]
+after compaction : list = [1, 4, 9], cells = [0, 1, 2]
+third insert into capacity-2 list -> Err("out of space")
+
+$ cargo test array_pointers_objects
+test allocate_free_reuse ... ok
+test compaction_preserves_order ... ok
+
+test result: 2 passed; 0 failed

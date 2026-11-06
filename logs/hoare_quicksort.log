@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs hoare_quicksort::demo()
+
+input    : [13, 19, 9, 5, 12, 8, 7, 4, 11, 2, 6, 21]
+partition: [6, 2, 9, 5, 12, 8, 7, 4, 11, 19, 13, 21] split after index 8 (pivot value 13)
+sorted   : [2, 4, 5, 6, 7, 8, 9, 11, 12, 13, 19, 21]
+
+$ cargo test hoare_quicksort
+test partition_splits_correctly ... ok
+test sorts ... ok
+
+test result: 2 passed; 0 failed

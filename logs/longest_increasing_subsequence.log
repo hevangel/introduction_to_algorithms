@@ -1,0 +1,13 @@
+$ cargo run --bin gen_site_data   # runs longest_increasing_subsequence::demo()
+
+A = [5, 2, 8, 6, 3, 6, 9, 7]
+O(n²)      LIS = [2, 3, 6, 9]
+O(n lg n)  LIS = [2, 3, 6, 7]
+B = [10, 22, 9, 33, 21, 50, 41, 60, 80]
+  LIS length (n lg n) = 6
+
+$ cargo test longest_increasing_subsequence
+test both_agree_with_brute_force ... ok
+test examples ... ok
+
+test result: 2 passed; 0 failed

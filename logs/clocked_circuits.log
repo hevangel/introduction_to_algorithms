@@ -1,0 +1,16 @@
+$ cargo run --bin gen_site_data   # runs clocked_circuits::demo()
+
+bit-serial 179 + 94 (8 bits): (273, 9)
+shift-and-add 13 × 11 (4 bits): (143, 4)
+fully serial 13 × 11 (4 bits): (143, 27)
+  n | serial add cycles | shift-add cycles | serial multiply cycles (worst case)
+  4 |                 5 |                4 |     36
+  8 |                 9 |                8 |    136
+ 16 |                17 |               16 |    528
+
+$ cargo test clocked_circuits
+test multipliers_match ... ok
+test register_holds_the_carry_between_cycles ... ok
+test serial_add_matches_integer_addition ... ok
+
+test result: 3 passed; 0 failed

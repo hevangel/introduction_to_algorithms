@@ -1,0 +1,14 @@
+$ cargo run --bin gen_site_data   # runs breadth_first_search::demo()
+
+BFS from vertex 1: distances [Some(1), Some(0), Some(2), Some(3), Some(2), Some(1), Some(2), Some(3)]
+predecessors: [Some(1), None, Some(5), Some(2), Some(0), Some(1), Some(5), Some(6)]
+shortest path 1 → 7: Some([1, 5, 6, 7])
+bipartite? false
+4-cycle bipartite colouring: Some([0, 1, 0, 1])
+tree diameter = 3
+
+$ cargo test breadth_first_search
+test bipartite_and_diameter ... ok
+test distances_match_floyd_warshall ... ok
+
+test result: 2 passed; 0 failed

@@ -1,0 +1,13 @@
+$ cargo run --bin gen_site_data   # runs np_reductions::demo()
+
+φ has 3 clauses → graph with 9 vertices
+max clique size = 3 (satisfiable iff it equals k = 3)
+complement graph: 15 edges; vertex-cover size needed = 6; true minimum = 6
+5-cycle → TSP instance, optimal tour cost = Some(0.0) (0 ⇒ Hamiltonian)
+
+$ cargo test np_reductions
+test clique_iff_complement_vertex_cover ... ok
+test hamiltonian_iff_zero_cost_tour ... ok
+test sat_iff_clique_of_size_k ... ok
+
+test result: 3 passed; 0 failed

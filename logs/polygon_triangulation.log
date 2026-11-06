@@ -1,0 +1,10 @@
+$ cargo run --bin gen_site_data   # runs polygon_triangulation::demo()
+
+hexagon: optimal total perimeter = 38.4536, triangles = [(0, 1, 5), (1, 2, 5), (2, 4, 5), (2, 3, 4)]
+number of triangulations of an n-gon (Catalan): n=6 → 14, n=10 → 1430
+
+$ cargo test polygon_triangulation
+test matches_recursive_and_catalan ... ok
+test triangle_and_square ... ok
+
+test result: 2 passed; 0 failed

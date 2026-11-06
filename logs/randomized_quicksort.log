@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs randomized_quicksort::demo()
+
+sorted: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+n=  100: comparisons on already-sorted input =     558  (2n ln n ≈ 921, n²/2 = 5000)
+n= 1000: comparisons on already-sorted input =   10743  (2n ln n ≈ 13816, n²/2 = 500000)
+n=10000: comparisons on already-sorted input =  149291  (2n ln n ≈ 184207, n²/2 = 50000000)
+
+$ cargo test randomized_quicksort
+test sorted_input_is_not_quadratic ... ok
+test sorts ... ok
+
+test result: 2 passed; 0 failed

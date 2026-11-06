@@ -1,0 +1,16 @@
+$ cargo run --bin gen_site_data   # runs fibonacci_heap::demo()
+
+minimum = Some(3) (n = 15)
+extract-min -> Some(3)
+max root degree after consolidation = 3
+decrease-key(41 → 1): minimum = Some(1)
+remaining keys in order: [1, 7, 17, 18, 21, 23, 24, 26, 30, 35, 38, 39, 46]
+union of two heaps: minimum = Some(1), size = 6
+
+$ cargo test fibonacci_heap
+test decrease_key_rejects_larger_key ... ok
+test degree_bound_and_union ... ok
+test heapsort_via_extract_min ... ok
+test random_decrease_key_and_delete_match_model ... ok
+
+test result: 4 passed; 0 failed

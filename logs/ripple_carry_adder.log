@@ -1,0 +1,16 @@
+$ cargo run --bin gen_site_data   # runs ripple_carry_adder::demo()
+
+12 + 7 with a 4-bit ripple-carry adder = 19
+15 + 15 = 30 (carry-out becomes bit 4)
+  n | size | depth of carry-out
+  4 |   20 |   9   (= 2n + 1)
+  8 |   40 |  17   (= 2n + 1)
+ 16 |   80 |  33   (= 2n + 1)
+ 32 |  160 |  65   (= 2n + 1)
+ 64 |  320 | 129   (= 2n + 1)
+
+$ cargo test ripple_carry_adder
+test adds_correctly ... ok
+test size_and_depth_are_linear ... ok
+
+test result: 2 passed; 0 failed

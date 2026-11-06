@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs ford_fulkerson::demo()
+
+Edmonds-Karp max flow       = 23
+min cut: S = [0, 1, 2, 4], capacity = 23
+Ford-Fulkerson (DFS) value  = 23
+flow conservation: net flow at v1..v4 = [0, 0, 0, 0]
+
+$ cargo test ford_fulkerson
+test book_value_23 ... ok
+test max_flow_min_cut_theorem_and_conservation ... ok
+
+test result: 2 passed; 0 failed

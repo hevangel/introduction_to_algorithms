@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs boyer_moore::demo()
+
+matches at [10, 28] using 21 comparisons (text length 38)
+good-suffix shifts for 'ABYXCDBYXCD'-like pattern 'anpanman': [6, 6, 6, 6, 6, 6, 3, 8, 1]
+sublinear behaviour: 0 matches, 5000 comparisons for a text of 50000 chars
+
+$ cargo test boyer_moore
+test agrees_with_naive_including_periodic_patterns ... ok
+test skips_text_when_pattern_chars_are_absent ... ok
+
+test result: 2 passed; 0 failed

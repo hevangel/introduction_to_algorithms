@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs treap::demo()
+
+10000 keys inserted in ascending order: height = 31 (a plain BST would have height 9999; 2·lg n ≈ 27)
+valid treap: true
+after deleting even keys: size = 5000, height = 28, valid = true
+
+$ cargo test treap
+test behaves_like_a_set ... ok
+test sorted_input_still_gives_logarithmic_height ... ok
+
+test result: 2 passed; 0 failed

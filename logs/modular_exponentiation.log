@@ -1,0 +1,14 @@
+$ cargo run --bin gen_site_data   # runs modular_exponentiation::demo()
+
+7^560 mod 561 = 1  (561 is a Carmichael number)
+2^1000000007 mod 998244353 = 132727571
+multiplications for an exponent with 30 bits: ≤ 60
+order of 2 mod 11 = Some(10); order of 3 mod 11 = Some(5)
+smallest primitive root mod 23 = Some(5)
+
+$ cargo test modular_exponentiation
+test fermat_and_large_moduli ... ok
+test matches_naive_power ... ok
+test orders_and_roots ... ok
+
+test result: 3 passed; 0 failed

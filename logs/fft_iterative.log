@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs fft_iterative::demo()
+
+bit-reversal permutation for n = 8: [0, 4, 2, 6, 1, 5, 3, 7]
+iterative FFT of 1..8 (re parts): [36.0, -4.0, -4.0, -4.0, -4.0, -4.0, -4.0, -4.0]
+equals recursive FFT: true
+passes: lg n = 3, each with n/2 = 4 butterflies → 12 butterflies total
+
+$ cargo test fft_iterative
+test bit_reversal ... ok
+test equals_recursive_fft_and_inverts ... ok
+
+test result: 2 passed; 0 failed

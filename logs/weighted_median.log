@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs weighted_median::demo()
+
+(value, weight) = [(1, 10), (2, 5), (3, 20), (4, 5), (5, 15), (6, 5), (7, 40)]
+total weight = 100
+weighted median (sorting) = 5
+weighted median (linear)  = 5
+
+$ cargo test weighted_median
+test equal_weights_give_ordinary_lower_median ... ok
+test linear_matches_sorting ... ok
+
+test result: 2 passed; 0 failed

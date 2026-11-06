@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs merge_sort::demo()
+
+input         : [38, 27, 43, 3, 9, 82, 10]
+merge_sort    : [3, 9, 10, 27, 38, 43, 82]
+bottom-up     : [3, 9, 10, 27, 38, 43, 82]
+
+$ cargo test merge_sort
+test both_variants_sort ... ok
+test merge_combines_two_sorted_runs ... ok
+
+test result: 2 passed; 0 failed

@@ -1,0 +1,13 @@
+$ cargo run --bin gen_site_data   # runs randomized_select::demo()
+
+A (sorted view) = [2, 4, 7, 9, 18, 21, 27, 33, 41, 50]
+RANDOMIZED-SELECT i= 1 -> 2
+RANDOMIZED-SELECT i= 5 -> 18
+RANDOMIZED-SELECT i=10 -> 50
+median (i=(n+1)/2 lower) -> 18
+
+$ cargo test randomized_select
+test matches_sorted_order_for_every_rank ... ok
+test singleton ... ok
+
+test result: 2 passed; 0 failed

@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs matrix_multiply::demo()
+
+A·I (naive)     = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]]
+A·A (naive)     = [[90, 100, 110, 120], [202, 228, 254, 280], [314, 356, 398, 440], [426, 484, 542, 600]]
+A·A (recursive) = [[90, 100, 110, 120], [202, 228, 254, 280], [314, 356, 398, 440], [426, 484, 542, 600]]
+results equal: true
+
+$ cargo test matrix_multiply
+test identity_is_neutral ... ok
+test recursive_matches_naive ... ok
+
+test result: 2 passed; 0 failed

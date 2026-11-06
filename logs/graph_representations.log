@@ -1,0 +1,21 @@
+$ cargo run --bin gen_site_data   # runs graph_representations::demo()
+
+adjacency list : [[1, 3], [4], [4, 5], [1], [3], [5]]
+  010100
+  000010
+  000011
+  010000
+  000100
+  000001
+round trip equal: true
+transpose      : [[], [0, 3], [], [0, 4], [1, 2], [2, 5]]
+square G²      : [[1, 3, 4], [3, 4], [3, 4, 5], [1, 4], [1, 3], [5]]
+universal sink of [[false, false, false], [true, false, true], [true, false, false]]: Some(0)
+in-degrees [0, 2, 0, 2, 2, 2], out-degrees [2, 1, 2, 1, 1, 1]
+
+$ cargo test graph_representations
+test conversions_roundtrip_and_transpose_twice ... ok
+test square_matches_matrix_definition ... ok
+test universal_sink_found_in_linear_probes ... ok
+
+test result: 3 passed; 0 failed

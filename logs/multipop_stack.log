@@ -1,0 +1,10 @@
+$ cargo run --bin gen_site_data   # runs multipop_stack::demo()
+
+10000 operations: total actual cost = 13268, average = 1.327 (≤ 2 by amortized analysis)
+most expensive single MULTIPOP = 22, yet the average is O(1)
+
+$ cargo test multipop_stack
+test multipop_semantics ... ok
+test total_cost_at_most_twice_the_operations ... ok
+
+test result: 2 passed; 0 failed

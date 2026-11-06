@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs knapsack_01::demo()
+
+items (weight, value) = [(10, 60), (20, 100), (30, 120)], capacity 50
+0-1 knapsack optimum = 220 using items [1, 2]
+unbounded optimum    = 300
+
+$ cargo test knapsack_01
+test matches_brute_force_and_respects_capacity ... ok
+test thief_example ... ok
+
+test result: 2 passed; 0 failed

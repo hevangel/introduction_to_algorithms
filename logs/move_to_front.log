@@ -1,0 +1,16 @@
+$ cargo run --bin gen_site_data   # runs move_to_front::demo()
+
+5000 Zipf requests over 30 keys
+move-to-front total cost        = 49616
+fixed order, initial (0..n)     = 37780
+fixed random order              = 74419
+best fixed order (offline)      = 37644 (order starts [0, 1, 2, 3, 5])
+theorem: MTF ≤ 4 × cost of ANY algorithm (additive n² for the starting arrangement)
+
+$ cargo test move_to_front
+test access_moves_to_front_and_costs_position ... ok
+test adversarial_sequence_makes_mtf_cost_n_per_request ... ok
+test beats_a_bad_fixed_order_on_skewed_input ... ok
+test four_competitive_against_the_best_static_order ... ok
+
+test result: 4 passed; 0 failed

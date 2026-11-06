@@ -1,0 +1,15 @@
+$ cargo run --bin gen_site_data   # runs pollard_rho::demo()
+
+POLLARD-RHO(1387) = 19  (1387 = 19·73)
+8051 = [83, 97]
+10403 = [101, 103]
+600851475143 = [71, 839, 1471, 6857]
+1000000016000000063 = [1000000007, 1000000009]
+2999999999967 = [3, 999999999989]
+semiprime 999985999949: rho finds 999983 (≈ n^¼ = 1000 iterations expected)
+
+$ cargo test pollard_rho
+test finds_nontrivial_factors ... ok
+test full_factorisation_multiplies_back ... ok
+
+test result: 2 passed; 0 failed

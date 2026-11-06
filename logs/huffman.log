@@ -1,0 +1,19 @@
+$ cargo run --bin gen_site_data   # runs huffman::demo()
+
+frequencies (thousands): [('a', 45), ('b', 13), ('c', 12), ('d', 16), ('e', 9), ('f', 5)]
+  a → 0
+  b → 101
+  c → 100
+  d → 111
+  e → 1101
+  f → 1100
+Huffman cost = 224 bits per 100 symbols (fixed 3-bit code would use 300)
+encode "abacabadabacaba" → 1011001101100010110011011 (25 bits vs 30 fixed)
+decode → "abacabadabacaba"
+
+$ cargo test huffman
+test book_example_cost ... ok
+test optimality_on_two_symbol_and_single_symbol_alphabets ... ok
+test prefix_free_roundtrip_and_cost_formula ... ok
+
+test result: 3 passed; 0 failed

@@ -1,0 +1,13 @@
+$ cargo run --bin gen_site_data   # runs polynomial_multiplication::demo()
+
+A(x) = 1 + 2x + 3x^2
+B(x) = 4 + 5x + 6x^2 + 7x^3
+A·B (FFT)   = 4 + 13x + 28x^2 + 34x^3 + 32x^4 + 21x^5
+A·B (naive) = 4 + 13x + 28x^2 + 34x^3 + 32x^4 + 21x^5
+12345 × 6789 via digit convolution = 83810205
+
+$ cargo test polynomial_multiplication
+test book_style_product ... ok
+test matches_schoolbook ... ok
+
+test result: 2 passed; 0 failed

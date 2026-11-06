@@ -1,0 +1,13 @@
+$ cargo run --bin gen_site_data   # runs inversions::demo()
+
+A = [2, 3, 8, 6, 1]
+naive inversions     = 5
+merge-sort inversions = 5
+reverse of 0..10 has 45 inversions (= 10·9/2)
+
+$ cargo test inversions
+test book_example ... ok
+test extremes ... ok
+test matches_naive ... ok
+
+test result: 3 passed; 0 failed

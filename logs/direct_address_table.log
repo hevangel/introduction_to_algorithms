@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs direct_address_table::demo()
+
+search(3) = Some("three"), search(4) = None
+delete(3) = Some("three"), search(3) = None
+bit-vector set holds 5 elements, maximum = Some(999), universe 1000 bits in 16 words
+after deleting 999, maximum = Some(500)
+
+$ cargo test direct_address_table
+test bit_vector_matches_btreeset ... ok
+test table_operations ... ok
+
+test result: 2 passed; 0 failed

@@ -1,0 +1,16 @@
+$ cargo run --bin gen_site_data   # runs carry_lookahead_adder::demo()
+
+100 + 155 with an 8-bit carry-lookahead adder = 255
+  n | ripple depth | lookahead depth | lookahead size
+  4 |            9 |               5 |       26
+  8 |           17 |               7 |       74
+ 16 |           33 |               9 |      194
+ 32 |           65 |              11 |      482
+ 64 |          129 |              13 |     1154
+128 |          257 |              15 |     2690
+
+$ cargo test carry_lookahead_adder
+test adds_correctly ... ok
+test depth_is_logarithmic ... ok
+
+test result: 2 passed; 0 failed

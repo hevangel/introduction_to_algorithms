@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs extended_euclid::demo()
+
+EXTENDED-EUCLID(99, 78) = (d=3, x=-11, y=14):  99·(-11) + 78·(14) = 3
+EXTENDED-EUCLID(240, 46) = (d=2, x=-9, y=47):  240·(-9) + 46·(47) = 2
+EXTENDED-EUCLID(17, 5) = (d=1, x=-2, y=7):  17·(-2) + 5·(7) = 1
+inverse of 3 mod 11 = Some(4); inverse of 6 mod 9 = None
+
+$ cargo test extended_euclid
+test bezout_identity ... ok
+test inverses ... ok
+
+test result: 2 passed; 0 failed

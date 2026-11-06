@@ -1,0 +1,9 @@
+$ cargo run --bin gen_site_data   # runs selection_sort::demo()
+
+before: [64, 25, 12, 22, 11]
+after : [11, 12, 22, 25, 64]
+
+$ cargo test selection_sort
+test matches_std_sort ... ok
+
+test result: 1 passed; 0 failed

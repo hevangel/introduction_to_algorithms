@@ -1,0 +1,16 @@
+$ cargo run --bin gen_site_data   # runs young_tableau::demo()
+
+2	3	5	14
+4	8	9	16
+12	∞	∞	∞
+∞	∞	∞	∞
+contains 8? true   contains 7? false
+extract-min x3: [2, 3, 4]
+sorted 12 numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+
+$ cargo test young_tableau
+test insert_keeps_invariant_and_extract_sorts ... ok
+test membership ... ok
+test sorts_non_square_counts ... ok
+
+test result: 3 passed; 0 failed

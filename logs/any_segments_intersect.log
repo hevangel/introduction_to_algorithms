@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs any_segments_intersect::demo()
+
+four stacked non-crossing segments: false
+adding a segment that crosses several: true
+the sweep keeps at most n segments in the status and probes O(n) neighbour pairs → O(n lg n) with a balanced tree
+
+$ cargo test any_segments_intersect
+test agrees_with_all_pairs_on_random_inputs ... ok
+test simple_cases ... ok
+
+test result: 2 passed; 0 failed

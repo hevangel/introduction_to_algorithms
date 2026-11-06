@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs lagrange_interpolation::demo()
+
+P(x) = 2 − 3x + x³ sampled at [-2.0, -1.0, 0.0, 1.0, 2.0] → [0.0, 4.0, 2.0, 0.0, 4.0]
+Lagrange from 4 samples: [2.0, -3.0, 0.0, 1.0]
+uniqueness: a degree-3 polynomial is fixed by any 4 distinct points
+
+$ cargo test lagrange_interpolation
+test horner_and_line_through_two_points ... ok
+test roundtrip_recovers_coefficients ... ok
+
+test result: 2 passed; 0 failed

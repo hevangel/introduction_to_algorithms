@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs difference_constraints::demo()
+
+solution x = [-5, -3, 0, -1, -4]
+all 8 constraints satisfied: true
+adding a constant to every variable stays feasible: true
+x0−x1 ≤ −1 and x1−x0 ≤ 0 → None (negative cycle)
+
+$ cargo test difference_constraints
+test book_system ... ok
+test solutions_satisfy_and_infeasible_detected ... ok
+
+test result: 2 passed; 0 failed

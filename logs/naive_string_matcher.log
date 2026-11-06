@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs naive_string_matcher::demo()
+
+T = acaabc, P = aab: valid shifts [2]
+worst case T = a^1000, P = a^99 b: 90100 comparisons ≈ (n−m+1)·m = 90100
+all occurrences of 'aa' in 'aaaa': [0, 1, 2]
+
+$ cargo test naive_string_matcher
+test basic_cases ... ok
+test quadratic_worst_case ... ok
+
+test result: 2 passed; 0 failed

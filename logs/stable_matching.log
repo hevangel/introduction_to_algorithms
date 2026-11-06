@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs stable_matching::demo()
+
+men's preferences  : [[0, 1, 2], [1, 0, 2], [0, 1, 2]]
+women's preferences: [[1, 0, 2], [0, 1, 2], [0, 1, 2]]
+man → woman        : [0, 1, 2]
+blocking pairs     : []
+
+$ cargo test stable_matching
+test stable_and_men_optimal ... ok
+test terminates_in_at_most_n_squared_proposals ... ok
+
+test result: 2 passed; 0 failed

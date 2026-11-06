@@ -1,0 +1,13 @@
+$ cargo run --bin gen_site_data   # runs cnf_sat::demo()
+
+formula (x1∨x2∨¬x3)(¬x1∨x3)(¬x2∨x3)(x1∨¬x2∨¬x3)
+brute force: Some([false, false, false])
+DPLL       : Some([true, false, true])
+unsatisfiable (all four 2-clauses over x1,x2): DPLL = None, 2-SAT = None
+2-SAT instance → Some([true, false, true, true])
+
+$ cargo test cnf_sat
+test dpll_agrees_with_brute_force ... ok
+test two_sat_matches_brute_force ... ok
+
+test result: 2 passed; 0 failed

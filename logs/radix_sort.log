@@ -1,0 +1,13 @@
+$ cargo run --bin gen_site_data   # runs radix_sort::demo()
+
+input          : [329, 457, 657, 839, 436, 720, 355]
+radix (base 10): [329, 355, 436, 457, 657, 720, 839]
+radix (base 256): [329, 355, 436, 457, 657, 720, 839]
+strings        : ["apple", "banana", "date", "fig", "kiwi", "pear"]
+
+$ cargo test radix_sort
+test handles_u64_extremes ... ok
+test matches_std_sort_for_several_bases ... ok
+test sorts_strings ... ok
+
+test result: 3 passed; 0 failed

@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs parallel_prefix::demo()
+
+x                    = [1, 2, 3, 4, 5, 6, 7, 8]
+inclusive scan (doubling) = [1, 3, 6, 10, 15, 21, 28, 36] in 3 rounds
+exclusive scan (Blelloch) = [0, 1, 3, 6, 10, 15, 21, 28] in 6 rounds, 14 operations
+prefix maxima        = [3, 3, 4, 4, 5, 9, 9, 9]
+
+$ cargo test parallel_prefix
+test matches_sequential_scans ... ok
+test works_for_any_associative_operator ... ok
+
+test result: 2 passed; 0 failed

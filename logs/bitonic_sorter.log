@@ -1,0 +1,17 @@
+$ cargo run --bin gen_site_data   # runs bitonic_sorter::demo()
+
+n= 2: comparators=  1 depth= 1 (lg n·(lg n+1)/2 = 1)
+n= 4: comparators=  6 depth= 3 (lg n·(lg n+1)/2 = 3)
+n= 8: comparators= 24 depth= 6 (lg n·(lg n+1)/2 = 6)
+n=16: comparators= 80 depth=10 (lg n·(lg n+1)/2 = 10)
+n=32: comparators=240 depth=15 (lg n·(lg n+1)/2 = 15)
+sorted by the 8-wire network: [1, 2, 3, 4, 6, 7, 8, 9]
+is_bitonic([1,4,6,5,2]) = true   is_bitonic([1,5,2,6,3]) = false
+
+$ cargo test bitonic_sorter
+test bitonic_predicate ... ok
+test depth_and_size_formulas ... ok
+test is_a_sorting_network_for_powers_of_two ... ok
+test sorts_random_integers ... ok
+
+test result: 4 passed; 0 failed

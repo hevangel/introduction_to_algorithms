@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs mst_prim::demo()
+
+Prim (heap) total weight  = 37
+Prim (array) total weight = 37
+parent array (root 0): [None, Some(0), Some(1), Some(2), Some(3), Some(2), Some(5), Some(6), Some(2)]
+
+$ cargo test mst_prim
+test matches_kruskal_on_random_connected_graphs ... ok
+test parent_pointers_form_a_tree ... ok
+
+test result: 2 passed; 0 failed

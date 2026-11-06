@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs matroid_greedy::demo()
+
+maximum spanning tree edges (greedy on the graphic matroid): [0, 1, 3, 5]
+unit-task scheduling: early tasks [1, 3, 0, 2, 6] (0-based), total penalty 50
+uniform matroid U(2,5) with weights [5,1,9,3,7] picks [2, 4]
+
+$ cargo test matroid_greedy
+test book_scheduling_example ... ok
+test greedy_is_optimal_on_matroids ... ok
+
+test result: 2 passed; 0 failed

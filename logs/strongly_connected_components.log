@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs strongly_connected_components::demo()
+
+Kosaraju (CLRS): {a,b,e} {c,d} {f,g} {h}
+Tarjan agrees  : true
+component DAG  : [[1, 2], [2, 3], [3], []]
+
+$ cargo test strongly_connected_components
+test book_figure ... ok
+test matches_reachability_definition ... ok
+
+test result: 2 passed; 0 failed

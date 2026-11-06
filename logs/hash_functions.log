@@ -1,0 +1,17 @@
+$ cargo run --bin gen_site_data   # runs hash_functions::demo()
+
+division_method(123456, 701)       = 80
+multiplication_method(123456, 16384) = 67
+multiplication_method_word(123456, 14) = 67
+string_to_key("pt") = 14452 (p=112, t=116 → 112·128+116)
+keys are multiples of 1024; colliding pairs with m=1024:
+  division by 1024        : 499500
+  division by prime 1009  : 0
+  random universal hash   : 1043 (expected ≈ n²/2m = 487)
+
+$ cargo test hash_functions
+test division_by_power_of_two_is_bad_for_aligned_keys ... ok
+test ranges_are_respected ... ok
+test universality_collision_probability_is_at_most_about_one_over_m ... ok
+
+test result: 3 passed; 0 failed

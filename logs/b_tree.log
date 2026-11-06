@@ -1,0 +1,14 @@
+$ cargo run --bin gen_site_data   # runs b_tree::demo()
+
+B-tree (t=3) with keys 1..=20: height 2, valid true
+contains 7? true   contains 25? false
+after deleting 6,13,7,4,2,16: [1, 3, 5, 8, 9, 10, 11, 12, 14, 15, 17, 18, 19, 20]
+valid true, height 1
+t=50 with 1,000,000 keys: height 3 → at most 4 node reads per search
+
+$ cargo test b_tree
+test delete_everything_collapses_height ... ok
+test height_bound ... ok
+test matches_btreeset_for_several_degrees ... ok
+
+test result: 3 passed; 0 failed

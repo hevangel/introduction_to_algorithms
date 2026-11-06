@@ -1,0 +1,15 @@
+$ cargo run --bin gen_site_data   # runs binary_search_tree::demo()
+
+inorder walk      : [2, 3, 4, 6, 7, 9, 13, 15, 17, 18, 20]
+height            : 4
+minimum / maximum : 2 / 20
+successor(13)     : 15, predecessor(13): 9
+after delete(6)   : [2, 3, 4, 7, 9, 13, 15, 17, 18, 20]
+after delete(15)  : [2, 3, 4, 7, 9, 13, 17, 18, 20]
+
+$ cargo test binary_search_tree
+test degenerate_tree_has_linear_height ... ok
+test matches_btreeset_under_random_operations ... ok
+test successor_predecessor_min_max ... ok
+
+test result: 3 passed; 0 failed

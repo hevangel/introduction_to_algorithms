@@ -1,0 +1,14 @@
+$ cargo run --bin gen_site_data   # runs online_caching::demo()
+
+cycling through 5 pages with a cache of 4: LRU 200 misses, FIFO 200, FWF 200, optimal 53
+→ ratio LRU/OPT = 3.77 ≈ k = 4: the k-competitive bound is tight
+locality-heavy workload, k= 4: LRU 3487  FIFO 3646  FWF 3999  OPT 2503
+locality-heavy workload, k= 8: LRU 2757  FIFO 2977  FWF 3431  OPT 1698
+locality-heavy workload, k=16: LRU 1775  FIFO 1954  FWF 2660  OPT  893
+
+$ cargo test online_caching
+test adversarial_cycle_attains_ratio_k ... ok
+test belady_is_optimal ... ok
+test online_policies_are_k_competitive ... ok
+
+test result: 3 passed; 0 failed

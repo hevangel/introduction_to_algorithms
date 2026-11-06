@@ -1,0 +1,15 @@
+$ cargo run --bin gen_site_data   # runs p_fib::demo()
+
+P-FIB(30) = 832040 (serial 832040)
+   n |      work T1 |  span T∞ | parallelism T1/T∞
+  10 |          177 |       10 |         17.7
+  20 |        21891 |       20 |       1094.5
+  30 |      2692537 |       30 |      89751.2
+  40 |    331160281 |       40 |    8279007.0
+speedup bound on P processors: T_P ≥ max(T1/P, T∞) — plenty of parallelism since T1/T∞ grows like φⁿ/n
+
+$ cargo test p_fib
+test parallel_matches_serial ... ok
+test work_and_span_recurrences ... ok
+
+test result: 2 passed; 0 failed

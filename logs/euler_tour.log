@@ -1,0 +1,14 @@
+$ cargo run --bin gen_site_data   # runs euler_tour::demo()
+
+undirected bowtie : Some([0, 1, 2, 3, 4, 2, 0])
+path graph (odd degrees): None
+two disjoint triangles  : None
+directed circuit  : Some([0, 1, 2, 0, 3, 0])
+unbalanced digraph: None
+
+$ cargo test euler_tour
+test directed_requires_balance ... ok
+test random_eulerian_graphs ... ok
+test undirected_cases ... ok
+
+test result: 3 passed; 0 failed

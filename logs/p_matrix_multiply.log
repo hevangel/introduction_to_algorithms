@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs p_matrix_multiply::demo()
+
+n = 64: parallel-for result equals serial: true
+n = 64: recursive spawn result equals serial: true
+P-MAT-VEC first entries: [174, 241, 236, -41]
+work Θ(n³); span Θ(n) for the parallel-for version (inner loops serial), Θ(lg n) with parallel inner loops
+
+$ cargo test p_matrix_multiply
+test all_versions_agree ... ok
+test mat_vec ... ok
+
+test result: 2 passed; 0 failed

@@ -1,0 +1,18 @@
+$ cargo run --bin gen_site_data   # runs elevator::demo()
+
+stairs cost k = 1; ratio of 'wait θ, then walk' vs the offline optimum:
+  θ =  0.1: worst-case ratio 11.000
+  θ = 0.25: worst-case ratio 5.000
+  θ =  0.5: worst-case ratio 3.000
+  θ =    1: worst-case ratio 2.000
+  θ =    2: worst-case ratio 3.000
+  θ =    4: worst-case ratio 5.000
+  θ =   10: worst-case ratio 11.000
+best threshold θ = k gives ratio 2: the strategy is 2-competitive, and no deterministic strategy does better
+
+$ cargo test elevator
+test costs ... ok
+test never_exceeds_two_for_any_arrival_time ... ok
+test threshold_k_is_two_competitive_and_optimal ... ok
+
+test result: 3 passed; 0 failed

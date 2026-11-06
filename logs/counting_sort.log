@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs counting_sort::demo()
+
+A = [2, 5, 3, 0, 2, 3, 0, 3]
+B = [0, 0, 2, 2, 3, 3, 3, 5]
+elements in [2,3] : 5
+stability check   : [(1, 'b'), (1, 'd'), (2, 'a'), (2, 'c')]
+
+$ cargo test counting_sort
+test range_counter ... ok
+test sorts_and_is_stable ... ok
+
+test result: 2 passed; 0 failed
