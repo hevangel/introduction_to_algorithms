@@ -1,0 +1,18 @@
+[package]
+name = "clrs"
+version = "0.1.0"
+edition = "2021"
+description = "Every algorithm from editions 1-4 of CLRS (Introduction to Algorithms) in Rust"
+build = "build.rs"
+publish = false
+
+[lib]
+name = "clrs"
+path = "src/lib.rs"
+
+[[bin]]
+name = "gen_site_data"
+path = "src/bin/gen_site_data.rs"
+
+[profile.dev]
+opt-level = 1
