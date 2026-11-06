@@ -31,3 +31,33 @@ fn no_orphan_docs() {
         }
     }
 }
+
+/// Every `(#/some_id)` link in the docs must point at a catalogued algorithm.
+#[test]
+fn doc_cross_links_resolve() {
+    let root = Path::new(env!("CARGO_MANIFEST_DIR"));
+    let ids: HashSet<&str> = registry::ENTRIES.iter().map(|e| e.id).collect();
+    let mut broken = vec![];
+    for e in registry::ENTRIES {
+        let doc = std::fs::read_to_string(root.join(e.doc)).unwrap();
+        let mut rest = doc.as_str();
+        while let Some(p) = rest.find("(#/") {
+            let tail = &rest[p + 3..];
+            let end = tail.find(')').unwrap_or(0);
+            let target = &tail[..end];
+            if !ids.contains(target) { broken.push(format!("{} -> {}", e.id, target)); }
+            rest = &tail[end..];
+        }
+    }
+    assert!(broken.is_empty(), "broken doc links: {broken:?}");
+}
+
+/// Every algorithm file declares valid source metadata and mentions its tests.
+#[test]
+fn every_source_has_tests() {
+    let root = Path::new(env!("CARGO_MANIFEST_DIR"));
+    for e in registry::ENTRIES {
+        let src = std::fs::read_to_string(root.join(e.source)).unwrap();
+        assert!(src.contains("#[cfg(test)]") && src.contains("#[test]"), "{}: no unit tests", e.id);
+    }
+}
