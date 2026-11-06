@@ -45,8 +45,8 @@ pub fn demo() -> String {
         e.sort();
         outln!(o, "s = {s}, r = {r} ({} numbers): columnsort == sort: {}", r * s, columnsort(&v, r, s) == e);
     }
-    let v: Vec<i64> = (0..18).rev().collect();
-    outln!(o, "reverse 17..0 as 6×3: {:?}", columnsort(&v, 6, 3));
+    let v: Vec<i64> = (0..36).rev().collect();
+    outln!(o, "reverse 35..0 as 12×3: {:?}", columnsort(&v, 12, 3));
     o
 }
 

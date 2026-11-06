@@ -10,10 +10,10 @@ use std::collections::VecDeque;
 #[derive(Debug, Clone)]
 pub struct FlowNetwork {
     pub n: usize,
-    to: Vec<usize>,
+    pub(crate) to: Vec<usize>,
     /// Residual capacity of every directed edge.
-    cap: Vec<i64>,
-    adj: Vec<Vec<usize>>,
+    pub(crate) cap: Vec<i64>,
+    pub(crate) adj: Vec<Vec<usize>>,
 }
 
 impl FlowNetwork {
