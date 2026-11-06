@@ -1,0 +1,22 @@
+$ cargo run --bin gen_site_data   # runs ackermann_alpha::demo()
+
+A_0(1) = Some(2)
+A_1(1) = Some(3)
+A_2(1) = Some(7)
+A_3(1) = Some(2047)
+A_4(1) = None  (= 2^2048 − 3 … far beyond u128)
+α(1) = 0
+α(2) = 0
+α(3) = 1
+α(7) = 2
+α(8) = 3
+α(2047) = 3
+α(2048) = 4
+α(340282366920938463463374607431768211455) = 4
+A_2(3) = Some(63), A_3(2) = None
+
+$ cargo test ackermann_alpha
+test closed_forms_agree_with_the_definition ... ok
+test inverse_thresholds ... ok
+
+test result: 2 passed; 0 failed

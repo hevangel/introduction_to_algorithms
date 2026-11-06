@@ -1,0 +1,13 @@
+$ cargo run --bin gen_site_data   # runs equal_keys_bst::demo()
+
+total nodes visited to insert n identical keys:
+     n | always right |  alternate |      count |   random
+   100 |         5050 |        580 |        100 |      610
+  1000 |       500500 |       8987 |       1000 |     9293
+  5000 |     12502500 |      56822 |       5000 |    57830
+
+$ cargo test equal_keys_bst
+test all_strategies_keep_the_inorder_sorted_and_complete ... ok
+test identical_key_costs_match_the_analysis ... ok
+
+test result: 2 passed; 0 failed
