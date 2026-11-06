@@ -1,0 +1,33 @@
+# Fibonacci Heaps
+
+## What it is
+A **Fibonacci heap** is a collection of heap-ordered trees designed so that `INSERT`, `MINIMUM`, `UNION` and `DECREASE-KEY` take only **amortised O(1)** time, while `EXTRACT-MIN` and `DELETE` take amortised O(lg n). It was the key to speeding up [Dijkstra](#/dijkstra) and [Prim](#/mst_prim) to `O(E + V lg V)`. The 4th edition removed the chapter ("rarely taught"), but 1st–3rd editions include it.
+
+## How it works
+* Roots live in a circular doubly linked **root list** with a pointer to the minimum. `INSERT` and `UNION` are *lazy*: just splice into the root list.
+* `EXTRACT-MIN` removes the minimum, promotes its children to roots, then **consolidates**: link roots of equal degree (the larger key becomes a child) until all root degrees are distinct (≤ `⌊log_φ n⌋`).
+* `DECREASE-KEY` lowers a key; if it now violates heap order with its parent, **cut** it and move it to the root list. A node that has lost a child is *marked*; losing a second child triggers a **cascading cut**.
+
+The potential function `Φ = t(H) + 2·m(H)` (root trees + 2·marked nodes) yields the amortised bounds. Marking guarantees a node of degree `k` has at least `F_{k+2}` descendants — the Fibonacci numbers behind the name.
+
+```mermaid
+flowchart LR
+  subgraph "root list (circular)"
+    r1["3"] --- r2["17"] --- r3["24"] --- r1
+  end
+  r1 --> c1["18"] --> c2["52"]
+  r1 --> c3["39"]
+  r3 --> c4["26"] --> c5["35"]
+```
+
+## Complexity
+| Operation | Amortised |
+|---|---|
+| INSERT, MINIMUM, UNION, DECREASE-KEY | O(1) |
+| EXTRACT-MIN, DELETE | O(lg n) |
+
+## When to use it
+Theoretically optimal graph algorithms; in practice binary/pairing/4-ary heaps are often faster because of constant factors.
+
+## In this implementation
+An arena-based version of the book's pseudocode. `union` appends the other heap's arena (handles shift by the returned offset); tests check heap-sort order, random decrease-key/delete behaviour against a model, and the Fibonacci degree bound.
