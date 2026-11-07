@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs lp_feasibility_farkas::demo()
+
+x + y ≤ 4, x ≥ 0, y ≥ 0 → feasible point Some([0.0, 0.0])
+x ≤ 1 and x ≥ 3 → feasible point None, Farkas certificate Some([0.5, 0.5])
+CLRS Section 29.3 LP: (primal value, dual value, complementary slackness) = Some((28.0, 28.0, true))
+
+$ cargo test lp_feasibility_farkas
+test exactly_one_of_a_solution_or_a_farkas_certificate ... ok
+test strong_duality_and_complementary_slackness_hold ... ok
+
+test result: 2 passed; 0 failed

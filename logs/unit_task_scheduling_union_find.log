@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs unit_task_scheduling_union_find::demo()
+
+deadlines [4, 2, 4, 3, 1, 4, 6], penalties [70, 60, 50, 40, 30, 20, 10]
+slot of each task [Some(4), Some(2), Some(3), Some(1), None, None, Some(6)]; total late penalty 50
+n = 200000 tasks scheduled in near-linear time; late penalty 5039
+
+$ cargo test unit_task_scheduling_union_find
+test matches_exhaustive_search ... ok
+test same_penalty_as_the_matroid_greedy_algorithm_and_slots_are_valid ... ok
+
+test result: 2 passed; 0 failed

@@ -1,0 +1,10 @@
+$ cargo run --bin gen_site_data   # runs matching_approximation::demo()
+
+path 0-1-2-3 with the middle edge listed first: maximal matching [0], maximum has 2 edges
+weighted greedy takes weight 3 vs optimum 4
+
+$ cargo test matching_approximation
+test half_approximation_guarantees ... ok
+test the_factor_two_is_tight_on_a_path ... ok
+
+test result: 2 passed; 0 failed

@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs knapsack_approximation::demo()
+
+capacity 50: exact 220, greedy/2-approximation 185
+FPTAS with ε = 0.5: 220
+FPTAS with ε = 0.2: 220
+FPTAS with ε = 0.05: 220
+
+$ cargo test knapsack_approximation
+test approximation_guarantees ... ok
+test small_eps_is_exact_on_the_textbook_style_instance ... ok
+
+test result: 2 passed; 0 failed

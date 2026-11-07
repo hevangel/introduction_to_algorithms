@@ -1,0 +1,14 @@
+$ cargo run --bin gen_site_data   # runs picking_up_sticks::demo()
+
+above relation (row lies on column):
+  stick 0: [false, true, true]
+  stick 1: [false, false, true]
+  stick 2: [false, false, false]
+pick-up order: Some([0, 1, 2])
+
+$ cargo test picking_up_sticks
+test explicit_cycle_is_rejected ... ok
+test horizontal_sticks_at_distinct_heights_can_always_be_lifted ... ok
+test tilted_sticks_give_a_valid_order_whenever_one_exists ... ok
+
+test result: 3 passed; 0 failed

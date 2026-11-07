@@ -1,0 +1,14 @@
+$ cargo run --bin gen_site_data   # runs p_parallel_loops::demo()
+
+parallel_for over 0..1000 with grain 8: sum of indices = 499500 (expected 499500), spawn-tree depth 7
+   n  | spawn loop span | nested span (grain 1) | grain lg n
+    16 |              17 |                     5 | 6
+   256 |             257 |                     9 | 13
+  4096 |            4097 |                    13 | 21
+ 65536 |           65537 |                    17 | 28
+
+$ cargo test p_parallel_loops
+test every_index_runs_exactly_once_for_any_grain ... ok
+test spawn_tree_depth_is_logarithmic_and_spans_compare_as_in_the_problem ... ok
+
+test result: 2 passed; 0 failed

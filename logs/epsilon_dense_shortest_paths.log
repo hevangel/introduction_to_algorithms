@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs epsilon_dense_shortest_paths::demo()
+
+n = 400; random graphs with E = n^(1+ε) edges, total heap comparisons for all-pairs Dijkstra (n runs):
+ε = 0.25: E = 1788, d = 5: binary heap 2108569 comparisons, d-ary heap 2397350  (VE = 715200)
+ε = 0.5: E = 8000, d = 20: binary heap 2648218 comparisons, d-ary heap 5897604  (VE = 3200000)
+ε = 0.75: E = 35777, d = 90: binary heap 2897169 comparisons, d-ary heap 18191975  (VE = 14310800)
+
+$ cargo test epsilon_dense_shortest_paths
+test matches_dijkstra_for_every_arity ... ok
+test work_with_the_prescribed_arity_is_linear_in_e ... ok
+
+test result: 2 passed; 0 failed

@@ -1,0 +1,16 @@
+$ cargo run --bin gen_site_data   # runs fibonacci_algorithms::demo()
+
+   n |        F_n | recursive calls | additions | matrix mults
+   1 |          1 |               1 |         0 |            1
+   5 |          5 |              15 |         4 |            4
+  10 |         55 |             177 |         9 |            5
+  20 |       6765 |           21891 |        19 |            6
+  30 |     832040 |         2692537 |        29 |            8
+F_180 = 18547707689471986212190138521399707760 (iterative: 179 additions, matrix: 11 multiplications)
+bit-operation models for n = 180: iteration ≈ 11243, matrix (schoolbook multiply) ≈ 46815
+
+$ cargo test fibonacci_algorithms
+test all_three_agree_and_call_count_is_2f_minus_1 ... ok
+test matrix_method_needs_logarithmically_many_multiplications ... ok
+
+test result: 2 passed; 0 failed

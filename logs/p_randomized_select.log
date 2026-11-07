@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs p_randomized_select::demo()
+
+i =       1: value 814 (correct: true), 15 recursion rounds (expected ≈ 2·ln n = 24)
+i =     100: value 480965 (correct: true), 23 recursion rounds (expected ≈ 2·ln n = 24)
+i =  100000: value 502533110 (correct: true), 24 recursion rounds (expected ≈ 2·ln n = 24)
+i =  200000: value 999994125 (correct: true), 12 recursion rounds (expected ≈ 2·ln n = 24)
+
+$ cargo test p_randomized_select
+test matches_sorting_for_any_worker_count_and_duplicates ... ok
+test partition_pieces_are_correct_and_recursion_depth_is_logarithmic ... ok
+
+test result: 2 passed; 0 failed

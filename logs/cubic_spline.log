@@ -1,0 +1,14 @@
+$ cargo run --bin gen_site_data   # runs cubic_spline::demo()
+
+natural spline through sin(x) at 0..4; compare at the midpoints:
+  S(0.5) = 0.47692, sin(0.5) = 0.47943
+  S(1.5) = 0.99694, sin(1.5) = 0.99749
+  S(2.5) = 0.58640, sin(2.5) = 0.59847
+  S(3.5) = -0.31202, sin(3.5) = -0.35078
+clamped spline: S(2.5) = 0.59639 (error 2.1e-3)
+
+$ cargo test cubic_spline
+test clamped_spline_reproduces_any_cubic_exactly ... ok
+test interpolates_and_is_c2_at_the_knots ... ok
+
+test result: 2 passed; 0 failed

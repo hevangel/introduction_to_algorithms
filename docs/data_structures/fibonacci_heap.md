@@ -20,6 +20,8 @@ flowchart LR
   r3 --> c4["26"] --> c5["35"]
 ```
 
+**Problems 19-1 and 19-3.** *Pisano's delete* removes a non-minimum node `x` directly: cut it from its parent (with a cascading cut), move its children to the root list and unlink it — without ever making `x` the minimum, hoping to save the `−∞` decrease and the `EXTRACT-MIN` consolidation. Problem 19-1 asks why the hoped-for speed-up is an illusion: moving `x`'s children to the root list is **not `O(1)`** (it touches all `x.degree` of them), the actual cost is `O(x.degree + c)` for `c` cascading cuts, and the potential bound shows the **amortised cost is asymptotically no better** than that of the book's `FIB-HEAP-DELETE`, even when `x` is not the minimum. *Change-key*: a decrease is `DECREASE-KEY`; an increase is done here by delete + insert (the handle changes). `FIB-HEAP-PRUNE` (delete `min(r, n)` nodes in amortised `O(r)`) is not implemented.
+
 ## Complexity
 | Operation | Amortised |
 |---|---|
@@ -30,4 +32,4 @@ flowchart LR
 Theoretically optimal graph algorithms; in practice binary/pairing/4-ary heaps are often faster because of constant factors.
 
 ## In this implementation
-An arena-based version of the book's pseudocode. `union` appends the other heap's arena (handles shift by the returned offset); tests check heap-sort order, random decrease-key/delete behaviour against a model, and the Fibonacci degree bound.
+An arena-based version of the book's pseudocode. `union` appends the other heap's arena (handles shift by the returned offset); tests check heap-sort order, random decrease-key/delete behaviour against a model, and the Fibonacci degree bound. `pisano_delete`, `change_key` and a structural `validate()` are exercised by a 4 000-operation random test against a model, with invariants checked every 50 operations.

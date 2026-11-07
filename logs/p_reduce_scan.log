@@ -1,0 +1,14 @@
+$ cargo run --bin gen_site_data   # runs p_reduce_scan::demo()
+
+P-REDUCE(1..16) = 136
+   n | scan-1 work/span | scan-2 work/span | scan-3 work/span
+   8 |       28 / 6      |       12 / 6      |       22 / 6     
+  64 |     2016 / 12     |      192 / 21     |      190 / 12    
+ 512 |   130816 / 18     |     2304 / 45     |     1534 / 18    
+scan with string concatenation (not commutative): ["a", "ab", "abc", "abcd", "abcde"]
+
+$ cargo test p_reduce_scan
+test all_scans_agree_with_the_serial_prefix_even_for_a_non_commutative_operator ... ok
+test work_and_span_scale_as_claimed ... ok
+
+test result: 2 passed; 0 failed

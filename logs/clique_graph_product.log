@@ -1,0 +1,10 @@
+$ cargo run --bin gen_site_data   # runs clique_graph_product::demo()
+
+ω(G) = 3, ω(G²) = 9 = ω(G)²: true
+recovered a clique of G of size 3 from a clique of G² of size 9
+
+$ cargo test clique_graph_product
+test clique_number_of_the_square_is_the_square_of_the_clique_number ... ok
+test recovered_cliques_are_cliques_of_size_at_least_the_square_root ... ok
+
+test result: 2 passed; 0 failed

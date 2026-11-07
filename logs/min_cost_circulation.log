@@ -1,0 +1,10 @@
+$ cargo run --bin gen_site_data   # runs min_cost_circulation::demo()
+
+edges (u, v, cap, cost) [(0, 1, 4, 2), (1, 2, 3, -5), (2, 0, 5, 1), (0, 2, 2, 6), (2, 1, 1, 1)]
+minimum-cost circulation: cost -8, flows [2, 3, 2, 0, 1]
+
+$ cargo test min_cost_circulation
+test a_profitable_cycle_is_filled_to_capacity ... ok
+test matches_the_linear_program_and_is_a_valid_circulation ... ok
+
+test result: 2 passed; 0 failed

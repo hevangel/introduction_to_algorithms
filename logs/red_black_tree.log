@@ -8,12 +8,14 @@ insert 19 -> height 3 black-height 3
 insert  8 -> height 4 black-height 3
 inorder = [8, 12, 19, 31, 38, 41]
 after deleting 8, 12, 19: [31, 38, 41] (valid: true)
+10000 sorted insertions: 9976 rotations, 49877 recolourings; 10000 deletions: 4989 rotations, 29915 recolourings
 100000 ascending inserts: height = 31 (bound 2·lg(n+1) = 33.2)
 
 $ cargo test red_black_tree
 test delete_everything ... ok
 test height_bound_on_sorted_input ... ok
 test invariants_hold_through_random_inserts_and_deletes ... ok
+test restructuring_cost_matches_problem_17_4 ... ok
 test successor_and_minimum ... ok
 
-test result: 4 passed; 0 failed
+test result: 5 passed; 0 failed

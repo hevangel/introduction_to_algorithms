@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs chirp_transform::demo()
+
+A(x) = 3 + x + 4x² + x³ + 5x⁴ + 9x⁵ + 2x⁶ + 6x⁷ at ω^k for ω = 12345:
+  chirp : [31, 13990568, 568517801, 865702219, 393182844, 423744099, 317155230, 504778248]
+  direct: [31, 13990568, 568517801, 865702219, 393182844, 423744099, 317155230, 504778248]
+
+$ cargo test chirp_transform
+test matches_direct_evaluation_for_arbitrary_omega ... ok
+test omega_one_sums_coefficients_and_single_point ... ok
+
+test result: 2 passed; 0 failed

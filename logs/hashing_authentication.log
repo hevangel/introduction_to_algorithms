@@ -1,0 +1,10 @@
+$ cargo run --bin gen_site_data   # runs hashing_authentication::demo()
+
+p = 31: after seeing tag 17 for m = 5 there are 31 consistent keys; 1 of them also tag m′ = 9 with 3 → forgery probability 1/31 = 1/31
+multi-block messages [3, 1, 4] vs [3, 1, 5]: collide for 1 of 31 values of a (bound k − 1 = 2 … k = 3)
+
+$ cargo test hashing_authentication
+test distinct_messages_of_k_blocks_collide_for_at_most_k_minus_one_values_of_a ... ok
+test the_linear_family_is_pairwise_independent ... ok
+
+test result: 2 passed; 0 failed

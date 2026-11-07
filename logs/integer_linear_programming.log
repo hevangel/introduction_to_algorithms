@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs integer_linear_programming::demo()
+
+LP relaxation: Optimal { value: 21.0, x: [3.0, 1.4999999999999998] }
+integer optimum: Some((20, [4, 0]))
+knapsack as an ILP: Some((10, [1, 0, 1]))
+
+$ cargo test integer_linear_programming
+test integer_optimum_can_be_strictly_worse_than_the_relaxation ... ok
+test matches_enumeration_of_all_integer_points ... ok
+
+test result: 2 passed; 0 failed

@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs y_fast_trie::demo()
+
+w = 24, n = 19987: x-fast trie stores 216745 hash entries (≈ n·w), y-fast trie 29957 words (≈ n) in 598 buckets (largest 48)
+successor(1000000): x-fast Some(1000211), y-fast Some(1000211); predecessor: Some(999857) / Some(999857)
+
+$ cargo test y_fast_trie
+test x_fast_trie_matches_btreeset_including_deletions ... ok
+test y_fast_trie_matches_btreeset_and_keeps_buckets_bounded ... ok
+test y_fast_uses_linear_space_where_x_fast_needs_n_w ... ok
+
+test result: 3 passed; 0 failed

@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs sort_in_place_linear::demo()
+
+input             : 1a 0b 1c 1d 0e 0f 1g 0h
+partition (in place, O(n))   : 0h 0b 0f 0e 1d 1c 1g 1a  stable? false
+counting (stable, O(n) space): 0b 0e 0f 0h 1a 1c 1d 1g  stable? true
+rotations (stable, in place) : 0b 0e 0f 0h 1a 1c 1d 1g  stable? true
+
+$ cargo test sort_in_place_linear
+test all_three_sort_and_the_stable_ones_are_stable ... ok
+
+test result: 1 passed; 0 failed

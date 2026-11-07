@@ -1,0 +1,13 @@
+$ cargo run --bin gen_site_data   # runs p_matmul_no_temp::demo()
+
+   n | span without temporary | span with temporary (lg² n) | extra space with temporary
+   2 |                      2 |                           2 | Θ(n²) vs 0
+   8 |                      8 |                           7 | Θ(n²) vs 0
+  32 |                     32 |                          16 | Θ(n²) vs 0
+ 128 |                    128 |                          29 | Θ(n²) vs 0
+
+$ cargo test p_matmul_no_temp
+test equals_the_naive_product ... ok
+test span_is_linear_without_the_temporary ... ok
+
+test result: 2 passed; 0 failed

@@ -1,0 +1,13 @@
+$ cargo run --bin gen_site_data   # runs euclid_bit_operations::demo()
+
+     a            b        gcd  steps  bit ops  β²
+          1000000007            998244353      1     9       612    900
+ 1636373457020485836  4049870930305235928    108    32      3641   3721
+   61305790721611591    37889062373143906      1    80      4507   3136
+consecutive Fibonacci numbers (the worst case for the number of steps) still stay below 3β² bit operations
+
+$ cargo test euclid_bit_operations
+test cost_is_at_most_three_beta_squared_and_quotient_logs_are_bounded ... ok
+test fibonacci_inputs_take_the_most_steps ... ok
+
+test result: 2 passed; 0 failed

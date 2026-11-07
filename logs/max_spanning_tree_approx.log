@@ -1,0 +1,10 @@
+$ cargo run --bin gen_site_data   # runs max_spanning_tree_approx::demo()
+
+path with weights 1,3,2: S_G = [0, 1, 2], T_G = [1, 2, 0] (equal)
+two heavy edges joined by a light one: S_G = [0, 1] ≠ T_G = [1, 0, 2]; 2-approximation weight 12 vs optimum 12
+
+$ cargo test max_spanning_tree_approx
+test examples_where_s_equals_and_differs_from_t ... ok
+test s_is_inside_t_and_the_weight_bounds_hold ... ok
+
+test result: 2 passed; 0 failed

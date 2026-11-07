@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs independent_set::demo()
+
+5-cycle: maximum independent set [2, 4]
+path on 7 vertices: forest DP 4, bipartite/König Some(4), exact 4
+5-cycle is not bipartite: None; its complement (also a 5-cycle) has clique number = independence number = 2
+
+$ cargo test independent_set
+test cliques_are_independent_sets_of_the_complement ... ok
+test exact_search_matches_enumeration_and_is_independent ... ok
+test forest_and_bipartite_algorithms_match_the_exact_search ... ok
+
+test result: 3 passed; 0 failed

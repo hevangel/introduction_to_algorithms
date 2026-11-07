@@ -1,7 +1,7 @@
 //! @title Fibonacci Heaps
 //! @chapter 20 (1e, 2e) / 19 (3e)
 //! @editions 1,2,3
-//! @summary Mergeable heap with amortised O(1) insert, union and decrease-key and O(lg n) extract-min.
+//! @summary Mergeable heap with amortised O(1) insert, union and decrease-key and O(lg n) extract-min; also Problem 19-1's alternative delete and 19-3's change-key.
 //! @order 180
 use crate::outln;
 
@@ -190,6 +190,47 @@ impl FibonacciHeap {
         self.decrease_key(x, i64::MIN).unwrap();
         self.extract_min();
     }
+    /// Problem 19-1: Professor Pisano's alternative FIB-HEAP-DELETE. If `x` is the minimum, extract it; otherwise cut `x` from its parent (with a
+    /// cascading cut), move all of `x`'s children to the root list and unlink `x`, without ever making `x` the minimum.
+    pub fn pisano_delete(&mut self, x: usize) {
+        if x == self.min { self.extract_min(); return; }
+        let y = self.n[x].p;
+        if y != NIL { self.cut(x, y); self.cascading_cut(y); } // x becomes a root
+        if self.n[x].child != NIL {
+            let start = self.n[x].child;
+            let mut kids = vec![start];
+            let mut c = self.n[start].right;
+            while c != start { kids.push(c); c = self.n[c].right; }
+            for k in kids { self.n[k].p = NIL; self.n[k].mark = false; self.splice_after(x, k); }
+            self.n[x].child = NIL;
+            self.n[x].degree = 0;
+        }
+        let (l, r) = (self.n[x].left, self.n[x].right);
+        self.n[l].right = r;
+        self.n[r].left = l;
+        self.count -= 1;
+    }
+    /// Problem 19-3(a): FIB-HEAP-CHANGE-KEY. A decrease is DECREASE-KEY; an increase deletes the node and inserts it again with the new key,
+    /// so the handle may change: the (possibly new) handle is returned.
+    pub fn change_key(&mut self, x: usize, k: i64) -> usize {
+        if k <= self.n[x].key { self.decrease_key(x, k).unwrap(); x } else { self.delete(x); self.insert(k) }
+    }
+    /// Structural invariants: heap order, parent pointers, degree = number of children, min pointer, node count.
+    pub fn validate(&self) -> bool {
+        fn ring(h: &FibonacciHeap, start: usize) -> Vec<usize> { let mut v = vec![start]; let mut c = h.n[start].right; while c != start { v.push(c); c = h.n[c].right; } v }
+        fn walk(h: &FibonacciHeap, x: usize, parent: usize) -> Option<usize> {
+            if h.n[x].p != parent { return None; }
+            let kids = if h.n[x].child == NIL { vec![] } else { ring(h, h.n[x].child) };
+            if kids.len() != h.n[x].degree { return None; }
+            let mut total = 1;
+            for k in kids { if h.n[k].key < h.n[x].key { return None; } total += walk(h, k, x)?; }
+            Some(total)
+        }
+        if self.min == NIL { return self.count == 0; }
+        let roots = ring(self, self.min);
+        if roots.iter().any(|&r| self.n[r].key < self.n[self.min].key) { return false; }
+        roots.iter().map(|&r| walk(self, r, NIL)).sum::<Option<usize>>() == Some(self.count)
+    }
     /// Largest degree among roots (bounded by D(n) = ⌊log_φ n⌋).
     pub fn max_root_degree(&self) -> usize {
         if self.min == NIL { return 0; }
@@ -213,6 +254,12 @@ pub fn demo() -> String {
     let mut order = vec![];
     while let Some((_, k)) = h.extract_min() { order.push(k); }
     outln!(o, "remaining keys in order: {:?}", order);
+    let mut p = FibonacciHeap::new();
+    let ph: Vec<usize> = (1..=20).map(|k| p.insert(k * 10)).collect();
+    p.extract_min(); // consolidate into binomial-like trees so that deletions hit inner nodes
+    p.pisano_delete(ph[11]);
+    let k = p.change_key(ph[15], 5);
+    outln!(o, "Pisano delete of 120 + change-key(160 → 5): valid = {}, minimum = {:?}, size = {}, new handle {k}", p.validate(), p.minimum(), p.len());
     let (mut a, mut b) = (FibonacciHeap::new(), FibonacciHeap::new());
     for k in [5, 9, 2] { a.insert(k); }
     for k in [4, 1, 8] { b.insert(k); }
@@ -225,6 +272,30 @@ pub fn demo() -> String {
 mod tests {
     use super::*;
     use crate::common::Rng;
+    #[test]
+    fn pisano_delete_and_change_key_keep_the_heap_valid_and_correct() {
+        let mut r = Rng::new(82);
+        let mut h = FibonacciHeap::new();
+        let mut alive: Vec<(usize, i64)> = vec![]; // (handle, key) model
+        for round in 0..4000 {
+            match r.range(0, 5) {
+                0 | 1 => { let k = r.range(0, 5000) as i64; alive.push((h.insert(k), k)); }
+                2 if !alive.is_empty() => { let i = r.range(0, alive.len() - 1); let nk = alive[i].1 - r.range(0, 300) as i64; h.decrease_key(alive[i].0, nk).unwrap(); alive[i].1 = nk; }
+                3 if !alive.is_empty() => { let (hd, k) = h.extract_min().unwrap(); assert_eq!(k, alive.iter().map(|a| a.1).min().unwrap()); alive.retain(|a| a.0 != hd); }
+                4 if !alive.is_empty() => { let i = r.range(0, alive.len() - 1); let (hd, _) = alive.swap_remove(i); h.pisano_delete(hd); }
+                _ if !alive.is_empty() => { let i = r.range(0, alive.len() - 1); let nk = r.range(0, 5000) as i64; let nh = h.change_key(alive[i].0, nk); alive[i] = (nh, nk); }
+                _ => {}
+            }
+            assert_eq!(h.len(), alive.len());
+            if round % 50 == 0 { assert!(h.validate(), "invariants broken at round {round}"); }
+            assert_eq!(h.minimum(), alive.iter().map(|a| a.1).min());
+        }
+        let mut drained = vec![];
+        while let Some((_, k)) = h.extract_min() { drained.push(k); assert!(h.validate()); }
+        let mut want: Vec<i64> = alive.iter().map(|a| a.1).collect();
+        want.sort();
+        assert_eq!(drained, want);
+    }
     #[test]
     fn heapsort_via_extract_min() {
         let mut r = Rng::new(80);

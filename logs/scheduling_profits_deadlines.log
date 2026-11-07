@@ -1,0 +1,10 @@
+$ cargo run --bin gen_site_data   # runs scheduling_profits_deadlines::demo()
+
+tasks [Task { t: 3, p: 10, d: 4 }, Task { t: 2, p: 7, d: 3 }, Task { t: 4, p: 15, d: 9 }, Task { t: 1, p: 4, d: 2 }, Task { t: 5, p: 12, d: 10 }]
+best profit 31 with tasks [3, 2, 4] (feasible: true)
+
+$ cargo test scheduling_profits_deadlines
+test matches_exhaustive_subset_search ... ok
+test unit_tasks_agree_with_the_matroid_greedy_algorithm ... ok
+
+test result: 2 passed; 0 failed

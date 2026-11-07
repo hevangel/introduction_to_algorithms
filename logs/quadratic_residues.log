@@ -1,0 +1,19 @@
+$ cargo run --bin gen_site_data   # runs quadratic_residues::demo()
+
+p = 7: p mod 4 = 3, residues among 1..6: 3
+p = 13: p mod 4 = 1, residues among 1..12: 6
+p = 17: p mod 4 = 1, residues among 1..16: 8
+p = 41: p mod 4 = 1, residues among 1..40: 20
+p = 97: p mod 4 = 1, residues among 1..96: 48
+p = 1000000007: p mod 4 = 3, residues among 1..199: 105
+sqrt(2) mod 7 = Some(4)
+sqrt(10) mod 13 = Some(7)
+sqrt(5) mod 41 = Some(28)
+sqrt(3) mod 97 = Some(87)
+sqrt(2) mod 1000000007 = Some(940286407)
+
+$ cargo test quadratic_residues
+test exactly_half_are_residues_and_criterion_matches_squares ... ok
+test square_roots_square_back_for_both_kinds_of_prime ... ok
+
+test result: 2 passed; 0 failed

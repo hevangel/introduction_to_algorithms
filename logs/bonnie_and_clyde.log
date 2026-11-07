@@ -1,0 +1,13 @@
+$ cargo run --bin gen_site_data   # runs bonnie_and_clyde::demo()
+
+(a) 7 coins of $3 and 4 coins of $5: Bonnie takes None (x-coins, y-coins)
+(b) coins [8, 4, 4, 2, 1, 1]: Some(([8, 2], [4, 4, 1, 1]))
+(c) checks [31, 24, 18, 17, 12, 9, 5]: Bonnie's checks Some([0, 2, 5])
+(d) scaling every check by 101 turns "within $100" into "exactly even": true == true
+
+$ cargo test bonnie_and_clyde
+test checks_exact_and_tolerance_versions ... ok
+test powers_of_two_greedy_is_exactly_right ... ok
+test two_denominations_matches_brute_force ... ok
+
+test result: 3 passed; 0 failed

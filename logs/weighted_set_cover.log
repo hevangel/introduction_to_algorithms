@@ -1,0 +1,10 @@
+$ cargo run --bin gen_site_data   # runs weighted_set_cover::demo()
+
+greedy picks sets [1, 2, 3] for total weight 7
+optimal weight Some(7.0); guarantee H(4) = 2.083
+
+$ cargo test weighted_set_cover
+test unit_weights_reduce_to_the_unweighted_greedy_algorithm ... ok
+test within_harmonic_factor_of_the_optimum ... ok
+
+test result: 2 passed; 0 failed

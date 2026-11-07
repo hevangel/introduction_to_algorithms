@@ -1,0 +1,9 @@
+$ cargo run --bin gen_site_data   # runs algorithmic_consulting::demo()
+
+job profits [100, 200, 150, 60], experts' fees [90, 120, 80, 100], needs [[0, 1], [1, 2], [0, 2], [3]]
+best net profit 160: accept jobs [0, 1, 2], hire experts [0, 1, 2]
+
+$ cargo test algorithmic_consulting
+test equals_exhaustive_selection_of_jobs ... ok
+
+test result: 1 passed; 0 failed

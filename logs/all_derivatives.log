@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs all_derivatives::demo()
+
+A(x) = 1 + 2x + 3x² + 4x³; derivatives at x₀ = 2:
+  fast : [49, 62, 54, 24]
+  naive: [49, 62, 54, 24]   (A(2) = 49, A′(2) = 62, A″(2) = 54, A‴(2) = 24)
+
+$ cargo test all_derivatives
+test matches_repeated_horner_modulo_p ... ok
+test small_integer_example ... ok
+
+test result: 2 passed; 0 failed

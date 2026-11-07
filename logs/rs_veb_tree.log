@@ -1,0 +1,17 @@
+$ cargo run --bin gen_site_data   # runs rs_veb_tree::demo()
+
+space of a plain vEB tree, P(u) = (√u+1)P(√u) + √u:
+  u = 2^2 : P(u) =            5 = 2u − 3 = 5
+  u = 2^4 : P(u) =           29 = 2u − 3 = 29
+  u = 2^8 : P(u) =          509 = 2u − 3 = 509
+  u = 2^16: P(u) =       131069 = 2u − 3 = 131069
+  u = 2^32: P(u) =   8589934589 = 2u − 3 = 8589934589
+RS-vEB over u = 2^30 holding 5000 keys uses 16222 nodes (a plain vEB tree would need ≈ 2^31)
+successor(1000000) = Some(1233553)
+
+$ cargo test rs_veb_tree
+test matches_a_sorted_set_for_member_min_max_successor ... ok
+test plain_veb_space_is_two_u_minus_three ... ok
+test space_is_proportional_to_the_number_of_keys_not_the_universe ... ok
+
+test result: 3 passed; 0 failed

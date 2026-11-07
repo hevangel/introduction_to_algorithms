@@ -5,12 +5,14 @@ extract-min -> Some(3)
 max root degree after consolidation = 3
 decrease-key(41 → 1): minimum = Some(1)
 remaining keys in order: [1, 7, 17, 18, 21, 23, 24, 26, 30, 35, 38, 39, 46]
+Pisano delete of 120 + change-key(160 → 5): valid = true, minimum = Some(5), size = 18, new handle 15
 union of two heaps: minimum = Some(1), size = 6
 
 $ cargo test fibonacci_heap
 test decrease_key_rejects_larger_key ... ok
 test degree_bound_and_union ... ok
 test heapsort_via_extract_min ... ok
+test pisano_delete_and_change_key_keep_the_heap_valid_and_correct ... ok
 test random_decrease_key_and_delete_match_model ... ok
 
-test result: 4 passed; 0 failed
+test result: 5 passed; 0 failed
