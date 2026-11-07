@@ -36,6 +36,10 @@ pub struct RedBlackTree {
     root: usize,
     free: Vec<usize>,
     len: usize,
+    /// Number of rotations performed so far (Problem 17-4).
+    pub rotations: usize,
+    /// Number of node recolourings (colour changes) performed so far (Problem 17-4).
+    pub recolorings: usize,
 }
 
 impl Default for RedBlackTree { fn default() -> Self { Self::new() } }
@@ -43,7 +47,7 @@ impl Default for RedBlackTree { fn default() -> Self { Self::new() } }
 impl RedBlackTree {
     pub fn new() -> Self {
         let nil = Node { key: 0, aux: i64::MIN, color: Black, left: NIL, right: NIL, p: NIL, size: 0, max: i64::MIN };
-        RedBlackTree { n: vec![nil], root: NIL, free: vec![], len: 0 }
+        RedBlackTree { n: vec![nil], root: NIL, free: vec![], len: 0, rotations: 0, recolorings: 0 }
     }
     pub fn len(&self) -> usize { self.len }
     pub fn is_empty(&self) -> bool { self.len == 0 }
@@ -70,7 +74,9 @@ impl RedBlackTree {
     }
 
     /// LEFT-ROTATE(T, x)
+    fn set_color(&mut self, x: usize, c: Color) { if self.n[x].color != c { self.n[x].color = c; if x != NIL { self.recolorings += 1; } } }
     fn left_rotate(&mut self, x: usize) {
+        self.rotations += 1;
         let y = self.n[x].right;
         self.n[x].right = self.n[y].left;
         if self.n[y].left != NIL { let l = self.n[y].left; self.n[l].p = x; }
@@ -86,6 +92,7 @@ impl RedBlackTree {
     }
     /// RIGHT-ROTATE(T, x)
     fn right_rotate(&mut self, x: usize) {
+        self.rotations += 1;
         let y = self.n[x].left;
         self.n[x].left = self.n[y].right;
         if self.n[y].right != NIL { let r = self.n[y].right; self.n[r].p = x; }
@@ -129,37 +136,37 @@ impl RedBlackTree {
             if pz == self.n[gz].left {
                 let y = self.n[gz].right; // uncle
                 if self.n[y].color == Red {
-                    self.n[pz].color = Black; // case 1
-                    self.n[y].color = Black;
-                    self.n[gz].color = Red;
+                    self.set_color(pz, Black); // case 1
+                    self.set_color(y, Black);
+                    self.set_color(gz, Red);
                     z = gz;
                 } else {
                     if z == self.n[pz].right { z = pz; self.left_rotate(z); } // case 2
                     let pz = self.n[z].p;
                     let gz = self.n[pz].p;
-                    self.n[pz].color = Black; // case 3
-                    self.n[gz].color = Red;
+                    self.set_color(pz, Black); // case 3
+                    self.set_color(gz, Red);
                     self.right_rotate(gz);
                 }
             } else {
                 let y = self.n[gz].left;
                 if self.n[y].color == Red {
-                    self.n[pz].color = Black;
-                    self.n[y].color = Black;
-                    self.n[gz].color = Red;
+                    self.set_color(pz, Black);
+                    self.set_color(y, Black);
+                    self.set_color(gz, Red);
                     z = gz;
                 } else {
                     if z == self.n[pz].left { z = pz; self.right_rotate(z); }
                     let pz = self.n[z].p;
                     let gz = self.n[pz].p;
-                    self.n[pz].color = Black;
-                    self.n[gz].color = Red;
+                    self.set_color(pz, Black);
+                    self.set_color(gz, Red);
                     self.left_rotate(gz);
                 }
             }
         }
         let r = self.root;
-        self.n[r].color = Black;
+        self.set_color(r, Black);
     }
 
     /// Handle of a node with this key, or NIL.
@@ -239,7 +246,7 @@ impl RedBlackTree {
             self.n[y].left = self.n[z].left;
             let l = self.n[y].left;
             self.n[l].p = y;
-            self.n[y].color = self.n[z].color;
+            self.set_color(y, self.n[z].color);
         }
         self.update_path(start);
         if y_orig == Black { self.delete_fixup(x); }
@@ -254,61 +261,61 @@ impl RedBlackTree {
             if x == self.n[xp].left {
                 let mut w = self.n[xp].right;
                 if self.n[w].color == Red {
-                    self.n[w].color = Black; // case 1
-                    self.n[xp].color = Red;
+                    self.set_color(w, Black); // case 1
+                    self.set_color(xp, Red);
                     self.left_rotate(xp);
                     w = self.n[self.n[x].p].right;
                 }
                 let (wl, wr) = (self.n[w].left, self.n[w].right);
                 if self.n[wl].color == Black && self.n[wr].color == Black {
-                    self.n[w].color = Red; // case 2
+                    self.set_color(w, Red); // case 2
                     x = self.n[x].p;
                 } else {
                     if self.n[wr].color == Black {
-                        self.n[wl].color = Black; // case 3
-                        self.n[w].color = Red;
+                        self.set_color(wl, Black); // case 3
+                        self.set_color(w, Red);
                         self.right_rotate(w);
                         w = self.n[self.n[x].p].right;
                     }
                     let xp = self.n[x].p; // case 4
-                    self.n[w].color = self.n[xp].color;
-                    self.n[xp].color = Black;
+                    self.set_color(w, self.n[xp].color);
+                    self.set_color(xp, Black);
                     let wr = self.n[w].right;
-                    self.n[wr].color = Black;
+                    self.set_color(wr, Black);
                     self.left_rotate(xp);
                     x = self.root;
                 }
             } else {
                 let mut w = self.n[xp].left;
                 if self.n[w].color == Red {
-                    self.n[w].color = Black;
-                    self.n[xp].color = Red;
+                    self.set_color(w, Black);
+                    self.set_color(xp, Red);
                     self.right_rotate(xp);
                     w = self.n[self.n[x].p].left;
                 }
                 let (wl, wr) = (self.n[w].left, self.n[w].right);
                 if self.n[wl].color == Black && self.n[wr].color == Black {
-                    self.n[w].color = Red;
+                    self.set_color(w, Red);
                     x = self.n[x].p;
                 } else {
                     if self.n[wl].color == Black {
-                        self.n[wr].color = Black;
-                        self.n[w].color = Red;
+                        self.set_color(wr, Black);
+                        self.set_color(w, Red);
                         self.left_rotate(w);
                         w = self.n[self.n[x].p].left;
                     }
                     let xp = self.n[x].p;
-                    self.n[w].color = self.n[xp].color;
-                    self.n[xp].color = Black;
+                    self.set_color(w, self.n[xp].color);
+                    self.set_color(xp, Black);
                     let wl = self.n[w].left;
-                    self.n[wl].color = Black;
+                    self.set_color(wl, Black);
                     self.right_rotate(xp);
                     x = self.root;
                 }
             }
         }
-        self.n[x].color = Black;
-        self.n[NIL].color = Black;
+        self.set_color(x, Black);
+        self.set_color(NIL, Black);
     }
 
     /// Delete one node with this key. Returns whether a node was removed.
@@ -368,6 +375,11 @@ pub fn demo() -> String {
     t.delete_key(12);
     t.delete_key(19);
     outln!(o, "after deleting 8, 12, 19: {:?} (valid: {})", t.inorder(), t.validate().is_ok());
+    let mut cost = RedBlackTree::new();
+    for k in 0..10_000 { cost.insert(k); }
+    let (ri, ci) = (cost.rotations, cost.recolorings);
+    for k in 0..10_000 { cost.delete_key(k); }
+    outln!(o, "10000 sorted insertions: {ri} rotations, {ci} recolourings; 10000 deletions: {} rotations, {} recolourings", cost.rotations - ri, cost.recolorings - ci);
     let mut big = RedBlackTree::new();
     for k in 0..100_000 { big.insert(k); }
     outln!(o, "100000 ascending inserts: height = {} (bound 2·lg(n+1) = {:.1})", big.height(), 2.0 * (100_001f64).log2());
@@ -378,6 +390,29 @@ pub fn demo() -> String {
 mod tests {
     use super::*;
     use crate::common::Rng;
+    /// Problem 17-4: structural changes per operation. Insertion needs at most 2 rotations, deletion at most 3, and the number of
+    /// recolourings is O(1) amortised over any sequence of operations starting from an empty tree.
+    #[test]
+    fn restructuring_cost_matches_problem_17_4() {
+        let mut r = Rng::new(490);
+        for pattern in 0..3 {
+            let mut t = RedBlackTree::new();
+            let keys: Vec<i64> = match pattern { 0 => (0..3000).collect(), 1 => (0..3000).rev().collect(), _ => r.vec(3000, 0, 1_000_000) };
+            for &k in &keys {
+                let before = t.rotations;
+                t.insert(k);
+                assert!(t.rotations - before <= 2, "an insertion uses at most two rotations");
+            }
+            let total_ops = keys.len() * 2;
+            for &k in &keys {
+                let before = t.rotations;
+                t.delete_key(k);
+                assert!(t.rotations - before <= 3, "a deletion uses at most three rotations");
+            }
+            assert!(t.is_empty() && t.validate().is_ok());
+            assert!(t.recolorings <= 6 * total_ops, "recolourings {} for {total_ops} operations", t.recolorings);
+        }
+    }
     #[test]
     fn invariants_hold_through_random_inserts_and_deletes() {
         let mut t = RedBlackTree::new();

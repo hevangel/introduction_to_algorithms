@@ -1,7 +1,7 @@
 # Acyclic Subgraphs
 
 ## What it is
-Given a graph, which edges can we keep so that the remaining subgraph is **acyclic**? Problem 17-2 of the first edition (the 2nd edition's greedy problem set) looks at both versions; the directed version is the *maximum acyclic subgraph* problem — equivalent to the minimum **feedback arc set**, which is NP-hard.
+Given a graph, which edges can we keep so that the remaining subgraph is **acyclic**? Problem 16-3 of the 3rd edition looks at both versions; the directed version is the *maximum acyclic subgraph* problem — equivalent to the minimum **feedback arc set**, which is NP-hard.
 
 ## How it works
 * **Undirected.** A maximum acyclic subgraph is any **spanning forest** with `|V| − c` edges (`c` = number of connected components): a forest on a component with `k` vertices has at most `k − 1` edges, and greedy edge insertion with [union-find](#/disjoint_set) reaches that bound. This is the [graphic matroid](#/matroid_greedy) — every maximal independent set has the same size.

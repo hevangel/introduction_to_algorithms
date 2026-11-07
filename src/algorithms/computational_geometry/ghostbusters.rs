@@ -1,5 +1,5 @@
 //! @title Ghostbusters and Ghosts
-//! @chapter Problem 33-4 (1e–4e)
+//! @chapter Problem 33-3 (3e)
 //! @editions 1,2,3,4
 //! @summary Match n ghostbusters to n ghosts by non-crossing segments (no three points collinear): split by the lowest point's angular sweep, O(n² lg n) worst case.
 //! @order 62

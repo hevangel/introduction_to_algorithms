@@ -1,5 +1,5 @@
 //! @title Acyclic Subgraphs
-//! @chapter Greedy-algorithm problems (1e–2e): acyclic subgraphs
+//! @chapter Problem 16-3 (3e): acyclic subgraphs
 //! @editions 1,2
 //! @summary Undirected: a maximum acyclic subgraph is a spanning forest (|V| − #components edges). Directed: choose forward or backward edges of any vertex order to keep ≥ |E|/2 edges acyclic.
 //! @order 280

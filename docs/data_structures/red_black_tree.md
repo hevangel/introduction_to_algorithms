@@ -31,6 +31,8 @@ flowchart TB
   end
 ```
 
+**Restructuring cost (Problem 17-4).** Rebalancing is cheap in the *amortised* sense: `RB-INSERT` performs at most **2 rotations** and `RB-DELETE` at most **3**, and although a single operation may recolour `Θ(lg n)` nodes (case 1 of the insert fix-up propagates up the tree), a potential function counting black nodes with two red children shows that any sequence of `m` operations on an initially empty tree performs only **`O(m)` recolourings** in total. The tree counts its rotations and recolourings so these claims can be checked empirically.
+
 ## Complexity
 Search, insert, delete, min, max, successor: Θ(lg n) worst case; insert uses ≤ 2 rotations and delete ≤ 3.
 
@@ -38,4 +40,4 @@ Search, insert, delete, min, max, successor: Θ(lg n) worst case; insert uses �
 Default ordered map/set in many standard libraries (C++ `std::map`, Java `TreeMap`), the Linux kernel's `rbtree`, and as the base for [order-statistic](#/order_statistic_tree) and [interval](#/interval_tree) trees.
 
 ## In this implementation
-A direct port of the book's pseudocode with the shared sentinel at arena index 0. Each node additionally stores `size` and `max(aux)` and maintains them through rotations/insert/delete, so Chapter 14's augmentations reuse this file. `validate()` checks all red-black properties and the augmentations; tests call it after random operations.
+A direct port of the book's pseudocode with the shared sentinel at arena index 0. Each node additionally stores `size` and `max(aux)` and maintains them through rotations/insert/delete, so Chapter 14's augmentations reuse this file. `validate()` checks all red-black properties and the augmentations; tests call it after random operations, and check Problem 17-4's bounds (≤ 2 rotations per insertion, ≤ 3 per deletion, `O(1)` amortised recolourings) on sorted, reverse-sorted and random sequences of 3 000 keys.

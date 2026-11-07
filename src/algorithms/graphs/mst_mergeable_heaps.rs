@@ -1,5 +1,5 @@
 //! @title MST with Mergeable Heaps
-//! @chapter Problem 19-2 (1e–4e)
+//! @chapter Problem 19-2 (2e) / mergeable-heap applications (1e–4e)
 //! @editions 1,2,3,4
 //! @summary Keep every component's outgoing edges in a mergeable heap; repeatedly extract a component's lightest edge, skip edges that became internal, union, and merge the heaps: O(E lg V) with leftist heaps.
 //! @order 86

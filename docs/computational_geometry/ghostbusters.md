@@ -1,7 +1,7 @@
 # Ghostbusters and Ghosts
 
 ## What it is
-`n` ghostbusters and `n` ghosts stand at distinct points of the plane, no three collinear. Each ghostbuster must fire a proton beam in a straight line at one ghost, and a beam stops when it hits the ghost; no two beams may **cross** (that would be dangerous!). Problem 33-4 asks for a pairing of busters to ghosts whose connecting segments are pairwise disjoint.
+`n` ghostbusters and `n` ghosts stand at distinct points of the plane, no three collinear. Each ghostbuster must fire a proton beam in a straight line at one ghost, and a beam stops when it hits the ghost; no two beams may **cross** (that would be dangerous!). Problem 33-3 asks for a pairing of busters to ghosts whose connecting segments are pairwise disjoint.
 
 ## How it works
 Two classical solutions:

@@ -1,7 +1,7 @@
 # MST with Mergeable Heaps
 
 ## What it is
-Problem 19-2 shows that [mergeable heaps](#/binomial_heap) — heaps supporting `UNION` in `O(lg n)` — yield a neat minimum spanning tree algorithm. Each connected component of the growing forest keeps a heap of the edges that touch it; combining two components combines their heaps. It sits between [Kruskal](#/mst_kruskal) (global sorted list, [union-find](#/disjoint_set)) and [Borůvka](#/boruvka) (all components pick in rounds).
+A problem in the mergeable-heaps chapter of the 2nd edition shows that [mergeable heaps](#/binomial_heap) — heaps supporting `UNION` in `O(lg n)` — yield a neat minimum spanning tree algorithm. Each connected component of the growing forest keeps a heap of the edges that touch it; combining two components combines their heaps. It sits between [Kruskal](#/mst_kruskal) (global sorted list, [union-find](#/disjoint_set)) and [Borůvka](#/boruvka) (all components pick in rounds).
 
 ## How it works
 1. Make a heap for each vertex containing its incident edges.

@@ -1,5 +1,5 @@
 //! @title Pairing Heaps
-//! @chapter Problem 19-2 (1e–3e)
+//! @chapter Chapter notes on Fibonacci heaps (alternative mergeable heap)
 //! @editions 1,2,3
 //! @summary A self-adjusting heap: meld is O(1), delete-min pairs siblings in two passes (O(lg n) amortised), decrease-key cuts a subtree.
 //! @order 195

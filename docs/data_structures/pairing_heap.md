@@ -1,7 +1,7 @@
 # Pairing Heaps
 
 ## What it is
-A **pairing heap** (Fredman, Sedgewick, Sleator & Tarjan, 1986) is a heap-ordered multiway tree with a very simple implementation that is nevertheless one of the fastest priority queues in practice. Problem 19-2 of the 3rd edition asks you to analyse it; it is meant as a simpler alternative to [Fibonacci heaps](#/fibonacci_heap).
+A **pairing heap** (Fredman, Sedgewick, Sleator & Tarjan, 1986) is a heap-ordered multiway tree with a very simple implementation that is nevertheless one of the fastest priority queues in practice. The textbook mentions it only in the chapter notes on Fibonacci heaps, as a simpler alternative to [Fibonacci heaps](#/fibonacci_heap).
 
 ## How it works
 Each node keeps a first child and a next sibling (left-child right-sibling form, cf. [rooted trees](#/rooted_trees)).
