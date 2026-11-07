@@ -1,0 +1,16 @@
+$ cargo run --bin gen_site_data   # runs select_linear_time::demo()
+
+A      = [44, 33, 45, 89, 4, 18, 1, 15, 19, 66, 89, 26, 20, 30, 28, 72, 53, 35, 82, 69, 39, 85, 62, 63, 77]
+sorted = [1, 4, 15, 18, 19, 20, 26, 28, 30, 33, 35, 39, 44, 45, 53, 62, 63, 66, 69, 72, 77, 82, 85, 89, 89]
+SELECT(A,  1) = 1
+SELECT(A,  9) = 30
+SELECT(A, 13) = 44
+SELECT(A, 25) = 89
+median = 44
+on 100000 sorted keys, median = 49999
+
+$ cargo test select_linear_time
+test adversarial_sorted_input_is_fast ... ok
+test matches_sorting_including_duplicates ... ok
+
+test result: 2 passed; 0 failed

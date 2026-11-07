@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs push_relabel::demo()
+
+generic push-relabel: max flow 23 using 13 pushes and 11 relabels
+relabel-to-front    : max flow 23
+Edmonds-Karp check  : 23
+
+$ cargo test push_relabel
+test agrees_with_edmonds_karp_on_random_networks ... ok
+test book_network ... ok
+
+test result: 2 passed; 0 failed

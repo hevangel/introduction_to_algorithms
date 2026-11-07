@@ -1,0 +1,13 @@
+$ cargo run --bin gen_site_data   # runs akra_bazzi::demo()
+
+T(n)=T(n/3)+T(2n/3)+n      : p=1.0000 → Θ(n^1.000 lg^1 n)
+T(n)=2T(n/2)+n             : p=1.0000 → Θ(n^1.000 lg^1 n)
+T(n)=T(n/2)+T(n/4)+n       : p=0.6942 → Θ(n^1.000)
+numeric T(2^20)/(n lg n) for the first recurrence = 1.073
+
+$ cargo test akra_bazzi
+test numeric_matches ... ok
+test p_values ... ok
+test solutions ... ok
+
+test result: 3 passed; 0 failed

@@ -1,0 +1,21 @@
+$ cargo run --bin gen_site_data   # runs printing_neatly::demo()
+
+line width 20: total cost 1197
+  |Dynamic programming |
+  |solves problems     |
+  |by combining        |
+  |the solutions       |
+  |to overlapping      |
+  |subproblems         |
+line width 30: total cost 405
+  |Dynamic programming solves    |
+  |problems by combining the     |
+  |solutions to overlapping      |
+  |subproblems                   |
+a word longer than the line cannot be placed: None
+
+$ cargo test printing_neatly
+test layout_respects_width ... ok
+test matches_exhaustive_search ... ok
+
+test result: 2 passed; 0 failed

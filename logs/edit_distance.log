@@ -1,0 +1,15 @@
+$ cargo run --bin gen_site_data   # runs edit_distance::demo()
+
+Levenshtein(kitten → sitting) = 3
+  ops: [Replace('k', 's'), Copy('i'), Copy('t'), Copy('t'), Replace('e', 'i'), Copy('n'), Insert('g')]
+problem 15-5 costs (algorithm → altruistic) = 12
+  ops: [Copy('a'), Copy('l'), Replace('g', 't'), Replace('o', 'r'), Replace('r', 'u'), Copy('i'), Insert('s'), Copy('t'), Replace('h', 'i'), Replace('m', 'c')]
+twiddle fixes a typo: recieve → receive costs 1: [Copy('r'), Copy('e'), Copy('c'), Twiddle('i', 'e'), Copy('v'), Copy('e')]
+kill the tail: abcdefgh → abc costs 3: [Copy('a'), Copy('b'), Copy('c'), Kill(5)]
+
+$ cargo test edit_distance
+test classic_values ... ok
+test matches_reference_levenshtein_and_scripts_replay ... ok
+test twiddle_and_kill_are_used ... ok
+
+test result: 3 passed; 0 failed

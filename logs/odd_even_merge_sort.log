@@ -1,0 +1,16 @@
+$ cargo run --bin gen_site_data   # runs odd_even_merge_sort::demo()
+
+   n | odd-even merge sort (size, depth) | bitonic (size, depth)
+   2 | (  1,  1)                          | (  1,  1)
+   4 | (  5,  3)                          | (  6,  3)
+   8 | ( 19,  6)                          | ( 24,  6)
+  16 | ( 63, 10)                          | ( 80, 10)
+  32 | (191, 15)                          | (240, 15)
+merging two sorted halves [1,4,6,9] [2,3,7,8] -> [1, 2, 3, 4, 6, 7, 8, 9]
+
+$ cargo test odd_even_merge_sort
+test full_sorter_passes_zero_one_test ... ok
+test merging_network_merges_sorted_halves ... ok
+test uses_fewer_comparators_than_bitonic ... ok
+
+test result: 3 passed; 0 failed

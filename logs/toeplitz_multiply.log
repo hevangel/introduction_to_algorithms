@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs toeplitz_multiply::demo()
+
+Toeplitz T = [[1,2,3],[4,1,2],[5,4,1]], x = [1, 10, 100]
+T·x via polynomial multiplication = [541, 412, 123]
+T·x by the definition             = [541, 412, 123]
+n = 2000: fast product equals O(n²) product: true
+
+$ cargo test toeplitz_multiply
+test equals_naive_product ... ok
+test identity_like_matrix ... ok
+
+test result: 2 passed; 0 failed

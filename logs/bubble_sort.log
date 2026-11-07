@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs bubble_sort::demo()
+
+before: [5, 1, 4, 2, 8]
+after : [1, 2, 4, 5, 8]
+early exit on sorted input used 1 pass(es)
+
+$ cargo test bubble_sort
+test early_exit_is_one_pass_when_sorted ... ok
+test sorts ... ok
+
+test result: 2 passed; 0 failed

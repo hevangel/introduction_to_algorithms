@@ -1,0 +1,13 @@
+$ cargo run --bin gen_site_data   # runs tournament_selection::demo()
+
+A = [27, 4, 91, 15, 8, 63, 2, 40]: second smallest = 4 using 9 comparisons (n + ⌈lg n⌉ − 2 = 9)
+n =     10: second smallest 1, comparisons 12 ≤ n + ⌈lg n⌉ − 2 = 12
+n =    100: second smallest 1, comparisons 105 ≤ n + ⌈lg n⌉ − 2 = 105
+n =   1000: second smallest 1, comparisons 1008 ≤ n + ⌈lg n⌉ − 2 = 1008
+n = 100000: second smallest 1, comparisons 100015 ≤ n + ⌈lg n⌉ − 2 = 100015
+
+$ cargo test tournament_selection
+test correct_and_within_the_optimal_bound ... ok
+test power_of_two_is_exact ... ok
+
+test result: 2 passed; 0 failed

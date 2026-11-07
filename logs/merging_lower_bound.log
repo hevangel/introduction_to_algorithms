@@ -1,0 +1,17 @@
+$ cargo run --bin gen_site_data   # runs merging_lower_bound::demo()
+
+   n | lg C(2n,n) | 2n−1 (merge on the adversary input)
+   1 |       1.00 | 1
+   2 |       2.58 | 3
+   4 |       6.13 | 7
+   8 |      13.65 | 15
+  16 |      29.16 | 31
+  64 |     124.17 | 127
+ 256 |     507.17 | 511
+the information bound falls short of 2n−1 by about ½ lg n, but no algorithm can beat 2n−1: each adjacent pair of the interleaving must be compared
+
+$ cargo test merging_lower_bound
+test adversary_forces_every_adjacent_comparison ... ok
+test never_more_than_2n_minus_1_and_bound_is_close ... ok
+
+test result: 2 passed; 0 failed

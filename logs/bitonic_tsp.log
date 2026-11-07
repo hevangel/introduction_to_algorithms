@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs bitonic_tsp::demo()
+
+points: [(0.0, 6.0), (1.0, 0.0), (2.0, 3.0), (5.0, 4.0), (6.0, 1.0), (7.0, 5.0), (8.0, 2.0)]
+shortest bitonic tour (DP)    = 25.5840
+shortest bitonic tour (brute) = 25.5840
+
+$ cargo test bitonic_tsp
+test dp_matches_brute_force ... ok
+test tiny_cases ... ok
+
+test result: 2 passed; 0 failed

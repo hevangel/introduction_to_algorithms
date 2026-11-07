@@ -1,0 +1,17 @@
+$ cargo run --bin gen_site_data   # runs segment_intersection::demo()
+
+cross((0,0),(4,0),(4,4)) = 16 (left turn)
+cross((0,0),(4,0),(4,-4)) = -16 (right turn)
+cross((0,0),(2,2),(4,4)) = 0 (collinear)
+proper crossing        : intersect = true
+touching at an endpoint: intersect = true
+collinear overlapping  : intersect = true
+collinear disjoint     : intersect = false
+parallel               : intersect = false
+
+$ cargo test segment_intersection
+test matches_exact_reference_on_small_grids ... ok
+test named_cases ... ok
+test turn_directions ... ok
+
+test result: 3 passed; 0 failed

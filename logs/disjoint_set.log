@@ -1,0 +1,14 @@
+$ cargo run --bin gen_site_data   # runs disjoint_set::demo()
+
+edges [(0, 1), (1, 2), (3, 4), (5, 6), (6, 7), (7, 5), (8, 8)]
+4 connected components; labels = [1, 1, 1, 4, 4, 6, 6, 6, 8]
+same_set(0,1) before union: false
+after unions: same_set(0,2) = true, same_set(0,4) = false, sets = 5
+weighted union of 4096 singletons (balanced merges): 24576 pointer updates = n·lg n / 2 = 24576
+
+$ cargo test disjoint_set
+test components_and_make_set ... ok
+test forest_matches_naive_labels ... ok
+test weighted_union_bound ... ok
+
+test result: 3 passed; 0 failed

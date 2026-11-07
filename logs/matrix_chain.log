@@ -1,0 +1,14 @@
+$ cargo run --bin gen_site_data   # runs matrix_chain::demo()
+
+dimensions p = [30, 35, 15, 5, 10, 20, 25]
+minimum scalar multiplications m[1,6] = 15125
+optimal parenthesization: ((A1(A2A3))((A4A5)A6))
+memoized agrees: true; naive recursion agrees: true
+naive left-to-right order would cost 40500
+
+$ cargo test matrix_chain
+test book_example ... ok
+test single_matrix_costs_nothing ... ok
+test three_strategies_agree ... ok
+
+test result: 3 passed; 0 failed

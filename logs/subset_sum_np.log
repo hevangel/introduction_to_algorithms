@@ -1,0 +1,13 @@
+$ cargo run --bin gen_site_data   # runs subset_sum_np::demo()
+
+target  9: exhaustive Some([2, 4])  dp Some([2, 4])  meet-in-the-middle Some([2, 4])
+target 30: exhaustive None  dp None  meet-in-the-middle None
+target 58: exhaustive Some([0, 1, 2, 3, 4])  dp Some([0, 1, 2, 3, 4])  meet-in-the-middle Some([0, 1, 2, 3, 4])
+target  1: exhaustive None  dp None  meet-in-the-middle None
+dp table size is n·t — exponential in the *bit length* of t, hence pseudo-polynomial
+
+$ cargo test subset_sum_np
+test edge_cases ... ok
+test three_solvers_agree ... ok
+
+test result: 2 passed; 0 failed

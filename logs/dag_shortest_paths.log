@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs dag_shortest_paths::demo()
+
+shortest distances from s: ["∞", "0", "2", "6", "5", "3"]  (INF = unreachable)
+longest (critical) path lengths from s: [None, Some(0), Some(2), Some(9), Some(8), Some(10)]
+cyclic graph → None
+
+$ cargo test dag_shortest_paths
+test book_figure_24_5 ... ok
+test cycle_returns_none ... ok
+test matches_bellman_ford_on_random_dags ... ok
+
+test result: 3 passed; 0 failed

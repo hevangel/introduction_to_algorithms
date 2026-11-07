@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs two_three_four_tree::demo()
+
+inserted 13 keys: [5, 10, 15, 20, 25, 30, 35, 40, 50, 60, 70, 80, 90]
+height 2, valid 2-3-4 tree: true, contains 35: true, contains 36: false
+100000 sequential keys: height 15 (lg n = 16.6), valid: true
+
+$ cargo test two_three_four_tree
+test behaves_like_a_sorted_set ... ok
+test height_is_logarithmic_for_sorted_input ... ok
+
+test result: 2 passed; 0 failed

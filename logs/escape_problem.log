@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs escape_problem::demo()
+
+5×5 grid, 4 starting points in the middle: all escape? true (flow 4)
+5×5 grid, all 9 interior vertices occupied: escapees 8 of 9 (the 3×3 block has only 12 neighbours but every path must cross its own ring)
+single start in the centre of a 3×3 grid: true
+
+$ cargo test escape_problem
+test known_cases ... ok
+test matches_exhaustive_path_search ... ok
+
+test result: 2 passed; 0 failed

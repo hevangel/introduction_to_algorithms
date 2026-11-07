@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs minimum_mean_cycle::demo()
+
+edges [(0, 1, 1), (1, 2, 2), (2, 0, 3), (1, 3, -1), (3, 1, 0)]
+min mean cycle weight = Some(-0.5) (cycle 1→3→1 has weight −1 over 2 edges)
+DAG → None
+
+$ cargo test minimum_mean_cycle
+test matches_cycle_enumeration ... ok
+test simple_cases ... ok
+
+test result: 2 passed; 0 failed

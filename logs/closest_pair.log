@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs closest_pair::demo()
+
+points [(2, 3), (12, 30), (40, 50), (5, 1), (12, 10), (3, 4)]
+closest pair (2, 3) – (3, 4) at distance √2 = 1.4142
+20000 random points: squared distance 1145 (n lg n divide and conquer)
+
+$ cargo test closest_pair
+test duplicates_and_degenerate ... ok
+test matches_brute_force ... ok
+
+test result: 2 passed; 0 failed

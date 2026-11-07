@@ -1,0 +1,15 @@
+$ cargo run --bin gen_site_data   # runs euler_totient::demo()
+
+φ(1..30) = [1, 1, 2, 2, 4, 2, 6, 4, 6, 4, 10, 4, 12, 6, 8, 8, 16, 6, 18, 8, 12, 10, 22, 8, 20, 12, 18, 12, 28, 8]
+φ(36) = 12
+φ(97) = 96
+φ(1000) = 400
+φ(123456789) = 82260072
+Σ_{d | 1000} φ(d) = 1000 = n
+Euler's theorem: 7^φ(100) mod 100 = 1
+
+$ cargo test euler_totient
+test identities ... ok
+test matches_counting_coprime_residues ... ok
+
+test result: 2 passed; 0 failed

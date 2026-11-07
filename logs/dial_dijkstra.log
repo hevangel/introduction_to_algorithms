@@ -1,0 +1,9 @@
+$ cargo run --bin gen_site_data   # runs dial_dijkstra::demo()
+
+Dial distances from 0: [0, 2, 3, 4, 7]
+n = 20000, E = 80000, W = 10: bucket queue equals binary-heap Dijkstra: true
+
+$ cargo test dial_dijkstra
+test equals_heap_dijkstra_including_zero_weights_and_unreachable_vertices ... ok
+
+test result: 1 passed; 0 failed

@@ -1,0 +1,14 @@
+$ cargo run --bin gen_site_data   # runs karatsuba::demo()
+
+(1+2x+3x²+4x³)(5+6x+7x²+8x³) = [5, 16, 34, 60, 61, 52, 32] using 9 multiplications (schoolbook: 16)
+n =    16: Karatsuba        81 multiplications, schoolbook       256 (ratio 3.2)
+n =   256: Karatsuba      6561 multiplications, schoolbook     65536 (ratio 10.0)
+n =  4096: Karatsuba    531441 multiplications, schoolbook  16777216 (ratio 31.6)
+123456789123456789 × 987654321987654321 = 121932631356500531347203169112635269
+
+$ cargo test karatsuba
+test decimal_multiplication_matches_u128 ... ok
+test matches_schoolbook_for_all_shapes ... ok
+test uses_exactly_three_to_the_k_multiplications ... ok
+
+test result: 3 passed; 0 failed

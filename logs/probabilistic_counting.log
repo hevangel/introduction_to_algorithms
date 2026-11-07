@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs probabilistic_counting::demo()
+
+n_i = 100i  : mean estimate 1001.0 (true 1000), variance 101304 (theory 99n = 99000)
+n_i = 2^i−1 : mean estimate 1011.4 (true 1000), variance 541062 (theory ≈ n²/2 = 500000)
+Morris counter after 10⁶ increments stores i = 20 (a 5-bit register) and estimates 1048575
+
+$ cargo test probabilistic_counting
+test estimators_are_unbiased ... ok
+test stored_index_is_tiny ... ok
+
+test result: 2 passed; 0 failed

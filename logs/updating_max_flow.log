@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs updating_max_flow::demo()
+
+initial maximum flow = 23
+increase the capacity of v4→t (edge 16) by 1: flow = 24
+decrease the capacity of v1→v3 (edge 4) by 1: flow = 23
+recomputed from scratch on the updated network: 23
+
+$ cargo test updating_max_flow
+test single_unit_updates_agree_with_recomputation ... ok
+
+test result: 1 passed; 0 failed

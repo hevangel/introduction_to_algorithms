@@ -1,0 +1,14 @@
+$ cargo run --bin gen_site_data   # runs k_means::demo()
+
+120 points in 3 blobs; Lloyd's algorithm converged in 2 iterations
+cost per iteration: [271.7, 172.4, 172.4]
+center 0: (5.26, 9.09) with 40 points
+center 1: (10.21, 0.15) with 40 points
+center 2: (-0.20, -0.03) with 40 points
+
+$ cargo test k_means
+test cost_never_increases ... ok
+test recovers_well_separated_clusters ... ok
+test single_cluster_is_the_mean ... ok
+
+test result: 3 passed; 0 failed

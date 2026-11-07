@@ -1,0 +1,14 @@
+$ cargo run --bin gen_site_data   # runs multiplier_circuits::demo()
+
+13 × 11: array = 143, Wallace = 143
+  n | array size/depth | wallace size/depth
+  4 |     96 /   22    |    111 /   12
+  8 |    384 /   46    |    447 /   21
+ 16 |   1536 /   94    |   1743 /   29
+ 32 |   6144 /  190    |   6735 /   36
+
+$ cargo test multiplier_circuits
+test both_multiply_correctly ... ok
+test wallace_is_shallower_for_wide_operands ... ok
+
+test result: 2 passed; 0 failed

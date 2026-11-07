@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs lp_rounding_vertex_cover::demo()
+
+triangle, unit weights: LP optimum 1.500, x = [0.5, 0.5, 0.5]
+  rounded cover [0, 1, 2] weight 3 vs optimum 2
+weighted 5-vertex graph: cover [0, 1, 3], weight 5 (LP bound 5.000, optimum 5)
+
+$ cargo test lp_rounding_vertex_cover
+test rounding_gives_valid_cover_within_twice_the_lp_bound ... ok
+test triangle_lp_is_half_integral ... ok
+
+test result: 2 passed; 0 failed

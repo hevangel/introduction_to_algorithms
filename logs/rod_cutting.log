@@ -1,0 +1,23 @@
+$ cargo run --bin gen_site_data   # runs rod_cutting::demo()
+
+prices p[1..10] = [1, 5, 8, 9, 10, 17, 17, 20, 24, 30]
+ n | r_n | optimal pieces
+ 1 |   1 | [1]
+ 2 |   5 | [2]
+ 3 |   8 | [3]
+ 4 |  10 | [2, 2]
+ 5 |  13 | [2, 3]
+ 6 |  17 | [6]
+ 7 |  18 | [1, 6]
+ 8 |  22 | [2, 6]
+ 9 |  25 | [3, 6]
+10 |  30 | [10]
+naive == memoized == bottom-up for n=10: true
+with a cut cost of 2, n=7 yields 17
+
+$ cargo test rod_cutting
+test book_values ... ok
+test cut_cost_reduces_revenue ... ok
+test reconstruction_is_consistent ... ok
+
+test result: 3 passed; 0 failed

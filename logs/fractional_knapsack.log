@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs fractional_knapsack::demo()
+
+items (weight, value) = [(10.0, 60.0), (20.0, 100.0), (30.0, 120.0)], capacity 50
+fractional optimum = 240.00, fractions taken = [1.0, 1.0, 0.6666666666666666]
+0-1 optimum        = 220 (never larger than the fractional one)
+
+$ cargo test fractional_knapsack
+test thief_example ... ok
+test upper_bounds_the_zero_one_optimum_and_fits ... ok
+
+test result: 2 passed; 0 failed

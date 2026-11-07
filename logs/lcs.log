@@ -1,0 +1,20 @@
+$ cargo run --bin gen_site_data   # runs lcs::demo()
+
+X = ABCBDAB, Y = BDCABA
+c table (rows = prefixes of X, columns = prefixes of Y):
+  [0, 0, 0, 0, 0, 0, 0]
+  [0, 0, 0, 0, 1, 1, 1]
+  [0, 1, 1, 1, 1, 2, 2]
+  [0, 1, 1, 2, 2, 2, 2]
+  [0, 1, 1, 2, 2, 3, 3]
+  [0, 1, 2, 2, 2, 3, 3]
+  [0, 1, 2, 2, 3, 3, 4]
+  [0, 1, 2, 2, 3, 4, 4]
+LCS = BCBA (length 4)
+two-row length = 4, memoized length = 4
+
+$ cargo test lcs
+test book_example ... ok
+test random_strings_agree_with_brute_force ... ok
+
+test result: 2 passed; 0 failed

@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs kmp::demo()
+
+π for ababaca = [0, 0, 1, 2, 3, 0, 1]
+KMP on T = abababacaba: shifts [2]
+KMP on T = aaaaaaa, P = aa: shifts [0, 1, 2, 3, 4, 5]
+smallest period of 'abcabcabc' = 3
+
+$ cargo test kmp
+test agrees_with_naive ... ok
+test prefix_function_of_figure ... ok
+
+test result: 2 passed; 0 failed

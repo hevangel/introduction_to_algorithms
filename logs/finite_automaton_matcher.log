@@ -1,0 +1,18 @@
+$ cargo run --bin gen_site_data   # runs finite_automaton_matcher::demo()
+
+automaton for P = ababaca (states 0..7); transitions on a, b, c:
+  state 0: a→1 b→0 c→0
+  state 1: a→1 b→2 c→0
+  state 2: a→3 b→0 c→0
+  state 3: a→1 b→4 c→0
+  state 4: a→5 b→0 c→0
+  state 5: a→1 b→4 c→6
+  state 6: a→7 b→0 c→0
+  state 7: a→1 b→2 c→0
+T = abababacaba: matches at shifts [2]
+
+$ cargo test finite_automaton_matcher
+test agrees_with_naive ... ok
+test figure_32_7_automaton ... ok
+
+test result: 2 passed; 0 failed

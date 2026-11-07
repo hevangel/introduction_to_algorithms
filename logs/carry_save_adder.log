@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs carry_save_adder::demo()
+
+37 + 21 + 50 = 108 ; carry-save form: s = 2, t = 106, s + t = 108
+n =  4: size  20 gates, depth 3 (independent of n!)
+n = 16: size  80 gates, depth 3 (independent of n!)
+n = 64: size 320 gates, depth 3 (independent of n!)
+
+$ cargo test carry_save_adder
+test constant_depth ... ok
+test sum_of_outputs_equals_sum_of_inputs ... ok
+
+test result: 2 passed; 0 failed

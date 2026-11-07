@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs approx_vertex_cover::demo()
+
+edges: [(0, 1), (1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (1, 5)]
+matching: [(0, 1), (2, 3), (4, 5)]
+approximate cover [0, 1, 2, 3, 4, 5] (size 6), optimal size 3 → ratio 2.00 ≤ 2
+
+$ cargo test approx_vertex_cover
+test valid_cover_within_factor_two ... ok
+test worst_case_is_tight_on_complete_bipartite_graphs ... ok
+
+test result: 2 passed; 0 failed

@@ -1,0 +1,13 @@
+$ cargo run --bin gen_site_data   # runs stooge_sort::demo()
+
+sorted: [1, 2, 3, 6, 7, 8, 9]
+n=   10:          364 recursive calls (n^2.71 ≈ 512)
+n=  100:       265720 recursive calls (n^2.71 ≈ 262422)
+n= 1000:     64570081 recursive calls (n^2.71 ≈ 134431177)
+n=10000:  47071589413 recursive calls (n^2.71 ≈ 68865229634)
+
+$ cargo test stooge_sort
+test call_count_grows_superquadratically ... ok
+test sorts_every_size ... ok
+
+test result: 2 passed; 0 failed

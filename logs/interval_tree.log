@@ -1,0 +1,13 @@
+$ cargo run --bin gen_site_data   # runs interval_tree::demo()
+
+intervals stored: 10
+search [22,25]  -> Some((15, 23))
+search [11,14]  -> None  (no overlap)
+all overlapping [14,16] -> [(15, 23), (16, 21)]
+after deleting (15,23): search [22,25] -> Some((25, 30))
+
+$ cargo test interval_tree
+test delete_missing_interval ... ok
+test matches_brute_force ... ok
+
+test result: 2 passed; 0 failed

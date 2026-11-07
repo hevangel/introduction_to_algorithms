@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs horner::demo()
+
+P(-2) horner= -19 naive= -19 running= -19
+P( 0) horner=   1 naive=   1 running=   1
+P( 1) horner=   2 naive=   2 running=   2
+P( 3) horner=  76 naive=  76 running=  76
+
+$ cargo test horner
+test all_three_agree ... ok
+
+test result: 1 passed; 0 failed

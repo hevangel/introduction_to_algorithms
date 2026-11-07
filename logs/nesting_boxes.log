@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs nesting_boxes::demo()
+
+boxes [[1, 5, 3], [4, 2, 6], [7, 8, 9], [2, 6, 4], [3, 7, 5], [10, 2, 2]]
+box 0 nests in box 1? true   box 1 nests in 4? true   box 5 nests in 2? false
+longest nesting chain (innermost first): [0, 1, 4, 2] = [[1, 5, 3], [4, 2, 6], [3, 7, 5], [7, 8, 9]]
+
+$ cargo test nesting_boxes
+test chain_matches_exhaustive_subset_search ... ok
+test sorted_comparison_equals_trying_all_rotations ... ok
+
+test result: 2 passed; 0 failed

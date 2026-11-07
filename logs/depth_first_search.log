@@ -1,0 +1,25 @@
+$ cargo run --bin gen_site_data   # runs depth_first_search::demo()
+
+u: discovered  1, finished  8
+v: discovered  2, finished  7
+w: discovered  9, finished 12
+x: discovered  4, finished  5
+y: discovered  3, finished  6
+z: discovered 10, finished 11
+edge u→v: Tree
+edge v→y: Tree
+edge y→x: Tree
+edge x→v: Back
+edge u→x: Forward
+edge w→y: Cross
+edge w→z: Tree
+edge z→z: Back
+has a cycle? true
+finish order: ["x", "y", "v", "u", "z", "w"]
+
+$ cargo test depth_first_search
+test book_figure_22_4 ... ok
+test cycle_detection ... ok
+test parenthesis_theorem_and_edge_kinds ... ok
+
+test result: 3 passed; 0 failed

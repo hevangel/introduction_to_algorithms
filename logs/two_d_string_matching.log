@@ -1,0 +1,16 @@
+$ cargo run --bin gen_site_data   # runs two_d_string_matching::demo()
+
+text:
+  abcabc
+  bcabca
+  abcabc
+  cabcab
+  abcabc
+  bcabca
+2×2 pattern ca/ab occurs at (row, col): [(0, 2), (3, 0), (3, 3), (4, 2)]
+
+$ cargo test two_d_string_matching
+test agrees_with_naive_on_small_alphabets ... ok
+test planted_pattern_is_found ... ok
+
+test result: 2 passed; 0 failed

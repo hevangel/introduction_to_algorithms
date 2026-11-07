@@ -1,0 +1,15 @@
+$ cargo run --bin gen_site_data   # runs assembly_line_scheduling::demo()
+
+fastest time through the factory = 38
+  station S1,1
+  station S2,2
+  station S1,3
+  station S2,4
+  station S2,5
+  station S1,6
+
+$ cargo test assembly_line_scheduling
+test book_example ... ok
+test matches_brute_force ... ok
+
+test result: 2 passed; 0 failed

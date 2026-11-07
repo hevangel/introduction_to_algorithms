@@ -1,0 +1,14 @@
+$ cargo run --bin gen_site_data   # runs bit_reversal_counter::demo()
+
+bit-reversal permutation for k = 3: [0, 4, 2, 6, 1, 5, 3, 7]
+k = 4: [0, 8, 4, 12, 2, 10, 6, 14, 1, 9, 5, 13, 3, 11, 7, 15]
+k =  8: 255 increments cost 502 bit flips (1.97 per increment, amortised O(1))
+k = 12: 4095 increments cost 8178 bit flips (2.00 per increment, amortised O(1))
+k = 16: 65535 increments cost 131054 bit flips (2.00 per increment, amortised O(1))
+k = 20: 1048575 increments cost 2097130 bit flips (2.00 per increment, amortised O(1))
+
+$ cargo test bit_reversal_counter
+test amortised_constant_cost ... ok
+test enumerates_the_bit_reversal_permutation ... ok
+
+test result: 2 passed; 0 failed

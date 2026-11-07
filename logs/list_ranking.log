@@ -1,0 +1,13 @@
+$ cargo run --bin gen_site_data   # runs list_ranking::demo()
+
+list order: [3, 6, 0, 4, 1, 5, 2]
+distance to tail per node: [4, 2, 0, 6, 3, 1, 5]
+synchronous rounds: 3 (⌈lg 7⌉ = 3)
+n =    16: 4 rounds (lg n = 4)
+n =  1024: 10 rounds (lg n = 10)
+n = 65536: 16 rounds (lg n = 16)
+
+$ cargo test list_ranking
+test ranks_match_sequential_walk_and_rounds_are_logarithmic ... ok
+
+test result: 1 passed; 0 failed

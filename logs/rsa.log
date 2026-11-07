@@ -1,0 +1,13 @@
+$ cargo run --bin gen_site_data   # runs rsa::demo()
+
+p=11, q=29: public key (n=319, e=3), secret key d=187
+encrypt 100 → 254; decrypt → 100
+60-bit modulus n = 416707632051955423: message 123456789012 → ciphertext 363474325738274977 → 123456789012
+signature verifies: true   tampered message verifies: false
+
+$ cargo test rsa
+test book_numbers ... ok
+test random_primes_are_prime_with_requested_size ... ok
+test roundtrip_and_signatures_with_random_keys ... ok
+
+test result: 3 passed; 0 failed

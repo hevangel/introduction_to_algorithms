@@ -1,0 +1,14 @@
+$ cargo run --bin gen_site_data   # runs seam_carving::demo()
+
+disruption grid:
+  [5, 9, 2, 8, 6]
+  [3, 1, 7, 4, 9]
+  [8, 6, 5, 1, 3]
+  [4, 7, 2, 9, 5]
+minimum seam cost = 9, columns by row = [2, 3, 3, 2]
+after carving the seam the grid is 4×4
+
+$ cargo test seam_carving
+test matches_brute_force_and_seam_is_connected ... ok
+
+test result: 1 passed; 0 failed

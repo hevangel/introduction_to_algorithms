@@ -1,0 +1,18 @@
+$ cargo run --bin gen_site_data   # runs dynamic_table::demo()
+
+inserting 1..=17: capacity grows 1 → 2 → 4 → 8 → 16 → 32
+  after insert  1: capacity  1, cumulative cost  1
+  after insert  2: capacity  2, cumulative cost  3
+  after insert  4: capacity  4, cumulative cost  7
+  after insert  8: capacity  8, cumulative cost 15
+  after insert 16: capacity 16, cumulative cost 31
+  after insert 17: capacity 32, cumulative cost 48
+100000 inserts: total cost 231071 = 2.311·n (bound 3n), 17 resizes
+after deleting down to 100 items: capacity 256 (load 0.39, never below 1/4)
+
+$ cargo test dynamic_table
+test inserts_cost_less_than_three_per_operation ... ok
+test mixed_operations_stay_amortized_constant_and_load_factor_bounded ... ok
+test potential_is_zero_just_after_resize ... ok
+
+test result: 3 passed; 0 failed

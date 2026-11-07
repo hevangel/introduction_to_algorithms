@@ -1,0 +1,15 @@
+$ cargo run --bin gen_site_data   # runs online_hiring::demo()
+
+n = 100; theoretical optimum k = n/e ≈ 36.8, success ≈ 1/e ≈ 0.368
+k =  0: success rate = 0.010
+k =  5: success rate = 0.152
+k = 20: success rate = 0.329
+k = 37: success rate = 0.366
+k = 60: success rate = 0.308
+k = 90: success rate = 0.095
+
+$ cargo test online_hiring
+test deterministic_cases ... ok
+test near_one_over_e_at_optimal_k ... ok
+
+test result: 2 passed; 0 failed

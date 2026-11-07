@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs pairing_heap::demo()
+
+minimum = Some(1), size = 8
+after decrease-key(9 → 0): minimum = Some(0)
+extract-min order: [0, 1, 2, 3, 5, 6, 7, 8]
+
+$ cargo test pairing_heap
+test errors_and_empty ... ok
+test heapsort_and_union ... ok
+test random_decrease_key_matches_model ... ok
+
+test result: 3 passed; 0 failed

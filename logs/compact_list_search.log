@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs compact_list_search::demo()
+
+n =     100: linear scan       50 probes on average; randomized with t = √n =   10:     18 probes
+n =   10000: linear scan     5003 probes on average; randomized with t = √n =  100:    207 probes
+n = 1000000: linear scan   498983 probes on average; randomized with t = √n = 1000:   1993 probes
+
+$ cargo test compact_list_search
+test both_searches_are_correct ... ok
+test randomized_search_probes_about_sqrt_n ... ok
+
+test result: 2 passed; 0 failed

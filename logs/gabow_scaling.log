@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs gabow_scaling::demo()
+
+edges [(0, 1, 7), (0, 2, 12), (1, 2, 2), (1, 3, 9), (2, 4, 10), (3, 4, 4), (3, 5, 1), (4, 5, 5)]
+Gabow scaling from 0: [Some(0), Some(7), Some(9), Some(16), Some(19), Some(17)]
+binary-heap Dijkstra  : [0, 7, 9, 16, 19, 17]
+4 scaling phases (one per bit of the largest weight 12), each solved with small integer keys
+
+$ cargo test gabow_scaling
+test matches_dijkstra ... ok
+test single_vertex_and_zero_weights ... ok
+
+test result: 2 passed; 0 failed

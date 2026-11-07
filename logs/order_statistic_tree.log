@@ -1,0 +1,18 @@
+$ cargo run --bin gen_site_data   # runs order_statistic_tree::demo()
+
+n = 20
+OS-SELECT( 1) = Some(3)
+OS-SELECT( 5) = Some(14)
+OS-SELECT(10) = Some(20)
+OS-SELECT(20) = Some(47)
+OS-RANK( 3)   = Some(1)
+OS-RANK(26)   = Some(13)
+OS-RANK(47)   = Some(20)
+after deleting 26: OS-SELECT(10) = Some(20), size = 19
+inversions of [2,3,8,6,1] via OS-tree: 5
+
+$ cargo test order_statistic_tree
+test inversions_match_merge_sort_count ... ok
+test select_and_rank_match_sorted_vector ... ok
+
+test result: 2 passed; 0 failed

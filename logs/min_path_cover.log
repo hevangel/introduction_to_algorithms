@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs min_path_cover::demo()
+
+DAG edges [(0, 1), (1, 2), (0, 3), (3, 2), (2, 4), (5, 3)]
+minimum vertex-disjoint path cover (2 paths): [[0, 1, 2, 4], [5, 3]]
+minimum cover when paths may overlap: 2 (= size of the largest antichain)
+
+$ cargo test min_path_cover
+test disjoint_cover_is_valid_and_optimal ... ok
+test overlapping_cover_equals_maximum_antichain ... ok
+
+test result: 2 passed; 0 failed

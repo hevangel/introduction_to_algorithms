@@ -1,0 +1,16 @@
+$ cargo run --bin gen_site_data   # runs chained_hash_table::demo()
+
+n = 20, m = 8, load factor α = 2.50
+chain lengths: [2, 2, 1, 3, 3, 3, 4, 2]
+search(37*5) = Some(5), search(1) = None
+delete(37*5) = Some(5), then search = None
+α=0.5: longest chain = 4, empty slots = 609
+α=  1: longest chain = 5, empty slots = 352
+α=  2: longest chain = 8, empty slots = 146
+α=  4: longest chain = 13, empty slots = 28
+
+$ cargo test chained_hash_table
+test behaves_like_a_map ... ok
+test chains_are_short_for_uniform_keys ... ok
+
+test result: 2 passed; 0 failed

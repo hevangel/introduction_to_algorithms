@@ -1,0 +1,9 @@
+$ cargo run --bin gen_site_data   # runs min_reachable_label::demo()
+
+edges [[1], [2], [0, 3], [], [3], [4]], labels [5, 2, 4, 6, 1, 3]
+minimum reachable label per vertex: [2, 2, 2, 6, 1, 1]
+
+$ cargo test min_reachable_label
+test matches_search_from_every_vertex ... ok
+
+test result: 1 passed; 0 failed

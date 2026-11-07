@@ -1,0 +1,13 @@
+$ cargo run --bin gen_site_data   # runs max_subarray::demo()
+
+A = [13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7]
+divide & conquer : (7, 10, 43)
+kadane           : (7, 10, 43)
+brute force      : (7, 10, 43)
+
+$ cargo test max_subarray
+test all_methods_agree_on_sum ... ok
+test all_negative_picks_largest ... ok
+test book_example ... ok
+
+test result: 3 passed; 0 failed

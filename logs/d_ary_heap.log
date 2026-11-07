@@ -1,0 +1,14 @@
+$ cargo run --bin gen_site_data   # runs d_ary_heap::demo()
+
+d=2: height of 1000-node heap = 9
+d=3: height of 1000-node heap = 6
+d=4: height of 1000-node heap = 5
+d=8: height of 1000-node heap = 4
+3-ary heap drains as [9, 7, 5, 3, 1]
+
+$ cargo test d_ary_heap
+test all_arities_sort_descending ... ok
+test height_matches_formula ... ok
+test increase_key_moves_to_top ... ok
+
+test result: 3 passed; 0 failed

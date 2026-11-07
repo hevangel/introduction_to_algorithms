@@ -1,0 +1,14 @@
+$ cargo run --bin gen_site_data   # runs carry_select_adder::demo()
+
+block size  1: sum = 0xf0e21567, carry out = false, delay = 33 gate delays (ripple would be 64)
+block size  4: sum = 0xf0e21567, carry out = false, delay = 15 gate delays (ripple would be 64)
+block size  6: sum = 0xf0e21567, carry out = false, delay = 17 gate delays (ripple would be 64)
+block size  8: sum = 0xf0e21567, carry out = false, delay = 19 gate delays (ripple would be 64)
+block size 32: sum = 0xf0e21567, carry out = false, delay = 64 gate delays (ripple would be 64)
+0xDEADBEEF + 0x12345678 = 0xf0e21567
+
+$ cargo test carry_select_adder
+test delay_beats_ripple_with_square_root_blocks ... ok
+test matches_integer_addition_for_every_block_size ... ok
+
+test result: 2 passed; 0 failed

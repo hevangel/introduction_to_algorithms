@@ -1,0 +1,18 @@
+$ cargo run --bin gen_site_data   # runs combinational_circuits::demo()
+
+full adder: size 5 gates, depth(sum) 2, depth(carry) 3
+ a b cin | sum cout
+ 0 0  0  |  0   0
+ 1 0  0  |  1   0
+ 0 1  0  |  1   0
+ 1 1  0  |  0   1
+ 0 0  1  |  1   0
+ 1 0  1  |  0   1
+ 0 1  1  |  0   1
+ 1 1  1  |  1   1
+
+$ cargo test combinational_circuits
+test bit_helpers_and_constants ... ok
+test full_adder_truth_table ... ok
+
+test result: 2 passed; 0 failed

@@ -1,0 +1,17 @@
+$ cargo run --bin gen_site_data   # runs euclid_gcd::demo()
+
+EUCLID(30, 21) = 3   binary_gcd(30, 21) = 3
+gcd(99, 78) = 3, lcm(4, 6) = 12, gcd of [12, 18, 30] = 6
+worst case: consecutive Fibonacci numbers
+  gcd(F9, F8) takes 7 steps
+  gcd(F17, F16) takes 15 steps
+  gcd(F25, F24) takes 23 steps
+  gcd(F33, F32) takes 31 steps
+  gcd(F41, F40) takes 39 steps
+
+$ cargo test euclid_gcd
+test binary_equals_euclid ... ok
+test known_values ... ok
+test lame_bound_on_fibonacci ... ok
+
+test result: 3 passed; 0 failed

@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs weighted_majority::demo()
+
+ε = 0.5: learner mistakes  34, best expert  34, bound  111.2, heaviest expert = 0
+ε = 0.2: learner mistakes  37, best expert  34, bound  104.6, heaviest expert = 0
+ε = 0.1: learner mistakes  43, best expert  34, bound  120.9, heaviest expert = 0
+the learner quickly learns to trust expert 0; the regret against it stays within the bound
+
+$ cargo test weighted_majority
+test mistake_bound_holds_on_random_instances ... ok
+test perfect_expert_makes_learner_converge ... ok
+
+test result: 2 passed; 0 failed

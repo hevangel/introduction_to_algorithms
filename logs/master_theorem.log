@@ -1,0 +1,17 @@
+$ cargo run --bin gen_site_data   # runs master_theorem::demo()
+
+merge sort            T=2T(n/2)+n      case Two: Θ(n lg n)
+binary search         T=T(n/2)+1       case Two: Θ(lg n)
+Strassen              T=7T(n/2)+n²     case One: Θ(n^2.807)
+recursive matrix mult T=8T(n/2)+n²     case One: Θ(n^3)
+T=3T(n/4)+n lg n                       case Three: Θ(n lg n)
+T=2T(n/2)+n²                           case Three: Θ(n^2)
+T=2T(n/2)+n/lg n                       case Two: Θ(n lg lg n)
+
+numeric check, T(n)=2T(n/2)+n: T(2^20)/(n lg n) = 1.050
+
+$ cargo test master_theorem
+test classic_recurrences ... ok
+test numeric_agrees_with_theory ... ok
+
+test result: 2 passed; 0 failed

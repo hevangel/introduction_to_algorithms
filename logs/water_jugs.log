@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs water_jugs::demo()
+
+red [5, 2, 9, 4, 7], blue [7, 4, 2, 5, 9]
+pairs (red idx, blue idx): [(4, 0), (0, 3), (1, 2), (3, 1), (2, 4)], 19 comparisons
+n =    100: 1416 comparisons = 2.13 · n lg n
+n =   1000: 22256 comparisons = 2.23 · n lg n
+n =  10000: 308750 comparisons = 2.32 · n lg n
+
+$ cargo test water_jugs
+test every_pair_has_equal_capacity_and_comparisons_are_n_log_n ... ok
+
+test result: 1 passed; 0 failed

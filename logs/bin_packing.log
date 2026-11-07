@@ -1,0 +1,14 @@
+$ cargo run --bin gen_site_data   # runs bin_packing::demo()
+
+capacity 10, items [4, 8, 1, 4, 2, 1, 7, 3, 6, 5] (sum 41, lower bound 5 bins)
+next fit  : 6 bins
+first fit : 5 bins [[4, 1, 4, 1], [8, 2], [7, 3], [6], [5]]
+best fit  : 5 bins
+FFD       : 5 bins [[8, 2], [7, 3], [6, 4], [5, 4, 1], [1]]
+optimal   : 5 bins
+
+$ cargo test bin_packing
+test ffd_beats_first_fit_on_a_classic_input ... ok
+test guarantees_hold_against_the_exact_optimum ... ok
+
+test result: 2 passed; 0 failed

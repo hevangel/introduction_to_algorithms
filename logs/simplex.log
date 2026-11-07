@@ -1,0 +1,15 @@
+$ cargo run --bin gen_site_data   # runs simplex::demo()
+
+primal: max 3x1 + x2 + 2x3  s.t.  x1+x2+3x3 ≤ 30, 2x1+2x2+5x3 ≤ 24, 4x1+x2+2x3 ≤ 36
+  -> Optimal { value: 28.0, x: [8.0, 4.0, 0.0] }
+dual optimum (min bᵀy) = 28.0000 at y = [0.0, 0.1667, 0.6667]  — equal to the primal value (strong duality)
+infeasible: x ≤ −1, x ≥ 0 → Infeasible
+unbounded : max x s.t. −x ≤ 1 → Unbounded
+needs initialisation (b < 0): max −x1−x2 s.t. −x1−x2 ≤ −2 → Optimal { value: -2.0, x: [2.0, 0.0] }
+
+$ cargo test simplex
+test book_example ... ok
+test matches_vertex_enumeration_and_duality ... ok
+test status_codes ... ok
+
+test result: 3 passed; 0 failed

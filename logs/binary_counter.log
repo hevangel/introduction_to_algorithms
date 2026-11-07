@@ -1,0 +1,27 @@
+$ cargo run --bin gen_site_data   # runs binary_counter::demo()
+
+ n | value bits | actual cost | total | Φ (ones) | amortized
+ 1 |          1 |           1 |     1 |        1 | 2
+ 2 |          2 |           2 |     3 |        1 | 2
+ 3 |          3 |           1 |     4 |        2 | 2
+ 4 |          4 |           3 |     7 |        1 | 2
+ 5 |          5 |           1 |     8 |        2 | 2
+ 6 |          6 |           2 |    10 |        2 | 2
+ 7 |          7 |           1 |    11 |        3 | 2
+ 8 |          8 |           4 |    15 |        1 | 2
+ 9 |          9 |           1 |    16 |        2 | 2
+10 |         10 |           2 |    18 |        2 | 2
+11 |         11 |           1 |    19 |        3 | 2
+12 |         12 |           3 |    22 |        2 | 2
+13 |         13 |           1 |    23 |        3 | 2
+14 |         14 |           2 |    25 |        3 | 2
+15 |         15 |           1 |    26 |        4 | 2
+16 |         16 |           5 |    31 |        1 | 2
+100000 increments on a 32-bit counter cost 199994 flips (< 2n = 200000)
+
+$ cargo test binary_counter
+test amortized_cost_is_at_most_two ... ok
+test decrement_undoes_increment ... ok
+test total_flips_formula ... ok
+
+test result: 3 passed; 0 failed

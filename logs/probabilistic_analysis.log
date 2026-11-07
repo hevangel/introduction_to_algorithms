@@ -1,0 +1,16 @@
+$ cargo run --bin gen_site_data   # runs probabilistic_analysis::demo()
+
+smallest group with ≥ 50% shared-birthday chance (365 days): 23
+  k=10: P(collision) = 0.1169
+  k=23: P(collision) = 0.5073
+  k=40: P(collision) = 0.8912
+  k=57: P(collision) = 0.9901
+coupon collector n=100: simulated 521.5 tosses, theory n·H_n = 518.7
+longest head streak in 1000 flips: simulated 9.40, lg 1000 = 9.97
+
+$ cargo test probabilistic_analysis
+test birthday_threshold_is_23 ... ok
+test coupon_collector_expectation ... ok
+test streak_is_logarithmic ... ok
+
+test result: 3 passed; 0 failed

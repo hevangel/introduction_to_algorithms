@@ -1,0 +1,13 @@
+$ cargo run --bin gen_site_data   # runs topological_sort::demo()
+
+DFS-based order : watch → socks → shirt → tie → undershorts → pants → shoes → belt → jacket
+Kahn's order    : undershorts → shirt → socks → watch → pants → tie → belt → shoes → jacket
+valid? true
+paths 0 → 3 in a diamond DAG: Some(2)
+cyclic graph: None
+
+$ cargo test topological_sort
+test cycles_are_rejected_and_paths_counted ... ok
+test orders_are_valid ... ok
+
+test result: 2 passed; 0 failed

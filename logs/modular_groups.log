@@ -1,0 +1,15 @@
+$ cargo run --bin gen_site_data   # runs modular_groups::demo()
+
+Z_15* = [1, 2, 4, 7, 8, 11, 13, 14]  (φ(15) = 8)
+subgroup <2> of Z_15* = [1, 2, 4, 8]  (order 4, divides φ(15) = 8: Lagrange)
+subgroup <7> of Z_15* = [1, 7, 4, 13]
+φ(n) for n = 1..12: [1, 1, 2, 2, 4, 2, 6, 4, 6, 4, 10, 4]
+Euler's theorem check: 7^φ(15) mod 15 = 1
+primitive roots mod 13: [2, 6, 7, 11] (4 = φ(φ(13)))
+
+$ cargo test modular_groups
+test lagrange_and_euler ... ok
+test primitive_root_counts ... ok
+test totient_counts_units ... ok
+
+test result: 3 passed; 0 failed

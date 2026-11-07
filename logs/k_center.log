@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs k_center::demo()
+
+k = 1: greedy centers [0] radius 12.53; optimal [5] radius 10.20
+k = 2: greedy centers [0, 7] radius 11.05; optimal [0, 5] radius 9.85
+k = 3: greedy centers [0, 7, 4] radius 2.83; optimal [1, 4, 6] radius 1.41
+k = 4: greedy centers [0, 7, 4, 8] radius 2.00; optimal [0, 1, 4, 6] radius 1.41
+
+$ cargo test k_center
+test two_approximation_against_exhaustive_optimum ... ok
+test well_separated_clusters_are_found ... ok
+
+test result: 2 passed; 0 failed

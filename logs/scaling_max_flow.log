@@ -1,0 +1,10 @@
+$ cargo run --bin gen_site_data   # runs scaling_max_flow::demo()
+
+classic bad-case network with capacities 10⁹: max flow 2000000000 found with only 2 augmentations
+CLRS Figure 26.1 network: (23, 3)
+
+$ cargo test scaling_max_flow
+test equals_edmonds_karp_on_random_networks ... ok
+test few_augmentations_for_huge_capacities ... ok
+
+test result: 2 passed; 0 failed

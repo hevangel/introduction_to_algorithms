@@ -1,0 +1,13 @@
+$ cargo run --bin gen_site_data   # runs linked_list::demo()
+
+after inserting 9,16,4,1 at the head: [1, 4, 16, 9]
+after deleting key 4 via its handle:   [1, 16, 9]
+search(99) = None
+singly list [1, 2, 3, 4] reversed -> [4, 3, 2, 1]
+
+$ cargo test linked_list
+test empty_list ... ok
+test insert_search_delete ... ok
+test reverse_singly ... ok
+
+test result: 3 passed; 0 failed

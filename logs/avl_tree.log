@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs avl_tree::demo()
+
+inserting 1..15 in order gives height 4 (perfectly balanced would be 4)
+100000 ascending keys: height = 17 (AVL bound 1.4405·lg(n+2) ≈ 23.9)
+delete(8): [1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15], valid = true
+
+$ cargo test avl_tree
+test height_is_logarithmic_for_sorted_input ... ok
+test random_operations_preserve_balance ... ok
+
+test result: 2 passed; 0 failed

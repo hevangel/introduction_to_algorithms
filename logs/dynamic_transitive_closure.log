@@ -1,0 +1,14 @@
+$ cargo run --bin gen_site_data   # runs dynamic_transitive_closure::demo()
+
+after inserting 0→1: 1 reachable ordered pairs
+after inserting 1→2: 3 reachable ordered pairs
+after inserting 3→4: 4 reachable ordered pairs
+after inserting 2→3: 10 reachable ordered pairs
+after inserting 5→0: 15 reachable ordered pairs
+3600 insertions into a 60-vertex graph cost 287220 steps (V³ = 216000)
+
+$ cargo test dynamic_transitive_closure
+test matches_recomputation_after_every_insertion ... ok
+test total_work_is_cubic_even_for_many_insertions ... ok
+
+test result: 2 passed; 0 failed

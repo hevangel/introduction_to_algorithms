@@ -1,0 +1,13 @@
+$ cargo run --bin gen_site_data   # runs heap_priority_queue::demo()
+
+maximum            = Some(15)
+after increase_key = Some(20)
+extract-max order  = [20, 15, 13, 12, 9, 8, 7, 6, 5, 4, 2, 1]
+merge of 4 sorted lists = [0, 1, 2, 3, 4, 8, 9, 10, 11]
+
+$ cargo test heap_priority_queue
+test extracts_in_descending_order ... ok
+test increase_key_and_delete ... ok
+test k_way_merge ... ok
+
+test result: 3 passed; 0 failed

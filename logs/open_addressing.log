@@ -1,0 +1,15 @@
+$ cargo run --bin gen_site_data   # runs open_addressing::demo()
+
+average probes for a successful search (m = 4096)
+  α   | linear | quadratic | double | uniform-hashing theory (1/α)ln(1/(1−α))
+ 0.50 |   1.47 |      1.41 |   1.37 | 1.39
+ 0.75 |   2.29 |      1.93 |   1.82 | 1.85
+ 0.90 |   4.40 |      2.75 |   2.54 | 2.56
+deleted flag keeps later keys reachable: delete(10)=true, search(26)=true
+
+$ cargo test open_addressing
+test all_strategies_behave_like_a_set ... ok
+test double_hashing_beats_linear_at_high_load ... ok
+test table_can_be_filled_completely_and_then_overflows ... ok
+
+test result: 3 passed; 0 failed

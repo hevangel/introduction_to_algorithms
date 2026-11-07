@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs list_scheduling::demo()
+
+jobs [1, 1, 1, 1, 1, 1, 3] on 3 machines
+list scheduling 5, LPT 3, optimal 3 (ratio 1.667; bound 2 − 1/m = 1.667)
+jobs [7, 7, 6, 6, 5, 5, 4, 4, 4]: list 15, LPT 15, optimal 12
+
+$ cargo test list_scheduling
+test graham_bounds_against_the_optimum ... ok
+test worst_case_instance_is_tight ... ok
+
+test result: 2 passed; 0 failed

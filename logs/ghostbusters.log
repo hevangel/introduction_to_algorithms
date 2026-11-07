@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs ghostbusters::demo()
+
+(0, 0) (buster) — (9, 8) (ghost)
+(10, 1) (buster) — (6, 3) (ghost)
+(2, 5) (ghost) — (4, 9) (buster)
+any two segments cross? false
+
+$ cargo test ghostbusters
+test crossing_predicate ... ok
+test matchings_are_perfect_bichromatic_and_planar ... ok
+
+test result: 2 passed; 0 failed

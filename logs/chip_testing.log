@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs chip_testing::demo()
+
+n =    9, good =   5: found good chip #8    (true) using 8 tests (≤ 3n = 27); full classification correct: true
+n =   16, good =   9: found good chip #12   (true) using 18 tests (≤ 3n = 48); full classification correct: true
+n =  101, good =  51: found good chip #100  (true) using 100 tests (≤ 3n = 303); full classification correct: true
+n = 1000, good = 501: found good chip #986  (true) using 1156 tests (≤ 3n = 3000); full classification correct: true
+
+$ cargo test chip_testing
+test always_finds_a_good_chip_with_linear_tests ... ok
+test pair_tests_semantics ... ok
+
+test result: 2 passed; 0 failed

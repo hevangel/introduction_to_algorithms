@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs lp_formulations::demo()
+
+shortest path 0 ⇝ 2 as an LP: Some(9.0)  (Dijkstra: 9)
+max flow of the CLRS network as an LP: 23  (Edmonds–Karp: 23)
+min-cost flow of 3 units as an LP: Some(14.0)
+
+$ cargo test lp_formulations
+test max_flow_matches_edmonds_karp ... ok
+test min_cost_flow_matches_successive_shortest_paths ... ok
+test shortest_paths_match_dijkstra ... ok
+
+test result: 3 passed; 0 failed

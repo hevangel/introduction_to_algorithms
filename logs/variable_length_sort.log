@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs variable_length_sort::demo()
+
+integers [1000, 7, 42, 123456, 9, 100, 99999, 12, 0, 5000]
+sorted    [0, 7, 9, 12, 42, 100, 1000, 5000, 99999, 123456]
+strings   ["", "a", "app", "apple", "apply", "ban", "banana", "band"]
+
+$ cargo test variable_length_sort
+test integers_match_std_sort ... ok
+test strings_match_std_sort ... ok
+
+test result: 2 passed; 0 failed

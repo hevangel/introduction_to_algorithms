@@ -1,0 +1,10 @@
+$ cargo run --bin gen_site_data   # runs min_max::demo()
+
+A = [3, 8, 1, 9, 4, 7, 2, 6, 5]
+min=1 max=9 using 12 comparisons (naive: 16, bound 3⌊n/2⌋ = 12)
+n=1000: 1498 comparisons (naive 1998, bound 1500)
+
+$ cargo test min_max
+test correct_and_within_bound ... ok
+
+test result: 1 passed; 0 failed

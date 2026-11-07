@@ -1,0 +1,13 @@
+$ cargo run --bin gen_site_data   # runs van_emde_boas_tree::demo()
+
+universe 16, stored {2,3,4,5,7,14,15}: min=Some(2) max=Some(15)
+successor(5)=Some(7) successor(7)=Some(14) successor(15)=None
+predecessor(7)=Some(5) predecessor(2)=None predecessor(14)=Some(7)
+after deleting 7 and 2: member(7)=false min=Some(3) successor(5)=Some(14)
+u = 2^16: successor(1000) = Some(1067) found with ~lg lg u = 4 recursive levels
+
+$ cargo test van_emde_boas_tree
+test empty_tree ... ok
+test matches_btreeset_for_various_universes ... ok
+
+test result: 2 passed; 0 failed

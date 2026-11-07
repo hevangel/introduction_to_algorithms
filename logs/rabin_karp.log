@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs rabin_karp::demo()
+
+T = 2359023141526739921, P = 31415, q = 13: valid shifts [6], spurious hits 1
+q =        101: 2000 matches in 22000 chars, 0 spurious hits
+q = 1000000007: 2000 matches in 22000 chars, 0 spurious hits
+
+$ cargo test rabin_karp
+test agrees_with_naive_on_random_binary_strings ... ok
+test book_figure ... ok
+
+test result: 2 passed; 0 failed

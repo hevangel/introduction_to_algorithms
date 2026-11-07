@@ -1,0 +1,19 @@
+$ cargo run --bin gen_site_data   # runs red_black_tree::demo()
+
+insert 41 -> height 1 black-height 2
+insert 38 -> height 2 black-height 2
+insert 31 -> height 2 black-height 2
+insert 12 -> height 3 black-height 3
+insert 19 -> height 3 black-height 3
+insert  8 -> height 4 black-height 3
+inorder = [8, 12, 19, 31, 38, 41]
+after deleting 8, 12, 19: [31, 38, 41] (valid: true)
+100000 ascending inserts: height = 31 (bound 2·lg(n+1) = 33.2)
+
+$ cargo test red_black_tree
+test delete_everything ... ok
+test height_bound_on_sorted_input ... ok
+test invariants_hold_through_random_inserts_and_deletes ... ok
+test successor_and_minimum ... ok
+
+test result: 4 passed; 0 failed

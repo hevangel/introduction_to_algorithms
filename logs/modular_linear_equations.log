@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs modular_linear_equations::demo()
+
+14x ≡ 30 (mod 100): [45, 95]  (gcd = 2, so 2 solutions)
+3x ≡ 2 (mod 7):    [3]  (unique solution)
+4x ≡ 3 (mod 8):    []  (no solution: gcd 4 ∤ 3)
+6x ≡ 0 (mod 9):    [0, 3, 6]  (gcd 3 → 3 solutions)
+
+$ cargo test modular_linear_equations
+test book_example ... ok
+test exhaustive_check ... ok
+
+test result: 2 passed; 0 failed

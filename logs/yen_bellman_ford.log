@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs yen_bellman_ford::demo()
+
+zig-zag path of 9 vertices: distances [0, 2, 4, 6, 8, 7, 5, 3, 1]
+Yen passes that changed something: 4 (≤ ⌈n/2⌉ = 5); worst-case ordinary Bellman–Ford passes: n−1 = 8
+ordinary Bellman–Ford with the edges in the worst order needed 8 passes
+
+$ cargo test yen_bellman_ford
+test negative_cycle_is_reported_and_zigzag_needs_half_the_passes ... ok
+test same_distances_as_bellman_ford_and_few_passes ... ok
+
+test result: 2 passed; 0 failed

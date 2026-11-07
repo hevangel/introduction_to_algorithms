@@ -1,0 +1,15 @@
+$ cargo run --bin gen_site_data   # runs binary_search::demo()
+
+A = [2, 3, 5, 7, 11, 13, 17, 19]
+search 11: iterative=Some(4) recursive=Some(4)
+search  4: iterative=None recursive=None
+search 19: iterative=Some(7) recursive=Some(7)
+search  2: iterative=Some(0) recursive=Some(0)
+pair with sum 24 exists? true
+pair with sum 100 exists? false
+
+$ cargo test binary_search
+test finds_every_element_and_rejects_absent ... ok
+test two_sum ... ok
+
+test result: 2 passed; 0 failed

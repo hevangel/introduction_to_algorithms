@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs greedy_set_cover::demo()
+
+universe 0..12 with 5 sets
+greedy picks Some([4, 0])
+optimal size = Some(2)
+adversarial: greedy Some(2), optimal Some(2)
+
+$ cargo test greedy_set_cover
+test covers_everything_within_harmonic_bound ... ok
+test greedy_can_be_suboptimal ... ok
+
+test result: 2 passed; 0 failed

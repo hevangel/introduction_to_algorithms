@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs monge_arrays::demo()
+
+is Monge: true
+row minima (divide & conquer): [0, 0, 1, 1, 2, 2, 3, 3]
+row minima (brute force)     : [0, 0, 1, 1, 2, 2, 3, 3]
+1000×1000 array: 21938 entry evaluations (≈ m + n lg m = 11000) instead of 10⁶
+
+$ cargo test monge_arrays
+test matches_brute_force_on_random_monge_arrays ... ok
+test monotone_minima_and_non_monge_detection ... ok
+
+test result: 2 passed; 0 failed

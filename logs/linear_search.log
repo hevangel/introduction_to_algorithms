@@ -1,0 +1,13 @@
+$ cargo run --bin gen_site_data   # runs linear_search::demo()
+
+A = [31, 41, 59, 26, 41, 58]
+linear_search(41)   = Some(1)
+linear_search(99)   = None
+sentinel_search(26) = Some(3)
+sentinel_search(7)  = None
+
+$ cargo test linear_search
+test finds_first_occurrence ... ok
+test sentinel_matches_linear ... ok
+
+test result: 2 passed; 0 failed

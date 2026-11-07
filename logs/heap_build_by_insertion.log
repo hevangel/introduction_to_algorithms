@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs heap_build_by_insertion::demo()
+
+input [1,2,3]: insertion build → [3, 1, 2], bottom-up build → [3, 2, 1] (different heaps!)
+n =    256 ascending input: insertion     1546 swaps (≈ n lg n = 2048), bottom-up    249 swaps (≤ n)
+n =   4096 ascending input: insertion    40974 swaps (≈ n lg n = 49152), bottom-up   4085 swaps (≤ n)
+n =  65536 ascending input: insertion   917522 swaps (≈ n lg n = 1048576), bottom-up  65521 swaps (≤ n)
+
+$ cargo test heap_build_by_insertion
+test both_build_valid_heaps_but_not_always_the_same ... ok
+test worst_case_gap ... ok
+
+test result: 2 passed; 0 failed

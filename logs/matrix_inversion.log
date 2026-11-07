@@ -1,0 +1,13 @@
+$ cargo run --bin gen_site_data   # runs matrix_inversion::demo()
+
+A      = [[4.0, 7.0], [2.0, 6.0]]
+A⁻¹    = [[0.6, -0.7], [-0.2, 0.4]]
+‖A·A⁻¹ − I‖ = 2.22e-16
+random 30×30: error 3.94e-15
+singular matrix has no inverse: None
+
+$ cargo test matrix_inversion
+test random_inverses ... ok
+test two_by_two ... ok
+
+test result: 2 passed; 0 failed

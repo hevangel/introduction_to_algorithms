@@ -1,0 +1,13 @@
+$ cargo run --bin gen_site_data   # runs hire_assistant::demo()
+
+best-to-worst order hires once   : 1
+worst-to-best order hires n times: 5
+n=  10: simulated avg hires = 2.910   H_n = 2.929   ln n = 2.303
+n= 100: simulated avg hires = 5.212   H_n = 5.187   ln n = 4.605
+n=1000: simulated avg hires = 7.460   H_n = 7.485   ln n = 6.908
+
+$ cargo test hire_assistant
+test average_matches_harmonic_number ... ok
+test extremes ... ok
+
+test result: 2 passed; 0 failed

@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs acyclic_subgraphs::demo()
+
+digraph [(0, 1), (1, 2), (2, 0), (2, 3), (3, 1), (3, 4), (4, 0)]
+half-acyclic subgraph keeps 4 of 7 edges (≥ |E|/2), acyclic = true
+true maximum acyclic subgraph has 6 edges
+undirected [(0, 1), (1, 2), (2, 0), (3, 4)]: spanning forest keeps edges [0, 1, 3] (n − components = 3)
+
+$ cargo test acyclic_subgraphs
+test directed_guarantee_and_acyclicity ... ok
+test undirected_forest_has_n_minus_components_edges ... ok
+
+test result: 2 passed; 0 failed

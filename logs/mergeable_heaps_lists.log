@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs mergeable_heaps_lists::demo()
+
+4000 inserts: sorted list 1969690 steps (≈ n²/4 each), unsorted list 4000 steps
+UNION of two lists of 2000: sorted 4000 steps, unsorted 1 step(s)
+100 EXTRACT-MINs: sorted 100 steps, unsorted 395050 steps
+neither list gives O(lg n) for everything — that is what binary, binomial and Fibonacci heaps achieve
+
+$ cargo test mergeable_heaps_lists
+test both_behave_like_a_priority_queue ... ok
+test union_semantics_and_costs ... ok
+
+test result: 2 passed; 0 failed

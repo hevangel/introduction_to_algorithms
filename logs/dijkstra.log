@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs dijkstra::demo()
+
+distances from s: [0, 8, 9, 5, 7]
+array version   : [0, 8, 9, 5, 7]
+shortest path s → x: Some([0, 3, 1, 2])
+
+$ cargo test dijkstra
+test agrees_with_bellman_ford ... ok
+test book_figure_24_6 ... ok
+
+test result: 2 passed; 0 failed

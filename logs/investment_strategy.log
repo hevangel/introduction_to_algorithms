@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs investment_strategy::demo()
+
+5 years, 3 investments, fees: stay $20 / switch $150
+optimal plan (investment per year) = [0, 1, 0, 2, 0], final money $20087.61
+always investment 1: $12692.58
+
+$ cargo test investment_strategy
+test matches_exhaustive_search ... ok
+test single_investment_and_fee_effects ... ok
+
+test result: 2 passed; 0 failed
