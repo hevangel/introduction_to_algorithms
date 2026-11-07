@@ -1,5 +1,5 @@
 //! @title Approximate Vertex Cover
-//! @chapter 35.1 (3e) / 37.1 (4e) / 37.1 (2e)
+//! @chapter 35.1 (2e–4e)
 //! @editions 2,3,4
 //! @summary Take both endpoints of a maximal matching: a polynomial-time 2-approximation.
 //! @order 10

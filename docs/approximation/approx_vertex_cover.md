@@ -1,7 +1,7 @@
 # Approximate Vertex Cover
 
 ## What it is
-A **vertex cover** of an undirected graph is a set of vertices touching every edge; finding a *minimum* cover is NP-hard. When exact solutions are out of reach, an **approximation algorithm** runs in polynomial time and guarantees a solution within a factor `ρ(n)` of optimal. Chapter 35 (37 in the 4th edition) begins with this 2-approximation.
+A **vertex cover** of an undirected graph is a set of vertices touching every edge; finding a *minimum* cover is NP-hard. When exact solutions are out of reach, an **approximation algorithm** runs in polynomial time and guarantees a solution within a factor `ρ(n)` of optimal. Chapter 35 begins with this 2-approximation.
 
 ## How it works
 ```

@@ -1,5 +1,5 @@
 //! @title Hamiltonian Cycle & Exact TSP
-//! @chapter 34.2, 34.5.4 (1e–3e) / 36 (4e)
+//! @chapter 34.2, 34.5.4 (1e–4e)
 //! @editions 1,2,3,4
 //! @summary Exponential exact algorithms: backtracking search, and the Held-Karp O(n²2ⁿ) dynamic program for tours.
 //! @order 20

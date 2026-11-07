@@ -1,7 +1,7 @@
 # NP Verification Algorithms
 
 ## What it is
-Chapter 34 (Chapter 36 in the 4th edition) classifies problems by how hard they are to **solve** versus how easy they are to **check**.
+Chapter 34 classifies problems by how hard they are to **solve** versus how easy they are to **check**.
 * **P** — decision problems solvable in polynomial time.
 * **NP** — problems whose "yes" instances have a **certificate** that a polynomial-time **verification algorithm** can check. (NP = *nondeterministic polynomial*, not "non-polynomial".)
 

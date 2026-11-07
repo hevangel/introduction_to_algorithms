@@ -1,5 +1,5 @@
 //! @title Satisfiability: Brute Force, DPLL and 2-SAT
-//! @chapter 34.4 (1e–3e) / 36.4 (4e)
+//! @chapter 34.4 (1e–4e)
 //! @editions 1,2,3,4
 //! @summary SAT is NP-complete; compare exhaustive search, DPLL backtracking with unit propagation, and linear-time 2-SAT via SCCs.
 //! @order 30

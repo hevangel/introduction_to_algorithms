@@ -1,5 +1,5 @@
 //! @title Subset Sum
-//! @chapter 34.5.5 (1e–3e) / 36.5.5 (4e); 35.5 (3e)
+//! @chapter 34.5.5 (1e–4e); 35.5 (3e, 4e)
 //! @editions 1,2,3,4
 //! @summary NP-complete in the input length yet solvable in O(nt) pseudo-polynomial time; meet-in-the-middle O(2^{n/2}).
 //! @order 50

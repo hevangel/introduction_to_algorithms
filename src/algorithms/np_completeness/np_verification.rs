@@ -1,5 +1,5 @@
 //! @title NP Verification Algorithms
-//! @chapter 34.2 (1e–3e) / 36.2 (4e)
+//! @chapter 34.2 (1e–4e)
 //! @editions 1,2,3,4
 //! @summary Polynomial-time verifiers for Hamiltonian cycle, clique, vertex cover, CNF-SAT and subset sum — the definition of NP.
 //! @order 10

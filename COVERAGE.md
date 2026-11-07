@@ -156,3 +156,50 @@ Edition-specific problems of the 1st, 2nd and 4th editions (circuits, PRAM, sort
 * **19-2** is covered by the binomial-heap chapter material, but its individual parts (a)–(e) are not separately exercised.
 * **27-3** only the transpose and LU parts; LUP and Cholesky variants are missing.
 * Many exercises (as opposed to Problems) are one-line variations or proofs and are not individually listed; the 1st/2nd/4th edition lists were not audited line by line against the books.
+
+---
+
+# Coverage checklist (CLRS 4th edition, chapter level)
+
+The 4th edition's **chapter titles** below are as printed in the publisher's table of contents (via the Penguin Random House listing of ISBN 9780262046305). I could **not** obtain the 4th edition's *section* titles or its end-of-chapter *Problems* from any freely accessible source (the publisher page and solutions sites were unreachable or cover only the 3rd edition), so this part is a chapter-level map, not a problem-by-problem audit. The section-to-algorithm assignment is from my knowledge of the book and has not been checked against the text; the 4th edition mostly keeps the 3rd edition's problem set under new chapter numbers, so the 3rd-edition table above is the best available proxy for the Problems.
+
+| Ch | Title | Families in this repository |
+|---|---|---|
+| 1 | The Role of Algorithms in Computing | (no algorithm) |
+| 2 | Getting Started | `insertion_sort`, `merge_sort`, `linear_search`, `binary_search`, `selection_sort`, `bubble_sort`, `horner`, `inversions`, `insertion_merge_hybrids` |
+| 3 | Characterizing Running Times | (asymptotic notation: analysis only) |
+| 4 | Divide-and-Conquer | `matrix_multiply`, `strassen`, `max_subarray`, `master_theorem`, `akra_bazzi`, `chip_testing`, `monge_arrays` |
+| 5 | Probabilistic Analysis and Randomized Algorithms | `hire_assistant`, `probabilistic_analysis`, `random_permutation`, `online_hiring`, `probabilistic_counting`, `random_search` |
+| 6 | Heapsort | `heapsort`, `heap_priority_queue`, `d_ary_heap`, `young_tableau`, `heap_build_by_insertion` |
+| 7 | Quicksort | `quicksort`, `hoare_quicksort`, `randomized_quicksort`, `quicksort_variants`, `fuzzy_sort`, `stooge_sort` |
+| 8 | Sorting in Linear Time | `decision_tree_lower_bound`, `counting_sort`, `radix_sort`, `bucket_sort`, `sort_in_place_linear`, `variable_length_sort`, `water_jugs`, `average_sorting`, `merging_lower_bound`, `columnsort` |
+| 9 | Medians and Order Statistics | `min_max`, `randomized_select`, `select_linear_time`, `largest_i_numbers`, `weighted_median`, `small_order_statistics`, `tournament_selection`, `median_two_sorted` |
+| 10 | Elementary Data Structures | `stack_queue`, `linked_list`, `array_pointers_objects`, `rooted_trees`, `mergeable_heaps_lists`, `compact_list_search` |
+| 11 | Hash Tables | `direct_address_table`, `chained_hash_table`, `hash_functions`, `open_addressing`, `perfect_hashing`, `hashing_bounds`, `hashing_authentication` |
+| 12 | Binary Search Trees | `binary_search_tree`, `randomly_built_bst`, `equal_keys_bst`, `radix_tree`, `binary_tree_counting` |
+| 13 | Red-Black Trees | `red_black_tree`, `rb_join_split`, `avl_tree`, `treap` |
+| 14 | Dynamic Programming | `rod_cutting`, `matrix_chain`, `lcs`, `optimal_bst`, `longest_increasing_subsequence`, `edit_distance`, `knapsack_01`, and the Problems (see the 3rd-edition table) |
+| 15 | Greedy Algorithms | `activity_selection`, `fractional_knapsack`, `huffman`, `matroid_greedy`, `coin_change`, `online_caching` |
+| 16 | Amortized Analysis | `multipop_stack`, `binary_counter`, `dynamic_table`, `bit_reversal_counter`, `dynamic_binary_search`, `scapegoat_tree` |
+| 17 | Augmenting Data Structures | `order_statistic_tree`, `interval_tree`, `augmentation_problems` |
+| 18 | B-Trees | `b_tree`, `two_three_four_tree`, `stack_secondary_storage` |
+| 19 | Data Structures for Disjoint Sets | `disjoint_set`, `ackermann_alpha`, `offline_disjoint_set_apps` |
+| 20 | Elementary Graph Algorithms | `graph_representations`, `breadth_first_search`, `depth_first_search`, `topological_sort`, `strongly_connected_components`, `biconnected_components`, `euler_tour` |
+| 21 | Minimum Spanning Trees | `generic_mst`, `mst_kruskal`, `mst_prim`, `boruvka` |
+| 22 | Single-Source Shortest Paths | `bellman_ford`, `dag_shortest_paths`, `dijkstra`, `difference_constraints`, `minimum_mean_cycle` |
+| 23 | All-Pairs Shortest Paths | `apsp_matrix_mult`, `floyd_warshall`, `johnson` |
+| 24 | Maximum Flow | `ford_fulkerson`, maximum_bipartite_matching (push_relabel is kept although the 4th edition dropped it) |
+| 25 | Matchings in Bipartite Graphs | `hopcroft_karp`, `stable_matching`, `hungarian` |
+| 26 | Parallel Algorithms | `p_fib`, `p_matrix_multiply`, `p_merge_sort` |
+| 27 | Online Algorithms | `elevator`, `move_to_front`, `online_caching` |
+| 28 | Matrix Operations | `lup_decomposition`, `matrix_inversion`, `least_squares`, `cholesky` |
+| 29 | Linear Programming | `simplex`, `lp_formulations` |
+| 30 | Polynomials and the FFT | `polynomial_multiplication`, `fft_recursive`, `fft_iterative`, `lagrange_interpolation` |
+| 31 | Number-Theoretic Algorithms | `euclid_gcd`, `extended_euclid`, `modular_linear_equations`, `chinese_remainder`, `modular_exponentiation`, `rsa`, `miller_rabin`, `pollard_rho` |
+| 32 | String Matching | `naive_string_matcher`, `rabin_karp`, `finite_automaton_matcher`, `kmp`, `suffix_array` |
+| 33 | Machine-Learning Algorithms | `k_means`, `weighted_majority`, `gradient_descent` |
+| 34 | NP-Completeness | `np_verification`, `np_reductions`, `cnf_sat`, `hamiltonian_cycle`, `subset_sum_np` |
+| 35 | Approximation Algorithms | `approx_vertex_cover`, `approx_tsp`, `greedy_set_cover`, `lp_rounding_vertex_cover`, `randomized_approximation`, `approx_subset_sum` |
+| A–D | Appendices: Summations, Sets, Counting and Probability, Matrices | (mathematical background: no algorithms) |
+
+**New in the 4th edition and covered:** Chapter 25 (matchings), Chapter 27 (online algorithms), Chapter 33 (machine learning), Section 4.7 (Akra–Bazzi), Section 32.5 (suffix arrays) and the work/span parallel chapter. **Removed from the 4th edition but kept here** because earlier editions teach them: Fibonacci heaps, binomial heaps, van Emde Boas trees, push-relabel, sorting networks, arithmetic circuits and the PRAM material (see the other categories in the web app).

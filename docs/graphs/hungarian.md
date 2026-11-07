@@ -1,7 +1,7 @@
 # Hungarian Algorithm (Assignment Problem)
 
 ## What it is
-Given `n` workers, `n` jobs and a cost `c_ij` for giving job `j` to worker `i`, the **assignment problem** asks for the one-to-one assignment of minimum total cost — a minimum-cost perfect matching in a complete bipartite graph. Kuhn's **Hungarian algorithm** (1955, after König and Egerváry) solves it in `O(n³)`; the 4th edition gives it as Section 25.2 (in max-weight form).
+Given `n` workers, `n` jobs and a cost `c_ij` for giving job `j` to worker `i`, the **assignment problem** asks for the one-to-one assignment of minimum total cost — a minimum-cost perfect matching in a complete bipartite graph. Kuhn's **Hungarian algorithm** (1955, after König and Egerváry) solves it in `O(n³)`; the 4th edition gives it as Section 25.3 (in max-weight form).
 
 ## How it works
 Maintain **vertex potentials** `u_i` (workers) and `v_j` (jobs) satisfying `u_i + v_j ≤ c_ij` for all pairs (a feasible dual solution of the LP). An edge is *tight* when equality holds. If the tight edges contain a perfect matching it is optimal (complementary slackness).

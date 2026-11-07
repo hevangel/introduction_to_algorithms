@@ -1,5 +1,5 @@
 //! @title Polynomial-Time Reductions
-//! @chapter 34.3, 34.5 (1e–3e) / 36.3, 36.5 (4e)
+//! @chapter 34.3, 34.5 (1e–4e)
 //! @editions 1,2,3,4
 //! @summary 3-CNF-SAT ≤ₚ CLIQUE ≤ₚ VERTEX-COVER and HAM-CYCLE ≤ₚ TSP, implemented as instance transformations and tested for equivalence.
 //! @order 40

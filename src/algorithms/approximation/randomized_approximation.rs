@@ -1,5 +1,5 @@
 //! @title Randomized Approximation: MAX-3-CNF & MAX-CUT
-//! @chapter 35.4 (3e) / 37.4 (4e); Problem 35-3/37
+//! @chapter 35.4 (3e, 4e)
 //! @editions 2,3,4
 //! @summary A random assignment satisfies 7/8 of clauses in expectation; derandomise with conditional expectations.
 //! @order 60
