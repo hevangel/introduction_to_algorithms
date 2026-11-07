@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs average_sorting::demo()
+
+array [9, 3, 7, 1, 8, 2, 6, 4, 5, 0], 3-sorted? false
+after 3-sorting: [0, 3, 2, 1, 4, 5, 6, 8, 7, 9], 3-sorted? true
+then fully sorted by a 3-way merge: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+a 1-sorted array is just a sorted array; a k-sorted array with k ≥ n is any array
+
+$ cargo test average_sorting
+test k_sort_produces_a_k_sorted_permutation ... ok
+test merging_a_k_sorted_array_sorts_it ... ok
+
+test result: 2 passed; 0 failed

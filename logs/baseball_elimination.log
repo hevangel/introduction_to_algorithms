@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs baseball_elimination::demo()
+
+Atlanta       wins 83 remaining 8: eliminated = false
+Philadelphia  wins 80 remaining 3: eliminated = true
+New York      wins 78 remaining 6: eliminated = false
+Montreal      wins 77 remaining 3: eliminated = true
+
+$ cargo test baseball_elimination
+test a_team_with_the_most_wins_is_never_eliminated ... ok
+test matches_exhaustive_enumeration_of_outcomes ... ok
+
+test result: 2 passed; 0 failed

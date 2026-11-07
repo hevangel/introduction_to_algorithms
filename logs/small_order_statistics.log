@@ -1,0 +1,13 @@
+$ cargo run --bin gen_site_data   # runs small_order_statistics::demo()
+
+i =   1: value 48 (correct: true), 10023 comparisons = 1.00·n  (full sort ≈ 13.3·n)
+i =   2: value 299 (correct: true), 10079 comparisons = 1.01·n  (full sort ≈ 13.3·n)
+i =   5: value 557 (correct: true), 10379 comparisons = 1.04·n  (full sort ≈ 13.3·n)
+i =  20: value 1892 (correct: true), 12201 comparisons = 1.22·n  (full sort ≈ 13.3·n)
+i = 100: value 8198 (correct: true), 21480 comparisons = 2.15·n  (full sort ≈ 13.3·n)
+
+$ cargo test small_order_statistics
+test few_comparisons_for_small_i ... ok
+test matches_sorting ... ok
+
+test result: 2 passed; 0 failed

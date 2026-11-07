@@ -1,5 +1,5 @@
 //! @title Perfect-Power Test
-//! @chapter Exercise 31.1-? / Problem 31-? (integer powers)
+//! @chapter Chapter 31 exercises (testing for perfect powers)
 //! @editions 1,2,3,4
 //! @summary Decide whether n = bᵏ for integers b > 1, k > 1 by trying every exponent k ≤ lg n with an integer k-th root by binary search.
 //! @order 19

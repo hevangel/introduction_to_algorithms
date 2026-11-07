@@ -6,7 +6,7 @@ For strings `x` and `y`, write `xʳ` for `x` concatenated `r` times. The **repet
 ## How it works
 * **ρ(y).** The [prefix function](#/kmp) gives the smallest period `p = n − π[n]`. If `p` divides `n` the string is `(n/p)` copies of its first `p` characters; otherwise it is not a power and `ρ(y) = 1`.
 * **ρ\*(P)** is the maximum of that value over all prefixes, obtained in the same pass.
-* **REPETITION-MATCHER.** Align the pattern at shift `s`, compare left to right, and stop at the first mismatch (position `q`) or at a full match. Then advance `s` by `max(1, ⌈q/(ρ* + 1)⌉)`. The jump is safe because a match of `q` characters followed by a mismatch cannot be extended by any shift smaller than that: the pattern's repetitive structure would otherwise contradict the definition of `ρ*`. It is simple and uses only `O(1)` extra space — handy when the pattern is highly periodic.
+* **REPETITION-MATCHER.** Align the pattern at shift `s`, compare left to right, and stop at the first mismatch (position `q`) or at a full match. Then advance `s` by `max(1, ⌈q/(ρ* + 1)⌉)`. Why the jump is safe is the content of Problem 32-1(c) and is not re-proved here; this repository checks it empirically against the naive matcher (see the tests). It is simple and uses only `O(1)` extra space — handy when the pattern is highly periodic.
 
 ```mermaid
 flowchart LR

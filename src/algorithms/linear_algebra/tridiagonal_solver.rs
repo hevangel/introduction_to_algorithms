@@ -1,5 +1,5 @@
 //! @title Tridiagonal Systems (Thomas Algorithm)
-//! @chapter Exercise 28.2-? / 28.3 (tridiagonal LU)
+//! @chapter Chapter 28 exercises (LU decomposition of tridiagonal matrices)
 //! @editions 2,3,4
 //! @summary LU decomposition of a tridiagonal matrix keeps its band structure, so a tridiagonal system A x = d is solved in O(n) time.
 //! @order 26

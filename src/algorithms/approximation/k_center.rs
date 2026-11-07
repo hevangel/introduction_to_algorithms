@@ -1,5 +1,5 @@
 //! @title k-Center Clustering
-//! @chapter Problem 35-? / Section 35.2 (clustering)
+//! @chapter Chapter 35 (clustering as a metric covering problem)
 //! @editions 3,4
 //! @summary Choose k centers to minimise the largest distance from any point to its nearest center: the farthest-first traversal is a 2-approximation, and nothing better is possible unless P = NP.
 //! @order 60
