@@ -13,6 +13,7 @@ test decrease_key_rejects_larger_key ... ok
 test degree_bound_and_union ... ok
 test heapsort_via_extract_min ... ok
 test pisano_delete_and_change_key_keep_the_heap_valid_and_correct ... ok
+test prune_deletes_exactly_min_r_n_nodes_and_keeps_the_heap_valid ... ok
 test random_decrease_key_and_delete_match_model ... ok
 
-test result: 5 passed; 0 failed
+test result: 6 passed; 0 failed

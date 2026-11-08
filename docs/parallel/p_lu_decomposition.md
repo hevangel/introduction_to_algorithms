@@ -15,6 +15,9 @@ flowchart TB
   S1 & S2 --> T["S = A22 − L21 U12 (parallel multiply)"] --> R["S = L22 U22 (recurse)"]
 ```
 
+* **Recursive LUP (with pivoting).** Factor the *left half of the columns* recursively (the panel is tall: `m × n/2`), apply its row permutation to the right half, then proceed exactly as for LU: `U₁₂ = L₁₁⁻¹A₁₂` and the Schur complement `A₂₂ − L₂₁U₁₂`, recursed on. The permutations compose: the second factorisation permutes only the lower rows, and `L₂₁` is permuted along. Partial pivoting keeps every multiplier at most 1 in magnitude, so matrices without strict diagonal dominance can be factored.
+* **Recursive Cholesky.** For a symmetric positive-definite matrix: `L₁₁ = chol(A₁₁)`, `L₂₁ = A₂₁L₁₁⁻ᵀ` (independent row solves), `L₂₂ = chol(A₂₂ − L₂₁L₂₁ᵀ)`; no pivoting is needed, and a non-positive pivot reveals that `A` is not positive definite (compare the sequential [Cholesky](#/cholesky)).
+
 ## Complexity
 Transpose: work `Θ(n²)`, span `Θ(lg n)`. LU: work `Θ(n³)`; the span is dominated by the *sequential chain* of recursive factorisations, `Θ(n lg n)`-class for this scheme (the problem asks you to derive it), so LU is much less parallel than matrix multiplication.
 
@@ -22,4 +25,4 @@ Transpose: work `Θ(n²)`, span `Θ(lg n)`. LU: work `Θ(n³)`; the span is domi
 Dense linear solvers (LAPACK's `getrf` and ScaLAPACK are blocked right-looking LU), in-place transposition in FFT and image libraries, and cache-oblivious matrix code.
 
 ## In this implementation
-The recursion is executed sequentially; `p_transpose` returns the recursion depth (the span proxy). Tests transpose every power-of-two size up to 32 and check the depth is logarithmic, and check `A = LU` with unit lower and upper triangular factors on 100 random strictly diagonally dominant matrices of sizes 1–11 (no pivoting needed).
+The recursion is executed sequentially; `p_transpose` returns the recursion depth (the span proxy). Tests transpose every power-of-two size up to 32 and check the depth is logarithmic, and check `A = LU` with unit lower and upper triangular factors on 100 random strictly diagonally dominant matrices of sizes 1–11 (no pivoting needed), `PA = LU` with a valid permutation and multipliers of magnitude at most 1 on 150 random general matrices (plus the zero-pivot and singular cases), and that the recursive Cholesky equals the sequential one on 100 random SPD matrices.

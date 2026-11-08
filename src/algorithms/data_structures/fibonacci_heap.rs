@@ -231,6 +231,59 @@ impl FibonacciHeap {
         if roots.iter().any(|&r| self.n[r].key < self.n[self.min].key) { return false; }
         roots.iter().map(|&r| walk(self, r, NIL)).sum::<Option<usize>>() == Some(self.count)
     }
+    /// All keys currently stored (traversal of the whole forest), in no particular order.
+    pub fn keys(&self) -> Vec<i64> {
+        fn walk(h: &FibonacciHeap, start: usize, out: &mut Vec<i64>) {
+            let mut x = start;
+            loop {
+                out.push(h.n[x].key);
+                if h.n[x].child != NIL { walk(h, h.n[x].child, out); }
+                x = h.n[x].right;
+                if x == start { break; }
+            }
+        }
+        let mut out = vec![];
+        if self.min != NIL { walk(self, self.min, &mut out); }
+        out
+    }
+    /// Problem 19-3(b): FIB-HEAP-PRUNE(H, r) — delete q = min(r, H.n) nodes of our choosing. We take the first q nodes of a post-order traversal, so every
+    /// node is a leaf by the time it is deleted; each deletion is a CUT plus CASCADING-CUT (amortised O(1)), after which the minimum pointer is rebuilt
+    /// from the root list. Returns the number of nodes deleted.
+    pub fn prune(&mut self, r: usize) -> usize {
+        let q = r.min(self.count);
+        if q == 0 { return 0; }
+        // 1. choose the victims: the first q nodes in post-order (children before parents)
+        let mut victims: Vec<usize> = Vec::with_capacity(q);
+        fn post(h: &FibonacciHeap, start: usize, q: usize, out: &mut Vec<usize>) {
+            let mut x = start;
+            loop {
+                if out.len() >= q { return; }
+                if h.n[x].child != NIL { post(h, h.n[x].child, q, out); }
+                if out.len() >= q { return; }
+                out.push(x);
+                x = h.n[x].right;
+                if x == start { break; }
+            }
+        }
+        post(self, self.min, q, &mut victims);
+        // 2. delete them one by one; each is a leaf when its turn comes
+        for x in victims {
+            let y = self.n[x].p;
+            if y != NIL { self.cut(x, y); self.cascading_cut(y); } // x is now a root
+            let (l, r2) = (self.n[x].left, self.n[x].right);
+            if r2 == x { self.min = NIL; } // x was the only root
+            else { self.n[l].right = r2; self.n[r2].left = l; if self.min == x { self.min = r2; } } // keep `min` pointing at a live root
+            self.count -= 1;
+        }
+        // 3. rebuild the minimum pointer
+        if self.min != NIL {
+            let start = self.min;
+            let (mut best, mut w) = (start, self.n[start].right);
+            while w != start { if self.n[w].key < self.n[best].key { best = w; } w = self.n[w].right; }
+            self.min = best;
+        }
+        q
+    }
     /// Largest degree among roots (bounded by D(n) = ⌊log_φ n⌋).
     pub fn max_root_degree(&self) -> usize {
         if self.min == NIL { return 0; }
@@ -295,6 +348,33 @@ mod tests {
         let mut want: Vec<i64> = alive.iter().map(|a| a.1).collect();
         want.sort();
         assert_eq!(drained, want);
+    }
+    #[test]
+    fn prune_deletes_exactly_min_r_n_nodes_and_keeps_the_heap_valid() {
+        let mut r = Rng::new(83);
+        for _ in 0..100 {
+            let mut h = FibonacciHeap::new();
+            let n = r.range(1, 120);
+            for _ in 0..n { h.insert(r.range(0, 1000) as i64); }
+            for _ in 0..r.range(0, 40) { h.extract_min(); if h.is_empty() { break; } } // build some structure (consolidated trees, marks via decrease-key below)
+            let handles: Vec<usize> = (0..h.len()).map(|_| h.insert(r.range(0, 2000) as i64)).collect();
+            for &hd in handles.iter().take(10) { let k = h.key(hd); h.decrease_key(hd, k - r.range(0, 50) as i64).unwrap(); }
+            let before = { let mut k = h.keys(); k.sort(); k };
+            assert_eq!(before.len(), h.len());
+            let q = r.range(0, h.len() + 5);
+            let deleted = h.prune(q);
+            assert_eq!(deleted, q.min(before.len()));
+            assert_eq!(h.len(), before.len() - deleted);
+            assert!(h.validate());
+            let mut after = h.keys();
+            after.sort();
+            // the survivors are a sub-multiset of the original keys
+            let mut it = before.iter();
+            assert!(after.iter().all(|k| it.any(|b| b == k)), "survivors must come from the original keys");
+            let mut drained = vec![];
+            while let Some((_, k)) = h.extract_min() { drained.push(k); }
+            assert_eq!(drained, after);
+        }
     }
     #[test]
     fn heapsort_via_extract_min() {

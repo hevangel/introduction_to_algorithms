@@ -2,10 +2,14 @@ $ cargo run --bin gen_site_data   # runs p_lu_decomposition::demo()
 
 transpose of 0..15 as 4×4 (recursion depth 2): [[0.0, 4.0, 8.0, 12.0], [1.0, 5.0, 9.0, 13.0], [2.0, 6.0, 10.0, 14.0], [3.0, 7.0, 11.0, 15.0]]
 L = [[1.0, 0.0, 0.0, 0.0], [0.75, 1.0, 0.0, 0.0], [0.5, -0.182, 1.0, 0.0], [0.25, 0.455, 0.556, 1.0]]
+LUP: permutation [0, 1, 2, 3], max |PA − LU| = 0.0e0
+recursive Cholesky of the classic 3×3 matrix: [[2.0, 0.0, 0.0], [6.0, 1.0, 0.0], [-8.0, 5.0, 3.0]]
 U = [[4.0, 3.0, 2.0, 1.0], [0.0, 2.75, -0.5, 1.25], [0.0, 0.0, 4.909, 2.727], [0.0, 0.0, 0.0, 4.667]]
 
 $ cargo test p_lu_decomposition
+test lup_with_pivoting_handles_matrices_that_plain_lu_cannot ... ok
+test recursive_cholesky_matches_the_sequential_one ... ok
 test recursive_lu_reconstructs_diagonally_dominant_matrices_of_any_size ... ok
 test transposes_every_power_of_two_size_with_logarithmic_depth ... ok
 
-test result: 2 passed; 0 failed
+test result: 4 passed; 0 failed

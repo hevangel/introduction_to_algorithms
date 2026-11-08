@@ -82,7 +82,7 @@ Edition-specific problems of the 1st, 2nd and 4th editions (circuits, PRAM, sort
 | 18 | 18-2 | Joining and splitting 2-3-4 trees | ✅ | `two_three_four_tree` |
 | 19 | 19-1 | Alternative implementation of deletion | ✅ | `fibonacci_heap` |
 | 19 | 19-2 | Binomial trees and binomial heaps | ◐ | `binomial_heap` — chapter material; individual parts not separately exercised |
-| 19 | 19-3 | More Fibonacci-heap operations | ◐ | `fibonacci_heap` — change-key done; FIB-HEAP-PRUNE not implemented |
+| 19 | 19-3 | More Fibonacci-heap operations | ✅ | `fibonacci_heap` — change-key and FIB-HEAP-PRUNE (the amortised O(r) bound is not claimed for the worst case) |
 | 19 | 19-4 | 2-3-4 heaps | ✅ | `two_three_four_heap` |
 | 20 | 20-1 | Space requirements for van Emde Boas trees | ✅ | `rs_veb_tree` |
 | 20 | 20-2 | y-fast tries | ✅ | `y_fast_trie` |
@@ -111,7 +111,7 @@ Edition-specific problems of the 1st, 2nd and 4th editions (circuits, PRAM, sort
 | 26 | 26-6 | Hopcroft-Karp bipartite matching | ✅ | `hopcroft_karp` |
 | 27 | 27-1 | Implementing parallel loops using nested parallelism | ✅ | `p_parallel_loops` |
 | 27 | 27-2 | Saving temporary space in matrix multiplication | ✅ | `p_matmul_no_temp` |
-| 27 | 27-3 | Multithreaded matrix algorithms | ◐ | `p_lu_decomposition` — transpose and LU; LUP and Cholesky variants not implemented |
+| 27 | 27-3 | Multithreaded matrix algorithms | ✅ | `p_lu_decomposition` — transpose, LU, LUP with pivoting and Cholesky |
 | 27 | 27-4 | Multithreading reductions and prefix computations | ✅ | `p_reduce_scan` |
 | 27 | 27-5 | Multithreading a simple stencil calculation | ✅ | `p_stencil` |
 | 27 | 27-6 | Randomized multithreaded algorithms | ✅ | `p_randomized_select`, `p_quicksort` |
@@ -148,14 +148,13 @@ Edition-specific problems of the 1st, 2nd and 4th editions (circuits, PRAM, sort
 | 35 | 35-6 | Approximating a maximum spanning tree | ✅ | `max_spanning_tree_approx` |
 | 35 | 35-7 | Approximation algorithm for 0-1 knapsack | ✅ | `knapsack_approximation` |
 
-**Summary:** 126 entries fully implemented, 4 partly implemented, 7 analysis-only entries without an algorithm.
+**Summary:** 128 entries fully implemented, 2 partly implemented, 7 analysis-only entries without an algorithm.
 
 ## Known gaps
 
-* **19-3** `FIB-HEAP-PRUNE` (delete `min(r, n)` nodes in amortised `O(r)`) is not implemented; change-key is.
 * **19-2** is covered by the binomial-heap chapter material, but its individual parts (a)–(e) are not separately exercised.
-* **27-3** only the transpose and LU parts; LUP and Cholesky variants are missing.
-* Many exercises (as opposed to Problems) are one-line variations or proofs and are not individually listed; the 1st/2nd/4th edition lists were not audited line by line against the books.
+* **4-4** the generating-function derivation of the closed form for Fibonacci numbers is analysis, not code (the algorithms of 31-3 are implemented).
+* Many exercises (as opposed to Problems) are one-line variations or proofs and are not individually listed; the 1st/2nd edition lists were not audited line by line against the books, and the 4th edition's Problems could not be obtained (see the chapter-level map below).
 
 ---
 
