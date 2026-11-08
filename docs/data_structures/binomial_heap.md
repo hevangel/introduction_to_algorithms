@@ -15,6 +15,8 @@ flowchart LR
   n13["13 = 1101₂"] --> t["trees B0, B2, B3"]
 ```
 
+**Problem 19-2 (3rd edition).** The 3rd edition moved binomial heaps from the main text into this problem. Part (a): the binomial tree `B_k` has `2^k` nodes, height `k`, exactly `C(k, i)` nodes at depth `i`, and a root of degree `k` whose children are the roots of `B_{k−1}, …, B_0` from left to right (induction with Pascal's rule). Part (b): the trees of an `n`-node heap correspond to the 1-bits of `n`, so there are at most `⌊lg n⌋ + 1` of them. Part (c) is the implementation below. Part (d) relates it to [Fibonacci heaps](#/fibonacci_heap) that support only mergeable-heap operations, whose trees are binomial too, with maximum degree `≤ ⌊lg n⌋`; part (e) asks about the McGee heap that consolidates eagerly (see the Fibonacci-heap page). `tree_shapes()` exposes the shape data so parts (a) and (b) are checked by tests on random heaps.
+
 ## Complexity
 | Operation | Worst case |
 |---|---|

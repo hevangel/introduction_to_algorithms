@@ -7,8 +7,9 @@ after union with {3,9,6}: size 11 degrees [0, 1, 3]
 extract-min order: [1, 3, 6, 7, 9, 12, 15, 25, 28, 33, 41]
 
 $ cargo test binomial_heap
+test binomial_tree_properties_of_problem_19_2 ... ok
 test decrease_key_and_delete_keep_multiset_semantics ... ok
 test heapsort_and_union ... ok
 test root_list_mirrors_binary_representation ... ok
 
-test result: 3 passed; 0 failed
+test result: 4 passed; 0 failed

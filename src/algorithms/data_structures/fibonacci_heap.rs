@@ -284,6 +284,10 @@ impl FibonacciHeap {
         }
         q
     }
+    /// Number of trees in the root list.
+    pub fn root_count(&self) -> usize { if self.min == NIL { 0 } else { let mut c = 1; let mut w = self.n[self.min].right; while w != self.min { c += 1; w = self.n[w].right; } c } }
+    /// Problem 19-2(e): consolidate the root list right now (McGee heap: INSERT and UNION end with this step, costing O(lg n) even when nothing links).
+    pub fn consolidate_now(&mut self) { if self.min != NIL { self.consolidate(); } }
     /// Largest degree among roots (bounded by D(n) = ⌊log_φ n⌋).
     pub fn max_root_degree(&self) -> usize {
         if self.min == NIL { return 0; }
@@ -375,6 +379,40 @@ mod tests {
             while let Some((_, k)) = h.extract_min() { drained.push(k); }
             assert_eq!(drained, after);
         }
+    }
+    /// Problem 19-2(d): with only mergeable-heap operations (insert, union, extract-min) every tree is a binomial tree, so the maximum degree is ≤ ⌊lg n⌋.
+    #[test]
+    fn mergeable_only_fibonacci_heaps_have_binomial_trees_and_degree_at_most_lg_n() {
+        let mut r = Rng::new(84);
+        for _ in 0..50 {
+            let mut h = FibonacciHeap::new();
+            for _ in 0..r.range(1, 400) {
+                match r.range(0, 5) {
+                    0 | 1 | 2 => { h.insert(r.range(0, 1000) as i64); }
+                    3 => { let mut o = FibonacciHeap::new(); for _ in 0..r.range(0, 30) { o.insert(r.range(0, 1000) as i64); } h.union(o); }
+                    _ => { h.extract_min(); }
+                }
+                if h.len() >= 1 {
+                    h.extract_min(); // consolidation happens here; afterwards all trees are binomial
+                    if h.is_empty() { break; }
+                    assert!(h.max_root_degree() <= (h.len() as f64).log2().floor() as usize, "degree {} for n = {}", h.max_root_degree(), h.len());
+                }
+            }
+        }
+    }
+    /// Problem 19-2(e): a McGee heap consolidates after every insertion — its root list is then always the binary representation of n.
+    #[test]
+    fn eager_consolidation_turns_the_root_list_into_a_binomial_heap() {
+        let mut h = FibonacciHeap::new();
+        for k in 1..=200usize {
+            h.insert((k * 7919 % 1000) as i64);
+            h.consolidate_now();
+            assert_eq!(h.root_count(), k.count_ones() as usize, "k = {k}");
+            assert!(h.validate());
+        }
+        let mut lazy = FibonacciHeap::new();
+        for k in 0..200 { lazy.insert(k); }
+        assert_eq!(lazy.root_count(), 200, "plain Fibonacci INSERT does no work on the root list");
     }
     #[test]
     fn heapsort_via_extract_min() {

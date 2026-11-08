@@ -1,6 +1,6 @@
 //! @title Binomial Heaps
-//! @chapter 19 (2e) / 20 (1e)
-//! @editions 1,2
+//! @chapter 19 (2e) / 20 (1e); Problem 19-2 (3e)
+//! @editions 1,2,3
 //! @summary Mergeable heap built from binomial trees: UNION in O(lg n) by "binary addition" of root lists.
 //! @order 200
 use crate::outln;
@@ -47,6 +47,28 @@ impl BinomialHeap {
         let (mut v, mut x) = (vec![], self.head);
         while x != NIL { v.push(self.n[x].degree); x = self.n[x].sibling; }
         v
+    }
+
+    /// Problem 19-2(a): for every root tree, (root degree, number of nodes, height, number of nodes at each depth, degrees of the root's children left to right).
+    pub fn tree_shapes(&self) -> Vec<(usize, usize, usize, Vec<usize>, Vec<usize>)> {
+        let mut out = vec![];
+        let mut r = self.head;
+        while r != NIL {
+            let mut per_depth: Vec<usize> = vec![];
+            let mut stack = vec![(r, 0usize)];
+            while let Some((x, d)) = stack.pop() {
+                if per_depth.len() <= d { per_depth.resize(d + 1, 0); }
+                per_depth[d] += 1;
+                let mut c = self.n[x].child;
+                while c != NIL { stack.push((c, d + 1)); c = self.n[c].sibling; }
+            }
+            let mut kids = vec![];
+            let mut c = self.n[r].child;
+            while c != NIL { kids.push(self.n[c].degree); c = self.n[c].sibling; }
+            out.push((self.n[r].degree, per_depth.iter().sum(), per_depth.len() - 1, per_depth, kids));
+            r = self.n[r].sibling;
+        }
+        out
     }
 
     /// BINOMIAL-LINK(y, z): make y the leftmost child of z.
@@ -189,6 +211,28 @@ mod tests {
         let mut bit = 0;
         while n > 0 { if n & 1 == 1 { v.push(bit); } n >>= 1; bit += 1; }
         v
+    }
+    fn binom(n: usize, k: usize) -> usize { (0..k).fold(1, |acc, i| acc * (n - i) / (i + 1)) }
+    #[test]
+    fn binomial_tree_properties_of_problem_19_2() {
+        let mut r = Rng::new(95);
+        for _ in 0..60 {
+            let mut h = BinomialHeap::new();
+            let n = r.range(1, 300);
+            for _ in 0..n { h.insert(r.range(0, 1000) as i64); }
+            for _ in 0..r.range(0, n / 2) { h.extract_min(); }
+            let n = h.len();
+            let shapes = h.tree_shapes();
+            // (b) one tree for every 1-bit of n, so at most ⌊lg n⌋ + 1 trees
+            assert_eq!(shapes.iter().map(|s| s.0).collect::<Vec<_>>(), binary_degrees(n));
+            assert!(shapes.len() <= (n as f64).log2().floor() as usize + 1);
+            for (k, size, height, per_depth, kids) in shapes {
+                assert_eq!(size, 1 << k, "B_k has 2^k nodes");
+                assert_eq!(height, k, "B_k has height k");
+                assert_eq!(per_depth, (0..=k).map(|i| binom(k, i)).collect::<Vec<_>>(), "C(k, i) nodes at depth i");
+                assert_eq!(kids, (0..k).rev().collect::<Vec<_>>(), "children of the root have degrees k−1, …, 0");
+            }
+        }
     }
     #[test]
     fn root_list_mirrors_binary_representation() {

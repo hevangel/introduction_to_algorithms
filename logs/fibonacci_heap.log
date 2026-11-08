@@ -11,9 +11,11 @@ union of two heaps: minimum = Some(1), size = 6
 $ cargo test fibonacci_heap
 test decrease_key_rejects_larger_key ... ok
 test degree_bound_and_union ... ok
+test eager_consolidation_turns_the_root_list_into_a_binomial_heap ... ok
 test heapsort_via_extract_min ... ok
+test mergeable_only_fibonacci_heaps_have_binomial_trees_and_degree_at_most_lg_n ... ok
 test pisano_delete_and_change_key_keep_the_heap_valid_and_correct ... ok
 test prune_deletes_exactly_min_r_n_nodes_and_keeps_the_heap_valid ... ok
 test random_decrease_key_and_delete_match_model ... ok
 
-test result: 6 passed; 0 failed
+test result: 8 passed; 0 failed
