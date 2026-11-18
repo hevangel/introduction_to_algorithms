@@ -1,0 +1,16 @@
+$ cargo run --bin gen_site_data   # runs ram_model::demo()
+
+CLRS 2.2 RAM statement profile for INSERTION-SORT (n = 32, unit weights):
+  already sorted (best ): steps = 156, reads = 62, writes = 31
+  reverse sorted (worst): steps = 1644, reads = 1023, writes = 527
+Array vs Linked-List traversal (n = 256, cache = 8 lines x 8 ints):
+  Contiguous array: RAM = O(n) (256 steps), cache misses = 32
+  Pointer-chasing : RAM = O(n) (256 steps), cache misses = 199 (6.2x more stalls!)
+Word-RAM vs Bit Complexity for 2^(2^10): 10 multiplications vs 1398100 bit operations
+
+$ cargo test ram_model
+test array_traversal_beats_pointer_chasing_in_cache_misses ... ok
+test bit_complexity_grows_exponentially_relative_to_word_ram_count ... ok
+test insertion_sort_profile_matches_clrs_closed_forms ... ok
+
+test result: 3 passed; 0 failed

@@ -27,7 +27,7 @@ pub struct Entry {
 
 /// (id, title, description) in textbook order.
 pub const CATEGORIES: &[(&str, &str, &str)] = &[
-    ("foundations", "Foundations", "Sorting basics, divide-and-conquer, recurrences and probabilistic analysis (Part I)."),
+    ("foundations", "Foundations", "RAM computational model (Lesson 0), sorting basics, divide-and-conquer, recurrences and probabilistic analysis (Part I)."),
     ("sorting", "Sorting & Order Statistics", "Heaps, quicksort, linear-time sorts, sorting networks and selection (Part II)."),
     ("data_structures", "Data Structures", "Elementary structures, hashing, trees, B-trees, heaps and disjoint sets (Part III)."),
     ("advanced_design", "Advanced Design & Analysis", "Dynamic programming, greedy algorithms and amortized analysis (Part IV)."),

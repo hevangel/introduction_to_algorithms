@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repo is
 
-Every algorithm from editions 1–4 of CLRS (*Introduction to Algorithms*) implemented in dependency-free Rust **and Python 3**, each with unit tests in both languages, a demo that produces a run log, and a markdown explanation. `index.html` is a single-page web app that loads all of that **at runtime** (nothing is hard-coded in the page). 272 algorithm "families", 18 topic areas, 604 unit tests.
+Every algorithm from editions 1–4 of CLRS (*Introduction to Algorithms*) implemented in dependency-free Rust **and Python 3**, each with unit tests in both languages, a demo that produces a run log, and a markdown explanation. `index.html` is a single-page web app that loads all of that **at runtime** (nothing is hard-coded in the page). 273 algorithm "families", 18 topic areas, 607 unit tests.
 
 ## Commands
 

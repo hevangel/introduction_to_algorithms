@@ -1,6 +1,6 @@
 # Introduction to Algorithms in Rust & Python
 
-Every algorithm from the **1st (1990), 2nd (2001), 3rd (2009) and 4th (2022) editions** of *Introduction to Algorithms* (CLRS, "the white book"), implemented in dependency-free **Rust and Python 3** — **272 algorithm families**, each with unit tests in both languages — each with a markdown explanation (diagrams in Mermaid), the source code, and a recorded run log. A single-page web app lets you browse and learn them online: **[Browse the Algorithm Explorer (`index.html`)](https://hevangel.github.io/introduction_to_algorithms/index.html)**.
+Every algorithm from the **1st (1990), 2nd (2001), 3rd (2009) and 4th (2022) editions** of *Introduction to Algorithms* (CLRS, "the white book"), implemented in dependency-free **Rust and Python 3** — **273 algorithm families**, each with unit tests in both languages — each with a markdown explanation (diagrams in Mermaid), the source code, and a recorded run log. A single-page web app lets you browse and learn them online: **[Browse the Algorithm Explorer (`index.html`)](https://hevangel.github.io/introduction_to_algorithms/index.html)**.
 
 ```bash
 cargo test                      # run all Rust unit tests
