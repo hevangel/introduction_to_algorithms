@@ -1,6 +1,6 @@
 //! @title Maximal Layers
-//! @chapter Problem 33-2 (1e–4e)
-//! @editions 1,2,3,4
+//! @chapter Problem 33-2 (2e–3e)
+//! @editions 2,3
 //! @summary Peel off the maximal (non-dominated) points repeatedly; layer numbers come from one sort and a binary search over the layers' topmost y-values: O(n lg n).
 //! @order 61
 use crate::outln;

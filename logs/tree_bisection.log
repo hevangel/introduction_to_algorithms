@@ -1,0 +1,9 @@
+$ cargo run --bin gen_site_data   # runs tree_bisection::demo()
+
+10-node binary tree single-edge separator (1, 0) -> split (5, 5)
+exact bisection split (5, 5) cutting 2 edges: [(0, 2), (3, 7)]
+
+$ cargo test tree_bisection
+test binary_tree_edge_separator_and_exact_bisection_bounds ... ok
+
+test result: 1 passed; 0 failed

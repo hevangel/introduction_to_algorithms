@@ -1,0 +1,9 @@
+$ cargo run --bin gen_site_data   # runs randomized_marking::demo()
+
+cyclic (k+1=7) workload with k=6: OPT=105, LRU=600, MARKING=400, avg RAND-MARK=249.6
+competitive bound 2*H_6 = 4.90 vs observed rand/OPT = 2.38
+
+$ cargo test randomized_marking
+test randomized_marking_beats_deterministic_k_adversary_within_2_hk ... ok
+
+test result: 1 passed; 0 failed

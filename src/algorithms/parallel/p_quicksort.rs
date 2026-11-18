@@ -1,5 +1,5 @@
 //! @title Parallel Randomized Quicksort
-//! @chapter Problem 27-? / 27.3 exercises (3e), 26 (4e)
+//! @chapter 27.3, Problem 27-6 (3e) / 26.3, Problem 26-6 (4e)
 //! @editions 3,4
 //! @summary Spawn the two recursive calls after a serial partition: work Θ(n lg n), span Θ(n) expected for a serial partition — a parallel partition would give Θ(lg² n).
 //! @order 40

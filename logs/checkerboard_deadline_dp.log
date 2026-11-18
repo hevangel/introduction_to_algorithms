@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs checkerboard_deadline_dp::demo()
+
+checkerboard max profit = 30, column path = [2, 1, 0, 1]
+jobs (dur, dl, profit) = [(3, 5, 40), (2, 4, 25), (4, 6, 50), (1, 2, 15)]
+max scheduling profit   = 75, execution order = [1, 2]
+
+$ cargo test checkerboard_deadline_dp
+test checkerboard_matches_exhaustive_dfs ... ok
+test scheduling_matches_exhaustive_subset_enumeration ... ok
+
+test result: 2 passed; 0 failed

@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs p_scan_stencil_lu::demo()
+
+P-SCAN([3, 1, 4, 1, 5, 9, 2, 6]) = [3, 4, 8, 9, 14, 23, 25, 31] (work=30, span=8)
+P-STENCIL LCS("ABCBDAB", "BDCABA") = 4 (work=42, span=13)
+P-BLOCK-LU diag(U) = [5.0, 5.8, 6.74, 7.85] (work=64, span=16)
+
+$ cargo test p_scan_stencil_lu
+test p_block_lu_matches_lu_decomposition ... ok
+test p_scan_matches_serial_prefix_sums_and_log_span ... ok
+test p_stencil_matches_serial_lcs_across_sizes ... ok
+
+test result: 3 passed; 0 failed

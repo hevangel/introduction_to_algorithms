@@ -1,6 +1,6 @@
 //! @title Greedy Set Cover
-//! @chapter 35.3 (2e–4e)
-//! @editions 2,3,4
+//! @chapter 37.3 (1e) / 35.3 (2e–4e)
+//! @editions 1,2,3,4
 //! @summary Repeatedly pick the set covering the most uncovered elements: an H(d)-approximation, H(d) ≤ ln d + 1.
 //! @order 30
 use crate::outln;
@@ -36,9 +36,9 @@ pub fn demo() -> String {
     outln!(o, "universe 0..12 with {} sets", sets.len());
     outln!(o, "greedy picks {:?}", greedy_set_cover(12, &sets));
     outln!(o, "optimal size = {:?}", optimal_cover_size(12, &sets));
-    // classic bad instance: greedy takes the 3 big sets while 2 sets suffice
-    let bad: Vec<Vec<usize>> = vec![vec![0, 1, 2, 3, 4, 5, 6], vec![0, 1, 2, 7, 8, 9], vec![3, 4, 5, 6, 7, 8, 9]];
-    outln!(o, "adversarial: greedy {:?}, optimal {:?}", greedy_set_cover(10, &bad).map(|v| v.len()), optimal_cover_size(10, &bad));
+    // classic bad instance: greedy picks the size-8 overlap first, forcing 3 sets while 2 disjoint size-7 sets suffice
+    let bad: Vec<Vec<usize>> = vec![vec![0, 1, 2, 3, 4, 5, 6], vec![7, 8, 9, 10, 11, 12, 13], vec![0, 1, 2, 3, 7, 8, 9, 10]];
+    outln!(o, "adversarial: greedy {:?}, optimal {:?}", greedy_set_cover(14, &bad).map(|v| v.len()), optimal_cover_size(14, &bad));
     o
 }
 
@@ -69,9 +69,9 @@ mod tests {
     }
     #[test]
     fn greedy_can_be_suboptimal() {
-        let bad: Vec<Vec<usize>> = vec![vec![0, 1, 2, 3, 4, 5, 6], vec![0, 1, 2, 7, 8, 9], vec![3, 4, 5, 6, 7, 8, 9]];
-        assert_eq!(optimal_cover_size(10, &bad), Some(2));
-        assert_eq!(greedy_set_cover(10, &bad).unwrap().len(), 2); // 7 elements first, then the remaining three need the second set
+        let bad: Vec<Vec<usize>> = vec![vec![0, 1, 2, 3, 4, 5, 6], vec![7, 8, 9, 10, 11, 12, 13], vec![0, 1, 2, 3, 7, 8, 9, 10]];
+        assert_eq!(optimal_cover_size(14, &bad), Some(2));
+        assert_eq!(greedy_set_cover(14, &bad).unwrap().len(), 3);
         assert_eq!(greedy_set_cover(3, &[vec![0], vec![1]]), None);
     }
 }

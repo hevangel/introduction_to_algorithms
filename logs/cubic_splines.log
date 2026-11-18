@@ -1,0 +1,14 @@
+$ cargo run --bin gen_site_data   # runs cubic_splines::demo()
+
+natural second derivatives D = [0.0, -1.293, -0.612, 1.546, 0.0]
+  x = 0.50: S= 0.5264  S'= 0.9451  S''=-0.6467
+  x = 1.00: S= 0.8912  S'= 0.4601  S''=-1.2934
+  x = 2.00: S= 0.7802  S'=-0.6063  S''=-0.8393
+  x = 3.25: S=-0.4162  S'=-1.0237  S''= 0.4667
+  x = 4.50: S=-0.9252  S'= 0.3105  S''= 0.7728
+
+$ cargo test cubic_splines
+test interpolates_knots_with_c2_continuity_and_natural_boundaries ... ok
+test reproduces_linear_function_exactly ... ok
+
+test result: 2 passed; 0 failed

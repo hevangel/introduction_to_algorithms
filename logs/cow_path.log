@@ -1,0 +1,21 @@
+$ cargo run --bin gen_site_data   # runs cow_path::demo()
+
+target =     1: walked =     1 in  0 turns (ratio = 1.000 ≤ 9)
+target =    -1: walked =     3 in  1 turns (ratio = 3.000 ≤ 9)
+target =     2: walked =     8 in  2 turns (ratio = 4.000 ≤ 9)
+target =    -2: walked =     4 in  1 turns (ratio = 2.000 ≤ 9)
+target =     3: walked =     9 in  2 turns (ratio = 3.000 ≤ 9)
+target =    -5: walked =    19 in  3 turns (ratio = 3.800 ≤ 9)
+target =    17: walked =   143 in  6 turns (ratio = 8.412 ≤ 9)
+target =   -65: walked =   319 in  7 turns (ratio = 4.908 ≤ 9)
+target =  1025: walked =  9215 in 12 turns (ratio = 8.990 ≤ 9)
+factor r = 1.5: worst-case bound = 10.000
+factor r = 2.0: worst-case bound = 9.000
+factor r = 3.0: worst-case bound = 10.000
+factor r = 4.0: worst-case bound = 11.667
+
+$ cargo test cow_path
+test doubling_never_exceeds_nine_times_distance ... ok
+test general_factor_obeys_theoretical_ratio_bound ... ok
+
+test result: 2 passed; 0 failed

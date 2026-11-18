@@ -1,0 +1,10 @@
+$ cargo run --bin gen_site_data   # runs project_selection_closure::demo()
+
+rewards=[100, 120, 70], costs=[60, 80, 50]
+best net profit = 100, chosen jobs = [0, 1, 2], instruments = [0, 1, 2]
+
+$ cargo test project_selection_closure
+test closure_matches_2_to_n_brute_force ... ok
+test space_shuttle_consulting_example ... ok
+
+test result: 2 passed; 0 failed

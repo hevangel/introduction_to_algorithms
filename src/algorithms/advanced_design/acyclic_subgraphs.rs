@@ -1,6 +1,6 @@
 //! @title Acyclic Subgraphs
-//! @chapter Problem 17-2 (1e); 16-? (2e)
-//! @editions 1,2
+//! @chapter Problem 17-2 (1e); Problem 16-3 (2e–3e)
+//! @editions 1,2,3
 //! @summary Undirected: a maximum acyclic subgraph is a spanning forest (|V| − #components edges). Directed: choose forward or backward edges of any vertex order to keep ≥ |E|/2 edges acyclic.
 //! @order 280
 use crate::outln;

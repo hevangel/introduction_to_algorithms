@@ -1,6 +1,6 @@
 //! @title Hopcroft-Karp Matching
-//! @chapter 25.1 (4e)
-//! @editions 4
+//! @chapter 25.1 (4e); Problem 26-6 (3e)
+//! @editions 3,4
 //! @summary Find many shortest vertex-disjoint augmenting paths per phase: O(E√V) maximum bipartite matching.
 //! @order 200
 use crate::outln;

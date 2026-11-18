@@ -1,6 +1,6 @@
 //! @title Maximum Subarray
-//! @chapter 4.1 (3e); Exercise 4.1-5 (4e)
-//! @editions 3,4
+//! @chapter 4.1, Exercise 4.1-5 (3e)
+//! @editions 3
 //! @summary Divide-and-conquer (and Kadane's linear scan) for the contiguous subarray of maximum sum.
 //! @order 90
 use crate::outln;

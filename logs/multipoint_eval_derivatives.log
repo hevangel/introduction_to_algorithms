@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs multipoint_eval_derivatives::demo()
+
+all derivatives of 1 - 2x + 3x^2 - x^3 + 2x^4 at x=2: [33.0, 62.0, 90.0, 90.0, 48.0]
+multipoint eval at [-2.0, -1.0, 0.0, 1.0, 2.0, 3.0] = [57.0, 9.0, 1.0, 3.0, 33.0, 157.0]
+
+$ cargo test multipoint_eval_derivatives
+test all_derivatives_matches_direct_taylor_shift ... ok
+test fft_2d_roundtrips_and_matches_separable_dft ... ok
+test multipoint_eval_matches_horner ... ok
+
+test result: 3 passed; 0 failed

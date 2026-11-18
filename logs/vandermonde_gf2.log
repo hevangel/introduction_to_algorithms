@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs vandermonde_gf2::demo()
+
+Vandermonde xs=[1, 2, 4, 7]: exact_det = 540, product formula = 540
+GF(2) 4-bit Gray matrix output: [0, 1, 3, 2, 6, 7, 5, 4, 12, 13, 15, 14, 10, 11, 9, 8]
+GF(2) inverse recovers identity? true
+
+$ cargo test vandermonde_gf2
+test gf2_invertible_matrices_induce_bijections_and_singular_ones_collide ... ok
+test vandermonde_determinant_matches_product_formula_exactly ... ok
+
+test result: 2 passed; 0 failed

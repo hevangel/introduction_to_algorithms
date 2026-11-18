@@ -1,6 +1,6 @@
 //! @title Approximate Metric TSP
-//! @chapter 35.2 (3e) / 37.2 (4e)
-//! @editions 2,3,4
+//! @chapter 37.2 (1e) / 35.2 (2e–4e)
+//! @editions 1,2,3,4
 //! @summary Preorder walk of a minimum spanning tree: a 2-approximation when distances satisfy the triangle inequality.
 //! @order 20
 use crate::outln;

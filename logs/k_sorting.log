@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs k_sorting::demo()
+
+original   = [9, 3, 7, 1, 8, 2, 6, 4, 5, 0]
+3-sorted   = [0, 3, 2, 1, 4, 5, 6, 8, 7, 9] (is_3_sorted = true)
+3-window averages = [1.67, 2.0, 2.33, 3.33, 5.0, 6.33, 7.0, 8.0]
+k-way merged      = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+$ cargo test k_sorting
+test k_equal_1_is_full_sort ... ok
+test k_sort_window_averages_and_merge ... ok
+
+test result: 2 passed; 0 failed

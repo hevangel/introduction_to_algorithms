@@ -1,6 +1,6 @@
 //! @title Convex Layers
-//! @chapter Problem 33-1 (1e–4e)
-//! @editions 1,2,3,4
+//! @chapter Problem 33-1 (2e–3e)
+//! @editions 2,3
 //! @summary Peel off the convex hull again and again ("onion peeling"): the layers of a point set, computed in O(n²) simply or O(n lg n) with more care.
 //! @order 60
 use super::convex_hull_graham::{graham_scan, hull_area2};

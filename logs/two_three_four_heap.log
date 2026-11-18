@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs two_three_four_heap::demo()
+
+h1 after inserts [24,15,38,7,19]: min = Some(7)
+after decrease_key(38 -> 3)    : min = Some(3)
+after union with [11,2,30]     : len = 8, min = Some(2)
+extract_min sequence           : [2, 3, 7, 11, 15, 19, 24, 30]
+
+$ cargo test two_three_four_heap
+test randomized_2000_ops_match_btreemap_oracle ... ok
+test union_at_various_heights_preserves_invariants_and_handles ... ok
+
+test result: 2 passed; 0 failed

@@ -1,0 +1,9 @@
+$ cargo run --bin gen_site_data   # runs picking_up_sticks::demo()
+
+acyclic 3D pile removal order = Some([2, 1, 0])
+cyclic Escher pile removal order = None
+
+$ cargo test picking_up_sticks
+test valid_3d_layers_lift_in_order_and_pinwheel_cycle_is_rejected ... ok
+
+test result: 1 passed; 0 failed

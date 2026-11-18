@@ -1,5 +1,5 @@
 //! @title Online Hiring (Secretary Problem)
-//! @chapter 5.4.4 (1e–4e)
+//! @chapter 6.6 (1e) / 5.4.4 (2e–4e)
 //! @editions 1,2,3,4
 //! @summary Observe the first k=n/e candidates, then hire the first one who beats them: success ≈ 1/e.
 //! @order 160

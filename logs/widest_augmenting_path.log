@@ -1,0 +1,9 @@
+$ cargo run --bin gen_site_data   # runs widest_augmenting_path::demo()
+
+widest augmenting path: max_flow = 2000 in 2 augmentations
+
+$ cargo test widest_augmenting_path
+test avoids_bad_unit_shortcut_diamond ... ok
+test matches_edmonds_karp_on_random_capacitated_graphs ... ok
+
+test result: 2 passed; 0 failed

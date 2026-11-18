@@ -1,0 +1,10 @@
+$ cargo run --bin gen_site_data   # runs planar_graph_orientation::demo()
+
+planar graph vertices = 7, max out-degree = 3, edge flips = 0
+O(1) query has_edge(6, 4) = true, has_edge(0, 4) = false
+
+$ cargo test planar_graph_orientation
+test forced_reorientation_restores_bound ... ok
+test incremental_triangulation_preserves_out_deg_le_5 ... ok
+
+test result: 2 passed; 0 failed

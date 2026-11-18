@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs semiring_paths::demo()
+
+4-vertex DAG edges: [(0, 1, 5, 0.9), (0, 2, 3, 0.7), (1, 3, 2, 0.95), (2, 1, 4, 0.8), (2, 3, 6, 0.6)]
+shortest path 0 -> 3 (min, +):   7
+widest path   0 -> 3 (max, min): 3
+most reliable 0 -> 3 (max, *):   0.8550
+
+$ cargo test semiring_paths
+test bottleneck_widest_path_matches_simple_path_brute_force ... ok
+test matches_floyd_warshall_and_transitive_closure ... ok
+
+test result: 2 passed; 0 failed

@@ -1,5 +1,5 @@
 //! @title Online Caching: LRU, FIFO and Belady's Optimum
-//! @chapter 27.3 (4e); Problem 16-5 (3e)
+//! @chapter 27.3, 15.4 (4e); Problem 16-5 (3e)
 //! @editions 3,4
 //! @summary Cache replacement policies compared by cache misses; LRU and FIFO are k-competitive, furthest-in-future is optimal offline.
 //! @order 30

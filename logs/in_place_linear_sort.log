@@ -1,0 +1,14 @@
+$ cargo run --bin gen_site_data   # runs in_place_linear_sort::demo()
+
+input records (key, tag): [(2, 'a'), (0, 'b'), (1, 'c'), (2, 'd'), (0, 'e'), (1, 'f')]
+(a) stable O(n+k)       : [(0, 'b'), (0, 'e'), (1, 'c'), (1, 'f'), (2, 'a'), (2, 'd')]
+(d) in-place O(k)-space : [(0, 'e'), (0, 'b'), (1, 'c'), (1, 'f'), (2, 'a'), (2, 'd')]
+(b) 0-1 partition O(n)  : [(0, 't'), (0, 'q'), (0, 's'), (1, 'r'), (1, 'p')]
+(c) 0-1 stable O(1) spc : [(0, 'q'), (0, 's'), (0, 't'), (1, 'p'), (1, 'r')]
+(e) in-place MSD radix  : [(1, 'd'), (2, 'b'), (2, 'f'), (4, 'e'), (5, 'a'), (7, 'c')]
+
+$ cargo test in_place_linear_sort
+test binary_and_msd_radix_variants ... ok
+test small_key_variants_match_sorted_order ... ok
+
+test result: 2 passed; 0 failed

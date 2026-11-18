@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs quadratic_residues::demo()
+
+quadratic residues mod 41 (count 20 = (p-1)/2): [1, 2, 4, 5, 8, 9, 10, 16, 18, 20, 21, 23, 25, 31, 32, 33, 36, 37, 39, 40]
+  sqrt(2) mod 41 = 17 (and 24), check: 17^2 mod 41 = 2
+  sqrt(5) mod 41 = 28 (and 13), check: 28^2 mod 41 = 5
+  sqrt(10) mod 41 = 16 (and 25), check: 16^2 mod 41 = 10
+  sqrt(13) mod 41 = None (non-residue)
+
+$ cargo test quadratic_residues
+test legendre_and_tonelli_shanks_exact_for_primes_up_to_1000 ... ok
+
+test result: 1 passed; 0 failed

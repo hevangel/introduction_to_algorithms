@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs gray_code::demo()
+
+4-bit reflected Gray code (16 words): 0000 0001 0011 0010 0110 0111 0101 0100 1100 1101 1111 1110 1010 1011 1001 1000
+toggled bit indices: [0, 1, 0, 2, 0, 1, 0, 3, 0, 1, 0, 2, 0, 1, 0]
+total bit inspections across 15 steps = 26 (1.62 per step)
+
+$ cargo test gray_code
+test amortized_cost_is_bounded_by_2_per_step ... ok
+test recursive_matches_closed_form_and_hamming_distance_is_1 ... ok
+
+test result: 2 passed; 0 failed

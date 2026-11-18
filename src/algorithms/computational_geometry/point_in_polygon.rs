@@ -1,6 +1,6 @@
 //! @title Point in Polygon
-//! @chapter 33.1 exercises / 33.2 (1e–4e)
-//! @editions 1,2,3,4
+//! @chapter 35.1 (1e) / 33.1 exercises (2e–3e)
+//! @editions 1,2,3
 //! @summary Ray casting (even–odd rule) and the winding number decide whether a point lies inside a simple polygon in O(n), using only exact cross products.
 //! @order 63
 use super::segment_intersection::{cross, Pt};

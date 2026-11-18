@@ -1,0 +1,10 @@
+$ cargo run --bin gen_site_data   # runs boolean_matrix_multiply::demo()
+
+4x4 boolean product matches (naive == Strassen == Four Russians): true
+triangle detected via A^2 & A: Some((0, 1, 2))
+
+$ cargo test boolean_matrix_multiply
+test strassen_and_four_russians_match_naive_across_sizes ... ok
+test triangle_detection_matches_triple_enumeration ... ok
+
+test result: 2 passed; 0 failed

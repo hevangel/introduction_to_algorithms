@@ -1,5 +1,5 @@
 //! @title Minimum-Cost Flow
-//! @chapter 29.2 (3e) / 29 (4e), Problem 29-? ; 26 exercises
+//! @chapter 29.2 (2e–4e); Problem 29-5 (3e–4e)
 //! @editions 2,3,4
 //! @summary Send a required amount of flow at minimum total cost by successive shortest augmenting paths in the residual graph (with negative reverse costs).
 //! @order 225

@@ -1,6 +1,6 @@
 //! @title Random Permutations & Sampling
-//! @chapter 5.3 (1e–4e)
-//! @editions 1,2,3,4
+//! @chapter 5.3 (2e–4e)
+//! @editions 2,3,4
 //! @summary PERMUTE-BY-SORTING, RANDOMIZE-IN-PLACE, random subsets, and RANDOM(a,b) from fair coin flips.
 //! @order 150
 use crate::common::Rng;

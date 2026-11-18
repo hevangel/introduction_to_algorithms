@@ -1,5 +1,5 @@
 //! @title Stable Matching (Gale-Shapley)
-//! @chapter 25.3 (4e)
+//! @chapter 25.2 (4e)
 //! @editions 4
 //! @summary Propose-and-reject deferred acceptance yields a stable marriage in O(n²) — optimal for the proposing side.
 //! @order 220

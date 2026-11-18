@@ -1,5 +1,5 @@
 //! @title Nesting Boxes
-//! @chapter Problem 15-? (1e–2e); 24-2 (3e) / 22-2 (4e)
+//! @chapter Problem 24-2 (2e–3e) / 22-2 (4e)
 //! @editions 2,3,4
 //! @summary d-dimensional boxes nest if some rotation fits strictly inside; sort each box's dimensions and find the longest chain in the nesting DAG.
 //! @order 126

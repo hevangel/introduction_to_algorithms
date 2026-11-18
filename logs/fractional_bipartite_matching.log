@@ -1,0 +1,10 @@
+$ cargo run --bin gen_site_data   # runs fractional_bipartite_matching::demo()
+
+fractional matching weight = 16.5 -> rounded edges [0, 2, 4], integral weight = 24.0
+optimal matching weight = 21; dual labels u = [3, 0, 0], v = [6, 8, 4] (sum = 21)
+
+$ cargo test fractional_bipartite_matching
+test recovers_feasible_optimal_dual_labels_for_partial_and_full_matchings ... ok
+test rounds_arbitrary_fractional_matchings_without_loss ... ok
+
+test result: 2 passed; 0 failed

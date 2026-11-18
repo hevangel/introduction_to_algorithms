@@ -1,6 +1,6 @@
 //! @title Hiring Problem & Indicator Variables
-//! @chapter 5.1–5.2 (1e–4e)
-//! @editions 1,2,3,4
+//! @chapter 5.1–5.2 (2e–4e)
+//! @editions 2,3,4
 //! @summary HIRE-ASSISTANT and its expected number of hires (the harmonic number H_n ≈ ln n).
 //! @order 140
 use crate::common::Rng;

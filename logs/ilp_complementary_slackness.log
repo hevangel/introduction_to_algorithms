@@ -1,0 +1,10 @@
+$ cargo run --bin gen_site_data   # runs ilp_complementary_slackness::demo()
+
+primal/dual opt = 28.00, complementary slackness holds? true
+integrality gap: LP relaxation = 1.50, ILP opt = 1.00 at [1, 0]
+
+$ cargo test ilp_complementary_slackness
+test complementary_slackness_holds_for_random_bounded_lps ... ok
+test feasibility_and_ilp_match_grid_brute_force ... ok
+
+test result: 2 passed; 0 failed

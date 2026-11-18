@@ -1,0 +1,10 @@
+$ cargo run --bin gen_site_data   # runs burrows_wheeler_linear_sa::demo()
+
+DC3 suffix array of "mississippi": [10, 7, 4, 1, 0, 9, 8, 6, 3, 5, 2]
+BWT(mississippi) = "ipssmpissii" (sentinel row 5), decoded = "mississippi"
+
+$ cargo test burrows_wheeler_linear_sa
+test bwt_encode_decode_roundtrips_for_all_lengths_and_arbitrary_bytes ... ok
+test dc3_matches_suffix_array_across_random_and_periodic_strings ... ok
+
+test result: 2 passed; 0 failed

@@ -1,0 +1,9 @@
+$ cargo run --bin gen_site_data   # runs global_min_cut::demo()
+
+V-1 flows global min-cut = 3, partition = [true, true, true, true, false, false, false, false]
+Stoer-Wagner min-cut     = 3, partition = [false, false, false, false, true, true, true, true]
+
+$ cargo test global_min_cut
+test both_algorithms_match_2_to_n_cut_enumeration ... ok
+
+test result: 1 passed; 0 failed

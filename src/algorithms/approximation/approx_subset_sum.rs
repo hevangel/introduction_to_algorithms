@@ -1,6 +1,6 @@
 //! @title FPTAS for Subset Sum
-//! @chapter 35.5 (2e–4e)
-//! @editions 2,3,4
+//! @chapter 37.4 (1e) / 35.5 (2e–4e)
+//! @editions 1,2,3,4
 //! @summary Trim the list of reachable sums by a factor (1+ε/2n): a fully polynomial-time approximation scheme.
 //! @order 40
 use crate::outln;

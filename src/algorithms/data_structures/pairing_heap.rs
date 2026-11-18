@@ -1,5 +1,5 @@
 //! @title Pairing Heaps
-//! @chapter Problem 19-2 (1e–3e)
+//! @chapter Companion priority queue (Ch 20 1e–2e / Ch 19 3e)
 //! @editions 1,2,3
 //! @summary A self-adjusting heap: meld is O(1), delete-min pairs siblings in two passes (O(lg n) amortised), decrease-key cuts a subtree.
 //! @order 195

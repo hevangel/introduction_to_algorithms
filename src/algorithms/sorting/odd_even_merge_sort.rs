@@ -1,5 +1,5 @@
 //! @title Odd-Even Merging Network
-//! @chapter 27.4 / Problem 27-5 (1e, 2e)
+//! @chapter Problem 28-2 (1e) / Problem 27-2 (2e)
 //! @editions 1,2
 //! @summary Batcher's odd-even merge sort: merge by recursively merging odd and even subsequences.
 //! @order 150

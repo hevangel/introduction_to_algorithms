@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs universal_auth_hash::demo()
+
+GF(11), k=2: across all 11^2 = 121 functions, every pair (h(2), h(7)) hits once? true
+Carter-Wegman tag (msg=42195, p=2147483647) = 903704845, valid=true
+tampered msg=42196 valid? false
+
+$ cargo test universal_auth_hash
+test carter_wegman_auth_and_forging_uniformity ... ok
+test exact_3_universal_uniformity_over_gf5 ... ok
+test exact_pairwise_uniformity_over_gf11 ... ok
+
+test result: 3 passed; 0 failed

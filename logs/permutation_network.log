@@ -1,0 +1,11 @@
+$ cargo run --bin gen_site_data   # runs permutation_network::demo()
+
+odd-even transposition sort in 8 layers -> [1, 2, 3, 4, 5, 6, 7, 8]
+Beneš n=8 stages = 5, perm = [5, 2, 7, 0, 4, 1, 6, 3]
+routed wires = [3, 5, 1, 7, 4, 0, 6, 2] (exact = true)
+
+$ cargo test permutation_network
+test benes_routes_arbitrary_power_of_two_permutations ... ok
+test odd_even_transposition_sorts_all_inputs ... ok
+
+test result: 2 passed; 0 failed

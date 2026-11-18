@@ -1,5 +1,5 @@
 //! @title Hungarian Algorithm (Assignment Problem)
-//! @chapter 25.2 (4e)
+//! @chapter 25.3 (4e)
 //! @editions 4
 //! @summary Minimum-cost perfect matching in a complete bipartite graph in O(n³) using vertex potentials.
 //! @order 210

@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs newton_hedge_sgd::demo()
+
+Newton 1D on x^4 - 4x + 5 from x0=3: x* = 1.0000000000 in 7 steps
+Hedge (200 rounds, 6 experts): loss=50.02, best=41.77, bound=59.08, top_p=1.000
+SGD linear regression y = 2 + 3x -> theta = [2.0000, 3.0000]
+
+$ cargo test newton_hedge_sgd
+test hedge_obeys_multiplicative_weights_regret_bound ... ok
+test newton_converges_quadratically_on_strictly_convex_functions ... ok
+test sgd_agrees_with_full_batch_gradient_descent ... ok
+
+test result: 3 passed; 0 failed

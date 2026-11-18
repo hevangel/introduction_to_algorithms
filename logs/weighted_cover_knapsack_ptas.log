@@ -1,0 +1,12 @@
+$ cargo run --bin gen_site_data   # runs weighted_cover_knapsack_ptas::demo()
+
+weighted greedy set cover -> Some((2.2, [0, 2]))
+maximal matching          -> [(0, 1), (2, 3)]
+max spanning tree         -> (20, [(1, 2, 8), (0, 3, 7), (2, 3, 5)])
+0-1 knapsack FPTAS (eps=0.1) -> (220, [1, 2])
+
+$ cargo test weighted_cover_knapsack_ptas
+test knapsack_fptas_meets_one_minus_epsilon_guarantee ... ok
+test weighted_cover_maximal_matching_and_max_st_bounds ... ok
+
+test result: 2 passed; 0 failed

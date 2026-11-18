@@ -1,0 +1,13 @@
+$ cargo run --bin gen_site_data   # runs symmetry_breaking::demo()
+
+n=16 path 6-colored in 1 deterministic coin-tossing rounds:
+  c6  = [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
+  c3  = [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
+  MIS = [1, 3, 5, 7, 9, 11, 13, 15]
+randomized list prefix(1..=16): [1, 3, 6, 10, 15, 21, 28, 36, 45, 55, 66, 78, 91, 105, 120, 136]
+
+$ cargo test symmetry_breaking
+test randomized_list_prefix_matches_sequential_walk ... ok
+test six_and_three_coloring_are_proper_and_lg_star_fast ... ok
+
+test result: 2 passed; 0 failed

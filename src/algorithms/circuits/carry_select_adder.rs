@@ -1,5 +1,5 @@
 //! @title Carry-Select Adder
-//! @chapter Problem 29-? / 29.2 (1e)
+//! @chapter 29.2 (1e) (companion extension)
 //! @editions 1
 //! @summary Compute each block's sum twice (carry-in 0 and 1) in parallel and let the real incoming carry select the right one: delay O(√n) with blocks of size √n, or O(lg n) when selects are chained in a tree.
 //! @order 25

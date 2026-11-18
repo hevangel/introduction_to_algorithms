@@ -5,10 +5,10 @@
       "tagline": "The foundation: sorting, graphs, data structures, complexity and numerical algorithms — plus hardware-flavoured chapters later dropped.",
       "added": [
         { "text": "Arithmetic circuits (adders, multipliers, clocked circuits)", "ids": ["combinational_circuits", "ripple_carry_adder", "carry_lookahead_adder", "carry_save_adder", "multiplier_circuits", "clocked_circuits"] },
-        { "text": "Algorithms for parallel computers (PRAM model)", "ids": ["list_ranking", "parallel_prefix", "crcw_maximum", "euler_tour_technique"] },
-        { "text": "Sorting networks (comparison, bitonic and odd-even merge)", "ids": ["comparison_network", "bitonic_sorter", "odd_even_merge_sort"] },
-        { "text": "Binomial heaps", "ids": ["binomial_heap"] },
-        { "text": "Boyer–Moore string matching and optimal polygon triangulation", "ids": ["boyer_moore", "polygon_triangulation"] }
+        { "text": "Algorithms for parallel computers (PRAM model)", "ids": ["list_ranking", "parallel_prefix", "crcw_maximum", "euler_tour_technique", "symmetry_breaking"] },
+        { "text": "Sorting networks (comparison, bitonic, odd-even merge, permutation routing)", "ids": ["comparison_network", "bitonic_sorter", "odd_even_merge_sort", "permutation_network"] },
+        { "text": "Binomial heaps and 2-3-4 heaps", "ids": ["binomial_heap", "two_three_four_heap"] },
+        { "text": "Closed-semiring paths, boolean matrix multiplication, Boyer–Moore and optimal polygon triangulation", "ids": ["semiring_paths", "boolean_matrix_multiply", "boyer_moore", "polygon_triangulation"] }
       ],
       "removed": []
     },
@@ -23,8 +23,8 @@
       ],
       "removed": [
         { "text": "Arithmetic circuits chapter", "ids": ["combinational_circuits"] },
-        { "text": "PRAM / parallel computers chapter", "ids": ["list_ranking"] },
-        { "text": "Boyer–Moore and optimal polygon triangulation sections", "ids": ["boyer_moore", "polygon_triangulation"] },
+        { "text": "PRAM / parallel computers chapter", "ids": ["list_ranking", "symmetry_breaking"] },
+        { "text": "Boyer–Moore, closed-semiring paths, boolean matmul and optimal polygon triangulation sections", "ids": ["boyer_moore", "semiring_paths", "boolean_matrix_multiply", "polygon_triangulation"] },
         { "text": "Hoare partitioning as the main quicksort partition (kept as a problem)", "ids": ["hoare_quicksort"] }
       ]
     },
@@ -39,7 +39,7 @@
       ],
       "removed": [
         { "text": "Binomial heaps chapter", "ids": ["binomial_heap"] },
-        { "text": "Sorting networks chapter", "ids": ["comparison_network", "bitonic_sorter", "odd_even_merge_sort"] },
+        { "text": "Sorting networks chapter", "ids": ["comparison_network", "bitonic_sorter", "odd_even_merge_sort", "permutation_network"] },
         { "text": "Assembly-line scheduling", "ids": ["assembly_line_scheduling"] }
       ]
     },
@@ -47,10 +47,11 @@
       "n": 4, "year": 2022, "label": "4th edition", "nickname": "Machine learning and online algorithms",
       "tagline": "New chapters on machine learning, online algorithms and bipartite matching; rarely taught material removed.",
       "added": [
-        { "text": "Machine learning: k-means, weighted majority, gradient descent", "ids": ["k_means", "weighted_majority", "gradient_descent"] },
-        { "text": "Online algorithms: competitive analysis, caching, move-to-front", "ids": ["elevator", "move_to_front", "online_caching"] },
+        { "text": "Machine learning: k-means, weighted majority, gradient descent, Newton, Hedge, SGD", "ids": ["k_means", "weighted_majority", "gradient_descent", "newton_hedge_sgd"] },
+        { "text": "Online algorithms: competitive analysis, caching, randomized marking, move-to-front, cow-path", "ids": ["elevator", "move_to_front", "online_caching", "randomized_marking", "cow_path"] },
         { "text": "Matchings in bipartite graphs: Hopcroft–Karp, Hungarian, stable marriage", "ids": ["hopcroft_karp", "hungarian", "stable_matching"] },
-        { "text": "Suffix arrays and the Akra–Bazzi recurrence method", "ids": ["suffix_array", "akra_bazzi"] }
+        { "text": "Suffix arrays (including linear-time DC3), Burrows–Wheeler Transform, and Akra–Bazzi", "ids": ["suffix_array", "burrows_wheeler_linear_sa", "akra_bazzi"] },
+        { "text": "New 4e problems: Gray code, planar orientation, widest augmenting path, global min-cut", "ids": ["gray_code", "planar_graph_orientation", "widest_augmenting_path", "global_min_cut"] }
       ],
       "removed": [
         { "text": "Fibonacci heaps", "ids": ["fibonacci_heap"] },
