@@ -20,6 +20,7 @@ pub struct Entry {
     pub summary: &'static str,
     pub order: u32,
     pub source: &'static str,
+    pub python: &'static str,
     pub doc: &'static str,
     pub demo: fn() -> String,
 }

@@ -1,9 +1,11 @@
-# Introduction to Algorithms in Rust
+# Introduction to Algorithms in Rust & Python
 
-Every algorithm from the **1st (1990), 2nd (2001), 3rd (2009) and 4th (2022) editions** of *Introduction to Algorithms* (CLRS, "the white book"), implemented in dependency-free Rust — **272 algorithm families, 604 unit tests** — each with a markdown explanation (diagrams in Mermaid), the source code, and a recorded run log. A single-page web app lets you browse and learn them online: **[Browse the Algorithm Explorer (`index.html`)](https://hevangel.github.io/introduction_to_algorithms/index.html)**.
+Every algorithm from the **1st (1990), 2nd (2001), 3rd (2009) and 4th (2022) editions** of *Introduction to Algorithms* (CLRS, "the white book"), implemented in dependency-free **Rust and Python 3** — **272 algorithm families**, each with unit tests in both languages — each with a markdown explanation (diagrams in Mermaid), the source code, and a recorded run log. A single-page web app lets you browse and learn them online: **[Browse the Algorithm Explorer (`index.html`)](https://hevangel.github.io/introduction_to_algorithms/index.html)**.
 
 ```bash
-cargo test                      # run all unit tests
+cargo test                      # run all Rust unit tests
+python3 -m unittest discover -s python/algorithms -p '*.py' -t .   # run all Python unit tests (stdlib only, Python 3.11+)
+python3 python/algorithms/sorting/heapsort.py                      # run one Python demo
 ./scripts/build_site_data.sh    # (re)generate run logs + manifest for the web app
 python3 -m http.server 8000     # then open http://localhost:8000/
 ```
@@ -12,13 +14,15 @@ python3 -m http.server 8000     # then open http://localhost:8000/
 
 | Path | Contents |
 |---|---|
-| `src/algorithms/<topic>/<id>.rs` | implementation + tests + `demo()` for one algorithm family |
+| `src/algorithms/<topic>/<id>.rs` | Rust implementation + tests + `demo()` for one algorithm family |
+| `python/algorithms/<topic>/<id>.py` | Python mirror: implementation + `unittest` tests + `demo()` (no dependencies) |
+| `python/common.py` | deterministic `Rng` (same xorshift64* as `src/common.rs`) |
 | `docs/<topic>/<id>.md` | what it is, how it works, complexity, when to use it |
 | `logs/<id>.log` | demo output and unit-test results (generated) |
 | `site-data/` | `manifest.json` (generated from the Rust registry), `editions.json` (edition comparison) |
 | `index.html` | the explorer: loads all of the above at runtime with `fetch` |
 | `build.rs` | discovers algorithm files and generates the module tree and registry |
-| `tests/consistency.rs` | every algorithm has source, docs, a demo, tests; all doc links resolve |
+| `tests/consistency.rs` | every algorithm has Rust + Python source, docs, a demo, tests; all doc links resolve |
 
 ## What is covered
 

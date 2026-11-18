@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CLRS in Rust — Algorithm Explorer</title>
-<meta name="description" content="Browse every algorithm from editions 1–4 of Introduction to Algorithms, implemented in Rust, with explanations, source code and run logs.">
+<title>CLRS in Rust & Python — Algorithm Explorer</title>
+<meta name="description" content="Browse every algorithm from editions 1–4 of Introduction to Algorithms, implemented in Rust and Python, with explanations, source code and run logs.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232563eb'/%3E%3Cpath d='M7 22l5-12 4 8 3-5 6 9' stroke='white' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <style>
 :root {
@@ -166,7 +166,7 @@ details.tests > summary { cursor: pointer; color: var(--accent); font-weight: 60
 <body>
 <header class="top">
   <button id="menuBtn" aria-label="Toggle navigation">☰</button>
-  <h1><a href="#/">CLRS in Rust <span>· algorithm explorer</span></a></h1>
+  <h1><a href="#/">CLRS in Rust & Python <span>· algorithm explorer</span></a></h1>
   <div class="spacer"></div>
   <button class="icon-btn" id="themeBtn" title="Toggle light / dark theme" aria-label="Toggle theme">◐</button>
 </header>
@@ -184,10 +184,11 @@ details.tests > summary { cursor: pointer; color: var(--accent); font-weight: 60
 <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/rust.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js"></script>
 <script>
 /* Everything shown here is loaded at runtime: site-data/manifest.json, site-data/editions.json,
-   docs/<category>/<id>.md, src/algorithms/<category>/<id>.rs and logs/<id>.log. Nothing is hard-coded. */
+   docs/<category>/<id>.md, src/algorithms/<category>/<id>.rs, python/algorithms/<category>/<id>.py and logs/<id>.log. Nothing is hard-coded. */
 (() => {
   'use strict';
   const $ = (s, r = document) => r.querySelector(s);
@@ -312,15 +313,15 @@ details.tests > summary { cursor: pointer; color: var(--accent); font-weight: 60
 
   /* ---------- home ---------- */
   function showHome() {
-    document.title = 'CLRS in Rust — Algorithm Explorer';
+    document.title = 'CLRS in Rust & Python — Algorithm Explorer';
     const m = $('#main');
     m.textContent = '';
     const total = S.flat.length;
     const perEd = [1, 2, 3, 4].map(n => S.flat.filter(a => a.editions.includes(n)).length);
     const hero = el('div', { className: 'card hero' });
-    hero.innerHTML = `<h2>Introduction to Algorithms — in Rust</h2>
-      <p>Every algorithm from the <b>1st (1990), 2nd (2001), 3rd (2009) and 4th (2022)</b> editions of CLRS, implemented in safe Rust with unit tests.
-      Pick a topic below for an undergraduate-friendly overview and trade-offs, or jump straight to an algorithm in the sidebar to study its explanation, Rust source, and run log.</p>
+    hero.innerHTML = `<h2>Introduction to Algorithms — in Rust &amp; Python</h2>
+      <p>Every algorithm from the <b>1st (1990), 2nd (2001), 3rd (2009) and 4th (2022)</b> editions of CLRS, implemented in safe Rust and zero-dependency Python 3 with unit tests.
+      Pick a topic below for an undergraduate-friendly overview and trade-offs, or jump straight to an algorithm in the sidebar to study its explanation, Rust and Python source code, and run log.</p>
       <div class="stats">
         <div class="stat"><b>${total}</b><span>algorithm families</span></div>
         <div class="stat"><b>${S.manifest.categories.length}</b><span>topic areas</span></div>
@@ -390,7 +391,7 @@ details.tests > summary { cursor: pointer; color: var(--accent); font-weight: 60
   let navToken = 0;
   async function showTopic(c) {
     const token = ++navToken;
-    document.title = `${c.title} — CLRS in Rust`;
+    document.title = `${c.title} — CLRS in Rust & Python`;
     const m = $('#main');
     m.textContent = '';
     const idx = S.manifest.categories.indexOf(c);
@@ -437,7 +438,7 @@ details.tests > summary { cursor: pointer; color: var(--accent); font-weight: 60
   /* ---------- algorithm page ---------- */
   async function showAlgorithm(a, tab) {
     const token = ++navToken;
-    document.title = `${a.title} — CLRS in Rust`;
+    document.title = `${a.title} — CLRS in Rust & Python`;
     const m = $('#main');
     m.textContent = '';
     const idx = S.flat.indexOf(a);
@@ -447,7 +448,9 @@ details.tests > summary { cursor: pointer; color: var(--accent); font-weight: 60
       <h2>${esc(a.title)}</h2><div class="summary">${esc(a.summary)}</div>
       <div class="meta">${a.editions.map(n => `<span class="badge e${n}">${EDN[n - 1]} ed.</span>`).join('')}<span style="color:var(--muted)">CLRS ${esc(a.chapter)}</span></div>`;
     const tabs = el('div', { className: 'tabs', role: 'tablist' });
-    const defs = [['doc', 'Explanation'], ['source', 'Rust source'], ['log', 'Run log']];
+    const defs = [['doc', 'Explanation'], ['source', 'Rust source']];
+    if (a.python) defs.push(['python', 'Python source']);
+    defs.push(['log', 'Run log']);
     const pane = el('div', { className: 'pane' });
     defs.forEach(([key, label]) => {
       const t = el('button', { className: 'tab', textContent: label });
@@ -464,6 +467,7 @@ details.tests > summary { cursor: pointer; color: var(--accent); font-weight: 60
     pane.textContent = 'Loading…';
     try {
       if (tab === 'source') await showSource(a, pane, token);
+      else if (tab === 'python' && a.python) await showPython(a, pane, token);
       else if (tab === 'log') await showLog(a, pane, token);
       else await showDoc(a, pane, token);
     } catch (e) {
@@ -490,6 +494,22 @@ details.tests > summary { cursor: pointer; color: var(--accent); font-weight: 60
       <pre class="code"><code class="hljs language-rust">${hl(impl)}</code></pre>
       ${tests ? `<details class="tests" open><summary>Unit tests (${(tests.match(/#\[test\]/g) || []).length})</summary><pre class="code"><code class="hljs language-rust">${hl(tests)}</code></pre></details>` : ''}`;
     $('#copySrc', pane).addEventListener('click', e => { navigator.clipboard?.writeText(src); e.target.textContent = 'Copied ✓'; setTimeout(() => e.target.textContent = 'Copy', 1500); });
+  }
+  async function showPython(a, pane, token) {
+    const src = await getText(a.python);
+    if (token !== navToken) return;
+    const lines = src.split('\n').length;
+    const m = src.match(/\nclass \w+\(unittest\.TestCase\):/);
+    const cut = m ? m.index + 1 : -1;
+    const impl = cut > 0 ? src.slice(0, cut).trimEnd() : src;
+    const tests = cut > 0 ? src.slice(cut) : '';
+    const testCount = tests ? (tests.match(/^\s+def test_/gm) || []).length : 0;
+    const hl = t => { try { return window.hljs ? hljs.highlight(t, { language: 'python' }).value : esc(t); } catch { return esc(t); } };
+    pane.className = 'pane';
+    pane.innerHTML = `<div class="srcbar"><code>${esc(a.python)}</code><span>· ${lines} lines</span><button class="btn" id="copyPy">Copy</button><a class="btn" href="${esc(a.python)}" target="_blank" rel="noopener">Open raw</a></div>
+      <pre class="code"><code class="hljs language-python">${hl(impl)}</code></pre>
+      ${tests ? `<details class="tests" open><summary>Unit tests (${testCount})</summary><pre class="code"><code class="hljs language-python">${hl(tests)}</code></pre></details>` : ''}`;
+    $('#copyPy', pane).addEventListener('click', e => { navigator.clipboard?.writeText(src); e.target.textContent = 'Copied ✓'; setTimeout(() => e.target.textContent = 'Copy', 1500); });
   }
   async function showLog(a, pane, token) {
     const log = await getText(a.log);

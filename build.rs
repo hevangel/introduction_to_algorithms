@@ -10,6 +10,7 @@ fn main() {
     let out = std::env::var("OUT_DIR").unwrap();
     let alg = Path::new(&root).join("src/algorithms");
     println!("cargo:rerun-if-changed=src/algorithms");
+    println!("cargo:rerun-if-changed=python/algorithms");
     println!("cargo:rerun-if-changed=docs");
 
     let mut cats: Vec<String> = fs::read_dir(&alg)
@@ -51,7 +52,7 @@ fn main() {
             writeln!(mods, "    #[path = {:?}]\n    pub mod {id};", path.display().to_string()).unwrap();
             writeln!(
                 entries,
-                "    Entry {{ id: {id:?}, title: {:?}, category: {cat:?}, chapter: {:?}, editions: &[{}], summary: {:?}, order: {}, source: \"src/algorithms/{cat}/{id}.rs\", doc: \"docs/{cat}/{id}.md\", demo: algorithms::{cat}::{id}::demo }},",
+                "    Entry {{ id: {id:?}, title: {:?}, category: {cat:?}, chapter: {:?}, editions: &[{}], summary: {:?}, order: {}, source: \"src/algorithms/{cat}/{id}.rs\", python: \"python/algorithms/{cat}/{id}.py\", doc: \"docs/{cat}/{id}.md\", demo: algorithms::{cat}::{id}::demo }},",
                 meta["title"], meta["chapter"], editions.join(", "), meta["summary"], meta["order"]
             ).unwrap();
         }

@@ -91,3 +91,32 @@ fn every_source_has_tests() {
         assert!(src.contains("#[cfg(test)]") && src.contains("#[test]"), "{}: no unit tests", e.id);
     }
 }
+
+/// Every algorithm has a Python mirror with a `demo()` and a `unittest.TestCase`.
+#[test]
+fn every_entry_has_python() {
+    let root = Path::new(env!("CARGO_MANIFEST_DIR"));
+    for e in registry::ENTRIES {
+        assert!(root.join(e.python).is_file(), "{}: missing python {}", e.id, e.python);
+        let src = std::fs::read_to_string(root.join(e.python)).unwrap();
+        assert!(src.contains("def demo("), "{}: python has no demo()", e.id);
+        assert!(src.contains("unittest.TestCase"), "{}: python has no unittest.TestCase", e.id);
+        assert!(src.contains("def test_"), "{}: python has no tests", e.id);
+    }
+}
+
+/// No `.py` file under `python/algorithms/<category>/` may lack a registry entry.
+#[test]
+fn no_orphan_python() {
+    let root = Path::new(env!("CARGO_MANIFEST_DIR"));
+    for (cid, _, _) in CATEGORIES {
+        let dir = root.join("python/algorithms").join(cid);
+        for f in std::fs::read_dir(&dir).unwrap_or_else(|_| panic!("missing {}", dir.display())).flatten() {
+            let p = f.path();
+            if p.extension().map_or(true, |x| x != "py") { continue; }
+            let id = p.file_stem().unwrap().to_string_lossy().to_string();
+            if id == "__init__" { continue; }
+            assert!(registry::ENTRIES.iter().any(|e| e.id == id && e.category == *cid), "orphan python {}", p.display());
+        }
+    }
+}

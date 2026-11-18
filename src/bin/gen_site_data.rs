@@ -68,8 +68,8 @@ fn main() {
             fs::write(logs.join(format!("{}.log", e.id)), log).unwrap();
             let eds: Vec<String> = e.editions.iter().map(|x| x.to_string()).collect();
             json.push_str(&format!(
-                "      {{ \"id\": {}, \"title\": {}, \"chapter\": {}, \"editions\": [{}], \"summary\": {}, \"source\": {}, \"doc\": {}, \"log\": {} }}{}\n",
-                esc(e.id), esc(e.title), esc(e.chapter), eds.join(","), esc(e.summary), esc(e.source), esc(e.doc),
+                "      {{ \"id\": {}, \"title\": {}, \"chapter\": {}, \"editions\": [{}], \"summary\": {}, \"source\": {}, \"python\": {}, \"doc\": {}, \"log\": {} }}{}\n",
+                esc(e.id), esc(e.title), esc(e.chapter), eds.join(","), esc(e.summary), esc(e.source), esc(e.python), esc(e.doc),
                 esc(&format!("logs/{}.log", e.id)), if i + 1 < in_cat.len() { "," } else { "" }
             ));
         }
