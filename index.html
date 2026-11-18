@@ -61,6 +61,7 @@ details.cat[open] > summary::before { transform: rotate(90deg); }
 details.cat > summary:hover { background: var(--panel-2); }
 details.cat .n { margin-left: auto; font-weight: 400; color: var(--muted); font-size: 12px; }
 .item { display: flex; align-items: center; gap: 6px; padding: 4px 8px 4px 22px; border-radius: 6px; color: var(--text); font-size: 13.5px; }
+.item.topic-item { font-weight: 600; color: var(--accent); margin-bottom: 2px; border-bottom: 1px dashed var(--border); border-radius: 6px 6px 0 0; padding-bottom: 6px; }
 .item:hover { background: var(--panel-2); text-decoration: none; }
 .item.active { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
 .item .t { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -77,11 +78,19 @@ main { margin-left: var(--sidebar-w); padding: 80px 28px 60px; max-width: calc(v
 .stat b { display: block; font-size: 24px; line-height: 1.1; }
 .stat span { color: var(--muted); font-size: 13px; }
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
-.cat-card { padding: 14px 16px; cursor: pointer; }
-.cat-card:hover { border-color: var(--accent); }
+.cat-card { display: block; padding: 14px 16px; cursor: pointer; color: inherit; }
+.cat-card:hover { border-color: var(--accent); text-decoration: none; }
 .cat-card h3 { margin: 0 0 4px; font-size: 15px; }
 .cat-card p { margin: 0 0 8px; color: var(--muted); font-size: 13px; }
-.cat-card .n { font-size: 12.5px; color: var(--muted); }
+.cat-card .n { font-size: 12.5px; color: var(--accent); font-weight: 500; }
+.topic-algos { margin-top: 18px; padding: 18px 24px; }
+.topic-algos h3 { margin: 0 0 10px; font-size: 17px; }
+.algo-list { display: grid; gap: 6px; }
+.algo-row { display: flex; align-items: baseline; gap: 10px; padding: 8px 10px; border-radius: 8px; border: 1px solid var(--border); color: var(--text); }
+.algo-row:hover { border-color: var(--accent); background: var(--panel-2); text-decoration: none; }
+.algo-row .algo-title { font-weight: 600; color: var(--accent); white-space: nowrap; }
+.algo-row .algo-sum { flex: 1; color: var(--muted); font-size: 13.5px; min-width: 0; }
+.algo-row .algo-meta { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--muted); white-space: nowrap; }
 h2.section { margin: 28px 0 12px; font-size: 19px; }
 .ed-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
 .ed { padding: 16px 18px; border-top: 4px solid var(--c); }
@@ -190,7 +199,7 @@ details.tests > summary { cursor: pointer; color: var(--accent); font-weight: 60
   const esc = s => s.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const store = { get(k, d) { try { return localStorage.getItem(k) ?? d; } catch { return d; } }, set(k, v) { try { localStorage.setItem(k, v); } catch {} } };
 
-  const S = { manifest: null, editions: null, byId: new Map(), flat: [], q: '', eds: new Set(), cache: new Map(), mermaidFailures: 0 };
+  const S = { manifest: null, editions: null, byId: new Map(), catById: new Map(), flat: [], q: '', eds: new Set(), cache: new Map(), mermaidFailures: 0 };
   window.__app = S; // handy for debugging / tests
 
   /* ---------- theme ---------- */
@@ -224,13 +233,21 @@ details.tests > summary { cursor: pointer; color: var(--accent); font-weight: 60
     tree.textContent = '';
     let shown = 0;
     const current = currentId();
+    const curTopic = currentTopicId();
     for (const c of S.manifest.categories) {
       const items = c.algorithms.filter(matches);
       shown += items.length;
       if (!items.length) continue;
       const d = el('details', { className: 'cat' }, el('summary', {}, c.title, el('span', { className: 'n' }, String(items.length))));
-      d.open = !!(S.q || S.eds.size) || items.some(a => a.id === current) || store.get('open:' + c.id, '0') === '1';
+      d.open = !!(S.q || S.eds.size) || curTopic === c.id || items.some(a => a.id === current) || store.get('open:' + c.id, '0') === '1';
       d.addEventListener('toggle', () => store.set('open:' + c.id, d.open ? '1' : '0'));
+      const overview = el('a', {
+        className: 'item topic-item' + (curTopic === c.id ? ' active' : ''),
+        href: '#/topic/' + c.id,
+        title: `Topic guide: ${c.title}`
+      }, el('span', { className: 't' }, 'Topic Overview & Trade-offs'));
+      overview.dataset.topic = c.id;
+      d.append(overview);
       for (const a of items) {
         const link = el('a', { className: 'item' + (a.id === current ? ' active' : ''), href: '#/' + a.id, title: a.summary }, el('span', { className: 't' }, a.title), dots(a.editions));
         link.dataset.id = a.id;
@@ -243,7 +260,12 @@ details.tests > summary { cursor: pointer; color: var(--accent); font-weight: 60
   }
   function markActive() {
     const cur = currentId();
-    document.querySelectorAll('#tree .item').forEach(a => a.classList.toggle('active', a.dataset.id === cur));
+    const curTopic = currentTopicId();
+    document.querySelectorAll('#tree .item').forEach(a => {
+      const isAlgo = cur && a.dataset.id === cur;
+      const isTopic = curTopic && a.dataset.topic === curTopic;
+      a.classList.toggle('active', !!(isAlgo || isTopic));
+    });
     const act = $('#tree .item.active');
     if (act) { const d = act.closest('details'); if (d && !d.open) d.open = true; act.scrollIntoView({ block: 'nearest' }); }
   }
@@ -271,19 +293,25 @@ details.tests > summary { cursor: pointer; color: var(--accent); font-weight: 60
     return { path, tab: new URLSearchParams(query).get('tab') || 'doc' };
   }
   function currentId() { const { path } = parseHash(); const id = path.replace(/^\//, ''); return S.byId.has(id) ? id : null; }
+  function currentTopicId() {
+    const id = parseHash().path.replace(/^\//, '');
+    const cid = id.startsWith('topic/') ? id.slice(6) : id.startsWith('category/') ? id.slice(9) : null;
+    return cid && S.catById.has(cid) ? cid : null;
+  }
   async function route() {
     const { path, tab } = parseHash();
     const id = path.replace(/^\//, '');
+    const topicId = currentTopicId();
     document.body.classList.remove('nav-open');
     if (id && S.byId.has(id)) await showAlgorithm(S.byId.get(id), tab);
-    else if (id.startsWith('category/')) showHome(id.slice(9));
+    else if (topicId) await showTopic(S.catById.get(topicId));
     else showHome();
     markActive();
     window.scrollTo(0, 0);
   }
 
   /* ---------- home ---------- */
-  function showHome(focusCat) {
+  function showHome() {
     document.title = 'CLRS in Rust — Algorithm Explorer';
     const m = $('#main');
     m.textContent = '';
@@ -292,7 +320,7 @@ details.tests > summary { cursor: pointer; color: var(--accent); font-weight: 60
     const hero = el('div', { className: 'card hero' });
     hero.innerHTML = `<h2>Introduction to Algorithms — in Rust</h2>
       <p>Every algorithm from the <b>1st (1990), 2nd (2001), 3rd (2009) and 4th (2022)</b> editions of CLRS, implemented in safe Rust with unit tests.
-      Pick an algorithm in the sidebar to read what it is and why it matters, study the source, and see the recorded run log.</p>
+      Pick a topic below for an undergraduate-friendly overview and trade-offs, or jump straight to an algorithm in the sidebar to study its explanation, Rust source, and run log.</p>
       <div class="stats">
         <div class="stat"><b>${total}</b><span>algorithm families</span></div>
         <div class="stat"><b>${S.manifest.categories.length}</b><span>topic areas</span></div>
@@ -302,9 +330,8 @@ details.tests > summary { cursor: pointer; color: var(--accent); font-weight: 60
     m.append(el('h2', { className: 'section', textContent: 'Topics' }));
     const grid = el('div', { className: 'grid' });
     for (const c of S.manifest.categories) {
-      const card = el('div', { className: 'card cat-card' });
-      card.innerHTML = `<h3>${esc(c.title)}</h3><p>${esc(c.description)}</p><span class="n">${c.algorithms.length} algorithm${c.algorithms.length === 1 ? '' : 's'}</span>`;
-      card.addEventListener('click', () => { const d = [...document.querySelectorAll('#tree details.cat')].find(x => x.querySelector('summary').firstChild.textContent === c.title); if (d) { d.open = true; d.scrollIntoView({ block: 'start' }); } document.body.classList.add('nav-open'); });
+      const card = el('a', { className: 'card cat-card', href: '#/topic/' + c.id });
+      card.innerHTML = `<h3>${esc(c.title)}</h3><p>${esc(c.description)}</p><span class="n">${c.algorithms.length} algorithm${c.algorithms.length === 1 ? '' : 's'} · Overview →</span>`;
       grid.append(card);
     }
     m.append(grid);
@@ -325,7 +352,6 @@ details.tests > summary { cursor: pointer; color: var(--accent); font-weight: 60
       m.append(eg);
     }
     m.append(el('p', { style: 'color:var(--muted);margin-top:24px;font-size:13px', innerHTML: 'Run <code>scripts/build_site_data.sh</code> to regenerate logs and the manifest after changing any algorithm. Keyboard: <kbd>/</kbd> search · <kbd>←</kbd>/<kbd>→</kbd> previous / next algorithm.' }));
-    if (focusCat) { const d = [...document.querySelectorAll('#tree details.cat')][0]; if (d) d.open = true; }
   }
 
   /* ---------- markdown ---------- */
@@ -360,8 +386,55 @@ details.tests > summary { cursor: pointer; color: var(--accent); font-weight: 60
     }
   }
 
-  /* ---------- algorithm page ---------- */
+  /* ---------- topic page ---------- */
   let navToken = 0;
+  async function showTopic(c) {
+    const token = ++navToken;
+    document.title = `${c.title} — CLRS in Rust`;
+    const m = $('#main');
+    m.textContent = '';
+    const idx = S.manifest.categories.indexOf(c);
+    const card = el('div', { className: 'card' });
+    const head = el('div', { className: 'head' });
+    head.innerHTML = `<div class="crumbs"><a href="#/">Home</a> › ${esc(c.title)}</div>
+      <h2>${esc(c.title)}</h2>
+      <div class="summary">${esc(c.description)}</div>
+      <div class="meta"><span style="color:var(--muted)">${c.algorithms.length} algorithm ${c.algorithms.length === 1 ? 'family' : 'families'} · Undergraduate Topic Guide</span></div>`;
+    const pane = el('div', { className: 'pane md', textContent: 'Loading…' });
+    card.append(head, pane);
+
+    const listCard = el('div', { className: 'card topic-algos' });
+    listCard.innerHTML = `<h3>Algorithms in ${esc(c.title)} (${c.algorithms.length})</h3>`;
+    const list = el('div', { className: 'algo-list' });
+    for (const a of c.algorithms) {
+      const row = el('a', { className: 'algo-row', href: '#/' + a.id },
+        el('span', { className: 'algo-title' }, a.title),
+        el('span', { className: 'algo-sum' }, a.summary),
+        el('span', { className: 'algo-meta' }, dots(a.editions), el('span', {}, a.chapter))
+      );
+      list.append(row);
+    }
+    listCard.append(list);
+
+    const pager = el('div', { className: 'pager' });
+    const prev = S.manifest.categories[idx - 1], next = S.manifest.categories[idx + 1];
+    pager.append(
+      prev ? el('a', { href: '#/topic/' + prev.id, textContent: '← ' + prev.title }) : el('span'),
+      next ? el('a', { href: '#/topic/' + next.id, textContent: next.title + ' →' }) : el('span')
+    );
+    m.append(card, listCard, pager);
+
+    try {
+      const md = await getText(c.doc || `docs/${c.id}.md`);
+      if (token !== navToken) return;
+      pane.innerHTML = renderMarkdown(md);
+      await renderDiagrams(pane);
+    } catch (e) {
+      if (token === navToken) pane.innerHTML = `<div class="notice">Could not load topic overview: <code>${esc(e.message)}</code></div>`;
+    }
+  }
+
+  /* ---------- algorithm page ---------- */
   async function showAlgorithm(a, tab) {
     const token = ++navToken;
     document.title = `${a.title} — CLRS in Rust`;
@@ -370,7 +443,7 @@ details.tests > summary { cursor: pointer; color: var(--accent); font-weight: 60
     const idx = S.flat.indexOf(a);
     const card = el('div', { className: 'card' });
     const head = el('div', { className: 'head' });
-    head.innerHTML = `<div class="crumbs"><a href="#/">Home</a> › ${esc(a.cat.title)}</div>
+    head.innerHTML = `<div class="crumbs"><a href="#/">Home</a> › <a href="#/topic/${esc(a.cat.id)}">${esc(a.cat.title)}</a></div>
       <h2>${esc(a.title)}</h2><div class="summary">${esc(a.summary)}</div>
       <div class="meta">${a.editions.map(n => `<span class="badge e${n}">${EDN[n - 1]} ed.</span>`).join('')}<span style="color:var(--muted)">CLRS ${esc(a.chapter)}</span></div>`;
     const tabs = el('div', { className: 'tabs', role: 'tablist' });
@@ -445,7 +518,7 @@ details.tests > summary { cursor: pointer; color: var(--accent); font-weight: 60
         <p style="color:var(--muted)">${esc(e.message)}</p></div>`;
       return;
     }
-    for (const c of S.manifest.categories) for (const a of c.algorithms) { a.cat = c; S.byId.set(a.id, a); S.flat.push(a); }
+    for (const c of S.manifest.categories) { S.catById.set(c.id, c); for (const a of c.algorithms) { a.cat = c; S.byId.set(a.id, a); S.flat.push(a); } }
     buildChips();
     buildTree();
     $('#search').addEventListener('input', e => { S.q = e.target.value.trim(); buildTree(); });

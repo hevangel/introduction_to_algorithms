@@ -48,7 +48,11 @@ fn main() {
     let entries = registry::sorted();
     let mut json = String::from("{\n  \"categories\": [\n");
     for (ci, (cid, ctitle, cdesc)) in CATEGORIES.iter().enumerate() {
-        json.push_str(&format!("    {{ \"id\": {}, \"title\": {}, \"description\": {}, \"algorithms\": [\n", esc(cid), esc(ctitle), esc(cdesc)));
+        let cdoc = format!("docs/{cid}.md");
+        json.push_str(&format!(
+            "    {{ \"id\": {}, \"title\": {}, \"description\": {}, \"doc\": {}, \"algorithms\": [\n",
+            esc(cid), esc(ctitle), esc(cdesc), esc(&cdoc)
+        ));
         let in_cat: Vec<_> = entries.iter().filter(|e| e.category == *cid).collect();
         for (i, e) in in_cat.iter().enumerate() {
             let demo = (e.demo)();

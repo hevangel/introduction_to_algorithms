@@ -21,33 +21,63 @@ fn every_entry_is_complete() {
 }
 
 #[test]
+fn topic_docs_are_complete() {
+    let root = Path::new(env!("CARGO_MANIFEST_DIR"));
+    for (cid, _, _) in CATEGORIES {
+        let path = root.join(format!("docs/{cid}.md"));
+        let doc = std::fs::read_to_string(&path).unwrap_or_else(|_| panic!("{cid}: missing topic doc {}", path.display()));
+        assert!(doc.starts_with("# "), "{cid}: topic doc must start with an H1");
+        assert!(doc.len() > 400, "{cid}: topic doc too short");
+    }
+}
+
+#[test]
 fn no_orphan_docs() {
     let root = Path::new(env!("CARGO_MANIFEST_DIR"));
-    for cat in std::fs::read_dir(root.join("docs")).unwrap().flatten() {
-        if !cat.path().is_dir() { continue; }
-        for f in std::fs::read_dir(cat.path()).unwrap().flatten() {
+    for entry in std::fs::read_dir(root.join("docs")).unwrap().flatten() {
+        let p = entry.path();
+        if p.is_file() {
+            let cid = p.file_stem().unwrap().to_string_lossy().to_string();
+            assert!(CATEGORIES.iter().any(|c| c.0 == cid), "orphan topic doc {}", p.display());
+            continue;
+        }
+        if !p.is_dir() { continue; }
+        for f in std::fs::read_dir(&p).unwrap().flatten() {
             let id = f.path().file_stem().unwrap().to_string_lossy().to_string();
             assert!(registry::ENTRIES.iter().any(|e| e.id == id), "orphan doc {}", f.path().display());
         }
     }
 }
 
-/// Every `(#/some_id)` link in the docs must point at a catalogued algorithm.
+/// Every `(#/some_id)` or `(#/topic/cat_id)` link in algorithm and topic docs must resolve.
 #[test]
 fn doc_cross_links_resolve() {
     let root = Path::new(env!("CARGO_MANIFEST_DIR"));
     let ids: HashSet<&str> = registry::ENTRIES.iter().map(|e| e.id).collect();
+    let cats: HashSet<&str> = CATEGORIES.iter().map(|c| c.0).collect();
     let mut broken = vec![];
-    for e in registry::ENTRIES {
-        let doc = std::fs::read_to_string(root.join(e.doc)).unwrap();
-        let mut rest = doc.as_str();
+    let mut check = |owner: &str, doc: &str| {
+        let mut rest = doc;
         while let Some(p) = rest.find("(#/") {
             let tail = &rest[p + 3..];
             let end = tail.find(')').unwrap_or(0);
             let target = &tail[..end];
-            if !ids.contains(target) { broken.push(format!("{} -> {}", e.id, target)); }
+            let ok = if let Some(cat) = target.strip_prefix("topic/") {
+                cats.contains(cat)
+            } else {
+                ids.contains(target)
+            };
+            if !ok { broken.push(format!("{owner} -> {target}")); }
             rest = &tail[end..];
         }
+    };
+    for e in registry::ENTRIES {
+        let doc = std::fs::read_to_string(root.join(e.doc)).unwrap();
+        check(e.id, &doc);
+    }
+    for (cid, _, _) in CATEGORIES {
+        let doc = std::fs::read_to_string(root.join(format!("docs/{cid}.md"))).unwrap();
+        check(&format!("topic/{cid}"), &doc);
     }
     assert!(broken.is_empty(), "broken doc links: {broken:?}");
 }
