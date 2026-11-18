@@ -6,6 +6,7 @@
 <title>CLRS in Rust & Python — Algorithm Explorer</title>
 <meta name="description" content="Browse every algorithm from editions 1–4 of Introduction to Algorithms, implemented in Rust and Python, with explanations, source code and run logs.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232563eb'/%3E%3Cpath d='M7 22l5-12 4 8 3-5 6 9' stroke='white' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
 <style>
 :root {
   --bg: #f7f8fa; --panel: #ffffff; --panel-2: #f1f3f7; --text: #1b2330; --muted: #5d6b82; --border: #dfe3ea;
@@ -127,6 +128,8 @@ h2.section { margin: 28px 0 12px; font-size: 19px; }
 .md th, .md td { border: 1px solid var(--border); padding: 5px 12px; }
 .md th { background: var(--panel-2); }
 .md blockquote { margin: 10px 0; padding: 2px 14px; border-left: 3px solid var(--accent); color: var(--muted); }
+.md .katex-display { overflow-x: auto; overflow-y: hidden; padding: 4px 0; max-width: 100%; }
+.md .katex { font-size: 1.03em; }
 .diagram { margin: 16px 0; padding: 12px; background: var(--panel-2); border: 1px solid var(--border); border-radius: 10px; overflow: auto; text-align: center; }
 .diagram svg { max-width: 100%; height: auto; }
 .diagram.failed { text-align: left; }
@@ -186,6 +189,7 @@ details.tests > summary { cursor: pointer; color: var(--accent); font-weight: 60
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/rust.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
 <script>
 /* Everything shown here is loaded at runtime: site-data/manifest.json, site-data/editions.json,
    docs/<category>/<id>.md, src/algorithms/<category>/<id>.rs, python/algorithms/<category>/<id>.py and logs/<id>.log. Nothing is hard-coded. */
@@ -355,19 +359,117 @@ details.tests > summary { cursor: pointer; color: var(--accent); font-weight: 60
     m.append(el('p', { style: 'color:var(--muted);margin-top:24px;font-size:13px', innerHTML: 'Run <code>scripts/build_site_data.sh</code> to regenerate logs and the manifest after changing any algorithm. Keyboard: <kbd>/</kbd> search · <kbd>←</kbd>/<kbd>→</kbd> previous / next algorithm.' }));
   }
 
-  /* ---------- markdown ---------- */
+  /* ---------- markdown + math ---------- */
+  function extractMath(md) {
+    const maths = [];
+    const stash = (expr, display) => {
+      const id = maths.length;
+      maths.push({ expr, display });
+      return `@@KATEX${id}@@`;
+    };
+    let out = '', i = 0;
+    const n = md.length;
+    while (i < n) {
+      if (i === 0 || md[i - 1] === '\n') {
+        const fm = md.slice(i).match(/^[ ]{0,3}(`{3,}|~{3,})/);
+        if (fm) {
+          const fenceChar = fm[1][0], fenceLen = fm[1].length;
+          const nl = md.indexOf('\n', i);
+          if (nl === -1) { out += md.slice(i); break; }
+          let pos = nl + 1, end = n;
+          while (pos < n) {
+            const nextNl = md.indexOf('\n', pos);
+            const line = nextNl === -1 ? md.slice(pos) : md.slice(pos, nextNl);
+            const cm = line.match(/^[ ]{0,3}(`{3,}|~{3,})[ \t]*$/);
+            if (cm && cm[1][0] === fenceChar && cm[1].length >= fenceLen) {
+              end = nextNl === -1 ? n : nextNl + 1;
+              break;
+            }
+            if (nextNl === -1) break;
+            pos = nextNl + 1;
+          }
+          out += md.slice(i, end);
+          i = end;
+          continue;
+        }
+      }
+      if (md[i] === '`') {
+        let ticks = 1;
+        while (i + ticks < n && md[i + ticks] === '`') ticks++;
+        let j = i + ticks, found = -1;
+        while (j < n) {
+          if (md[j] === '`') {
+            let k = 0;
+            while (j + k < n && md[j + k] === '`') k++;
+            if (k === ticks) { found = j + k; break; }
+            j += k;
+          } else { j++; }
+        }
+        if (found !== -1) { out += md.slice(i, found); i = found; }
+        else { out += md.slice(i, i + ticks); i += ticks; }
+        continue;
+      }
+      if (md[i] === '\\' && md[i + 1] === '$') {
+        out += '\\$';
+        i += 2;
+        continue;
+      }
+      if (md[i] === '$' && md[i + 1] === '$') {
+        let j = i + 2;
+        while (j < n - 1) {
+          if (md[j] === '\\') { j += 2; continue; }
+          if (md[j] === '$' && md[j + 1] === '$') break;
+          j++;
+        }
+        if (j < n - 1 && md[j] === '$' && md[j + 1] === '$') {
+          out += stash(md.slice(i + 2, j).trim(), true);
+          i = j + 2;
+          continue;
+        }
+      }
+      if (md[i] === '$' && i + 1 < n && !/\s/.test(md[i + 1])) {
+        let j = i + 1, found = -1;
+        while (j < n && md[j] !== '\n') {
+          if (md[j] === '\\') { j += 2; continue; }
+          if (md[j] === '$' && !/\s/.test(md[j - 1]) && !(j + 1 < n && /\d/.test(md[j + 1]))) {
+            found = j;
+            break;
+          }
+          j++;
+        }
+        if (found !== -1) {
+          out += stash(md.slice(i + 1, found), false);
+          i = found + 1;
+          continue;
+        }
+      }
+      out += md[i++];
+    }
+    return { text: out, maths };
+  }
   function renderMarkdown(md) {
     if (!window.marked) return `<pre>${esc(md)}</pre>`;
+    const { text, maths } = extractMath(md);
     const renderer = new marked.Renderer();
     renderer.code = function (a, b) {
-      const text = typeof a === 'object' ? a.text : a;
+      const code = typeof a === 'object' ? a.text : a;
       const lang = ((typeof a === 'object' ? a.lang : b) || '').split(/\s/)[0];
-      if (lang === 'mermaid') return `<div class="diagram" data-src="${esc(text)}"></div>`;
-      let html = esc(text);
-      if (window.hljs && lang && hljs.getLanguage(lang)) { try { html = hljs.highlight(text, { language: lang }).value; } catch {} }
+      if (lang === 'mermaid') return `<div class="diagram" data-src="${esc(code)}"></div>`;
+      let html = esc(code);
+      if (window.hljs && lang && hljs.getLanguage(lang)) { try { html = hljs.highlight(code, { language: lang }).value; } catch {} }
       return `<pre><code class="hljs language-${esc(lang)}">${html}</code></pre>`;
     };
-    return marked.parse(md, { renderer, gfm: true });
+    let html = marked.parse(text, { renderer, gfm: true });
+    if (maths.length) {
+      html = html.replace(/@@KATEX(\d+)@@/g, (_, idx) => {
+        const { expr, display } = maths[+idx];
+        if (window.katex) {
+          try { return katex.renderToString(expr, { displayMode: display, throwOnError: false, strict: false }); } catch {}
+        }
+        return display ? `<pre>${esc(expr)}</pre>` : `<code>${esc(expr)}</code>`;
+      });
+    }
+    return html;
   }
   async function renderDiagrams(root) {
     const nodes = [...root.querySelectorAll('.diagram[data-src]')];
